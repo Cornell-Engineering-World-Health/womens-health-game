@@ -1,0 +1,15 @@
+certifi==2020.4.5.1
+chardet==3.0.4
+docutils==0.16
+entrypoints==0.3
+idna==2.9
+Kivy==1.11.1
+Kivy-Garden==0.1.4
+kivymd==0.104.1
+mccabe==0.6.1
+Pillow==7.1.2
+pycodestyle==2.5.0
+pyflakes==2.1.1
+Pygments==2.6.1
+requests==2.23.0
+urllib3==1.25.9
