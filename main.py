@@ -7,6 +7,7 @@ from util.utility import Utility
 
 #screen imports
 from ui.screens.login import LoginScreen
+from ui.screens.request import RequestScreen
 
 #project imports (backend code we might need, etc)
 
@@ -17,7 +18,7 @@ class MainBox(FloatLayout):
         self.screens = AnchorLayout(anchor_x='center', anchor_y='center')
         self.util = kwargs.get('util')
         self.content = ScreenManager()
-        self.content.add_widget(LoginScreen(name='login', util=self.util))
+        self.content.add_widget(RequestScreen(name='login', util=self.util))
         self.screens.add_widget(self.content)
 
         self.add_widget(self.screens)
