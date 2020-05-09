@@ -6,7 +6,7 @@ class Utility(object):
         self.username = ''
         self.password = ''
 
-        # authorize / acuire key on startup
+        # authorize / acquire key on startup
         authorize()
 
 
