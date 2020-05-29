@@ -8,8 +8,13 @@ from kivy.graphics import Color, Rectangle
 from kivy.uix.behaviors import *
 
 
-class Script():
+class Background():
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.name = kwargs.get('name', '')
         self.scenes = kwargs.get('scenes', [])
-        # add scenes
+        self.image = kwargs.get('img', '')
+        self.ui_layout()
+
+    def ui_layout(self):
+        print(self.image)

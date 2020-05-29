@@ -8,8 +8,11 @@ from kivy.graphics import Color, Rectangle
 from kivy.uix.behaviors import *
 
 
-class Script():
+class Scene():
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.scenes = kwargs.get('scenes', [])
-        # add scenes
+
+        self.characters = kwargs.get('characters', [])
+        self.lines = kwargs.get('lines', [])
+        # background can either be an index or a name
+        self.background = kwargs.get('background', '')

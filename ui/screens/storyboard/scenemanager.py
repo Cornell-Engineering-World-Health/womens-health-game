@@ -40,7 +40,7 @@ class SceneManagerScreen(Screen):
 
         # Screen variables
         self.scene_num = 0
-        self.character =
+        self.character = 9
 
         # Layout declarations
         boxlayout = BoxLayout(orientation="vertical", pos=(0, self.y+500))
@@ -54,18 +54,18 @@ class SceneManagerScreen(Screen):
             if (instance.text == '<<'):
                 if (self.scene_num != 0):
                     self.scene_num -= 1
-            scene_label.text='Scene ' + str(self.scene_num)
+            scene_label.text = 'Scene ' + str(self.scene_num)
             self.load_scene(self.scene_num)
 
         # Widget declarations
         scene_label = MDLabel(text='Scene ' + str(self.scene_num),
-                                font_style='H4', halign='center')
+                              font_style='H4', halign='center')
 
         # What properties can we declare in the button constructor
-        nextButton = Button(text='>>', font_size=50, size_hint=(0.2, 0.2))
+        nextButton = Button(text='>>', font_size=50, size_hint=(0.1, 0.3))
         nextButton.bind(on_press=callback)
 
-        prevButton = Button(text='<<', font_size=50, size_hint=(0.2, 0.2))
+        prevButton = Button(text='<<', font_size=50, size_hint=(0.1, 0.3))
         prevButton.bind(on_press=callback)
 
         # Adding widgets to layouts

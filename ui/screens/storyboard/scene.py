@@ -15,6 +15,7 @@ from kivymd.uix.textfield import MDTextField
 # import layouts
 from kivy.uix.boxlayout import BoxLayout
 
+
 class SceneScreen(Screen):
     def __init__(self, **kwargs):
         super(SceneScreen, self).__init__(name=kwargs.get('name'))

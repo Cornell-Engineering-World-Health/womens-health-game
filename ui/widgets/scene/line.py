@@ -8,13 +8,14 @@ from kivy.graphics import Color, Rectangle
 from kivy.uix.behaviors import *
 
 
-class Character():
+class Line():
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.is_talking = False
-        self.name = kwargs.get('name', '')
-        self.image = kwargs.get('img', '')
+        # character name
+        self.character = kwargs.get('character', '')
+        self.audio = kwargs.get('audio', '')
+        self.text = kwargs.get('text', '')
         self.ui_layout()
 
     def ui_layout(self):
-        print(self.is_talking)
+        print(self.text)
