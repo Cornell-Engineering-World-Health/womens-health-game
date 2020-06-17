@@ -7,8 +7,12 @@ from util.utility import Utility
 
 #screen imports
 from ui.screens.login import LoginScreen
+from ui.screens.users import UserScreen
+
+
 
 #project imports (backend code we might need, etc)
+
 
 class MainBox(FloatLayout):
     def __init__(self, **kwargs):
@@ -18,9 +22,10 @@ class MainBox(FloatLayout):
         self.util = kwargs.get('util')
         self.content = ScreenManager()
         self.content.add_widget(LoginScreen(name='login', util=self.util))
-        self.screens.add_widget(self.content)
-
+        self.content.add_widget(UserScreen(name='users', util=self.util))
+        self.screens.add_widget(self.content);
         self.add_widget(self.screens)
+        self.screens.current = 'login'
 
 class MainApp(MDApp):
     util = Utility()

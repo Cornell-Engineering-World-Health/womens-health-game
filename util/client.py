@@ -2,12 +2,12 @@ import urllib
 import os
 import json
 import threading
-import asyncio
 from kivy.network.urlrequest import UrlRequest
 
 API_KEY = ' '
 
 # KEY REQUEST
+
 
 # read and parse key.json
 def get_options():
@@ -42,13 +42,14 @@ def error_msg(req, result):
 # takes in endpoint and optional data
 def api_call(endpoint, data=None):
 	headers = {'Content-Type':'application/json', 'accept':'application/json', 'Authorization':API_KEY}
-	req = UrlRequest('https://menstralhealthgameserver.herokuapp.com/api/' + endpoint, on_success=print_results, req_headers=headers, req_body=data)
-	print_results(req, result)
+	req = UrlRequest('https://menstralhealthgameserver.herokuapp.com/api/' + endpoint, on_success=on_success, req_headers=headers, req_body=data)
+	req.wait(delay=0.5)
+	return req.result
+
 
 # print request results from successful api call
-def print_results(req, result):
+def on_success(req, result):
 	print('REQUEST SUCCESFUL')
-	print(result)
 
 result = ''
 
