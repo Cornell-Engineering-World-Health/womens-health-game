@@ -1,25 +1,13 @@
 # Kivy imports
 from kivy.uix.screenmanager import Screen
 from kivy.uix.floatlayout import FloatLayout
-from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.textinput import TextInput
 from kivy.app import App
-from kivy.metrics import dp
-from kivy.uix.widget import Widget
 from kivy.uix.button import Button
-
-# kivymd imports
-from kivymd.uix.toolbar import MDToolbar
-from kivymd.uix.card import MDCard
-from kivymd.uix.label import MDLabel
-from kivymd.uix.textfield import MDTextField
-
 
 #backend imports
 from util.client import api_call
 from util.firebase import firebase
-import json
-
 
 
 class LoginScreen(Screen):
