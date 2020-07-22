@@ -1,0 +1,37 @@
+#:include kv/loginscreen.kv
+#:include kv/dashboard.kv
+#:include kv/settingsscreen.kv
+
+
+
+NavigationLayout:
+    id: nav_layout
+
+    ScreenManager:
+
+        Screen:
+
+            BoxLayout:
+                orientation: 'vertical'
+
+                MDToolbar:
+                    title: app.title
+                    elevation: 10
+                    right_action_items: [['settings', lambda x: app.settings()]]
+
+                ScreenManager:
+                    id: screen_manager
+
+                    LoginScreen
+                        id: login_screen
+                        name: "login_screen"
+
+                    DashBoard:
+                        id: dashboard
+                        name: "dashboard"
+
+                    SettingsScreen:
+                        id: settings_screen
+                        name: "settings_screen"
+
+    

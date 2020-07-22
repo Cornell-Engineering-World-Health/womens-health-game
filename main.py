@@ -1,44 +1,26 @@
-#kivy imports
+# Import Libraries
 from kivymd.app import MDApp
-from kivy.uix.anchorlayout import AnchorLayout
-from kivy.uix.floatlayout import FloatLayout
-from kivy.uix.screenmanager import ScreenManager
-from util.utility import Utility
-
-#screen imports
-from ui.screens.login import LoginScreen
-from ui.screens.users import UserScreen
+from kivy.lang import Builder
 
 
 
-#project imports (backend code we might need, etc)
+# Import Screens
+from baseclass.loginscreen import LoginScreen
+from baseclass.dashboard import DashBoard
+from baseclass.settingsscreen import SettingsScreen
 
 
-class MainBox(FloatLayout):
-    def __init__(self, **kwargs):
-        super(MainBox, self).__init__()
+# Initialize APP
+class MyApp(MDApp):
 
-        self.screens = AnchorLayout(anchor_x='center', anchor_y='center')
-        self.util = kwargs.get('util')
-        self.content = ScreenManager()
-        self.content.add_widget(LoginScreen(name='login', util=self.util))
-        self.content.add_widget(UserScreen(name='users', util=self.util))
-        self.screens.add_widget(self.content);
-        self.add_widget(self.screens)
-        self.screens.current = 'login'
-
-class MainApp(MDApp):
-    util = Utility()
-
-    def __init__(self, **kwargs):
-        self.title = "Health Friend"
-        self.theme_cls.theme_style = "Dark"
-        self.theme_cls.primary_palette = "Blue"
-        super().__init__(**kwargs)
-
+    # Constructor
     def build(self):
-        return MainBox(util=self.util)
+        self.title = "Health Friend"
+        self.theme_cls.primary_palette = "Blue"
+        return Builder.load_file("main.kv")
 
+    def settings(self):
+    	MDApp.get_running_app().root.ids.screen_manager.current = 'settings_screen'
 
-if __name__ == '__main__':
-     MainApp().run()
+# Start App
+MyApp().run()
