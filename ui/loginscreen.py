@@ -1,7 +1,7 @@
 from kivy.uix.screenmanager import Screen
 from kivymd.app import MDApp
 
-from util.client import api_call, authorize
+from util.client import get_students_from_admin_id, authorize
 from util.firebase import firebase
 
 class LoginScreen(Screen):
@@ -17,7 +17,7 @@ class LoginScreen(Screen):
         auth = firebase.auth()
         user = auth.sign_in_with_email_and_password(self.login_email, self.login_password)
 
-        res = api_call('users/admin/' + user['localId'])
+        res = get_students_from_admin_id(user['localId'])
         self.manager.screens[0].ids.users = res
         self.manager.current = 'dashboard'
 

@@ -8,7 +8,6 @@ API_KEY = ' '
 
 # KEY REQUEST
 
-
 # read and parse key.json
 def get_options():
 	util = os.path.dirname(os.path.abspath(__file__))
@@ -19,8 +18,8 @@ def get_options():
 
 # main authorize function
 def authorize():
-	# call authorize() every 120 seconds
-	threading.Timer(120, authorize).start()
+	# call authorize() every hour
+	threading.Timer(3600, authorize).start()
 	options = get_options()
 	body = json.dumps(options['body'])
 	req = UrlRequest(options['url'], on_success=get_key, on_failure=error_msg, req_headers=options['headers'], req_body=body)
@@ -33,23 +32,21 @@ def get_key(req, result):
 
 # print error msg from failed authorize response
 def error_msg(req, result):
-	print('ERROR')
-	print(result)
+	print('ERROR', result)
 
 
 # API REQUESTS
 
 # takes in endpoint and optional data
-def api_call(endpoint, data=None):
+def _api_call(endpoint, data=None):
 	headers = {'Content-Type':'application/json', 'accept':'application/json', 'Authorization':API_KEY}
 	req = UrlRequest('https://menstralhealthgameserver.herokuapp.com/api/' + endpoint, on_success=on_success, req_headers=headers, req_body=data)
 	req.wait(delay=0.5)
 	return req.result
 
+def get_students_from_admin_id(id):
+	return _api_call('users/admin/' + id)
 
 # print request results from successful api call
 def on_success(req, result):
-	print('REQUEST SUCCESFUL')
-
-result = ''
-
+	print('REQUEST SUCCESFUL', result)
