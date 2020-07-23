@@ -18,8 +18,6 @@ def get_options():
 
 # main authorize function
 def authorize():
-	# call authorize() every hour
-	threading.Timer(3600, authorize).start()
 	options = get_options()
 	body = json.dumps(options['body'])
 	req = UrlRequest(options['url'], on_success=get_key, on_failure=error_msg, req_headers=options['headers'], req_body=body)
