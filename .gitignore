@@ -2,9 +2,9 @@ venv
 
 .DS_Store
 /env
-util/__pycache__
 
 util/key.json
+util/__pycache__
 ui/__pycache__
 kv/__pycache__
 
