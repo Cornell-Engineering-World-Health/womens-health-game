@@ -1,1 +1,10 @@
 venv
+
+.DS_Store
+/env
+
+util/key.json
+util/__pycache__
+ui/__pycache__
+kv/__pycache__
+

@@ -1,0 +1,25 @@
+<LoginScreen>:
+
+	FloatLayout:
+
+        MDTextFieldRect:
+        	id: email
+        	hint_text: "EMAIL"
+        	pos_hint: {'x':.3, 'y':.575}
+        	size_hint: (.4, .05)
+        	on_text: root.process_email()
+
+
+        MDTextFieldRect:
+        	id: password
+        	hint_text: "PASSWORD"
+        	password: True
+        	pos_hint: {'x':.3, 'y':.475}
+        	size_hint: (.4, .05)
+        	on_text: root.process_password()
+
+        Button:
+            text: 'Login'
+            on_press: root.login()
+            pos_hint: {"x": .3, "y": .35}
+            size_hint: (.4, .075)
