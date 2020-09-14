@@ -4,7 +4,7 @@ from kivy.lang import Builder
 
 # Import Screens
 from ui.loginscreen import LoginScreen
-from ui.dashboard import DashBoard
+from ui.dashboard import Dashboard
 from ui.settingsscreen import SettingsScreen
 
 # Import Constants
