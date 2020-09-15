@@ -1,0 +1,59 @@
+{
+    [
+        "background": "sunset.jpg",
+        "characters":  [
+            1,
+            7,
+            9
+        ],
+        "script": [
+            "action": {
+	               "character": 1,
+                   "type": "enter"
+            }
+            "line": {
+                "dialogue": "Hello",
+                "dialogue_file": "dialogue_selma_1.wav"
+            },
+            "line": {
+    	           "dialogue": “I’m Selma”,
+                   "dialogue_file": "dialogue_selma_2.wav"
+            },
+            "action": {
+                "character": 1,
+                "type": "exit"
+            }
+        ]
+    ],
+    [
+        "background": "kitchen.jpg",
+        "characters":  [
+            1,
+            2
+        ],
+        "script": [
+            "action": {
+                "character": 1,
+                "type": "enter"
+            },
+            "action": {
+                "character": 2,
+                "type": "enter"
+            },
+            "line": {
+                "character": 2,
+                "dialogue": "How are you today",
+                "dialogue_file": "dialogue_mom_1.wav"
+            },
+            "line": {
+                "character": 1,
+                "dialogue": "I’m doing well",
+                "dialogue_file": "dialogue_selma_3.wav"
+            },
+            "action": {
+                "character": 2,
+                "type": "exit"
+            }
+        ]
+    ]
+}

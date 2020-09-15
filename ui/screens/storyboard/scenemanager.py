@@ -34,6 +34,12 @@ class SceneManagerScreen(Screen):
         self.util = kwargs.get('util')
         self.ui_layout()
         self.screen_setup()
+        # Game state
+        self.state = 0
+
+        # Scene variables
+        self.scene_actions = []
+        self.characters = []
 
     def ui_layout(self):
         self.clear_widgets()
