@@ -7,9 +7,7 @@ from Question import Question
 class MultipleChoice(Question):
     def __init__(self, question_text, question_id, question_audio, explanation_text, explanation_audio,
                  image_options, correct_answer, selected_choices):
-        Question.__init__(self, question_text, question_id, question_audio)
-        self.explanation_audio = explanation_audio
-        self.explanation_text = explanation_text
+        Question.__init__(self, question_text, question_id, question_audio, explanation_text, explanation_audio)
         self.image_options = image_options
         self.correct_answer = correct_answer
         assert [i for i in self.correct_answer not in self.image_options] == []
