@@ -5,5 +5,5 @@ class Line:
         self.audio = audio
 
     def execute(self):
-        print("%s: %s", character, dialogue)
+        print("%s: %s", self.character, self.dialogue)
         # play audio

@@ -8,5 +8,5 @@ class Character:
         self.image = image
 
     def talk(self):
-        is_talking = True
+        self.is_talking = True
         # talk
