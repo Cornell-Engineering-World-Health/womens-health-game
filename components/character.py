@@ -2,8 +2,8 @@ class Character:
     def __init__(self, **kwargs):
         self.id = id
         self.name = name
-        # ?????? what's the difference?
-        self.active_mouth = False
+        # image
+        self.active_mouth = None
         self.is_talking = False
         self.image = image
 
