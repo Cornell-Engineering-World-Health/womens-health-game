@@ -1,0 +1,63 @@
+{
+  "assessment_path": "questions0.json",
+  "scenes": [
+    {
+      "background": "sunset.jpg",
+      "characters": [1, 2, 3],
+      "script": [
+        {
+          "type": "action",
+          "character_id": 1,
+          "action_type": "enter"
+        },
+        {
+          "type": "line",
+          "character_id": 2,
+          "dialogue": "Hello",
+          "dialogue_file": "dialogue_selma_1.wav"
+        },
+        {
+          "type": "line",
+          "character_id": 1,
+          "dialogue": "World",
+          "dialogue_file": "dialogue_selma_2.wav"
+        },
+        {
+          "type": "line",
+          "character_id": 3,
+          "dialogue": "Hello",
+          "dialogue_file": "dialogue_selma_3.wav"
+        }
+      ]
+    },
+    {
+      "background": "sunrise.jpg",
+      "characters": [1, 2, 3],
+      "script": [
+        {
+          "type": "action",
+          "character_id": 1,
+          "action_type": "enter"
+        },
+        {
+          "type": "line",
+          "character_id": 2,
+          "dialogue": "Hello",
+          "dialogue_file": "dialogue_selma_1.wav"
+        },
+        {
+          "type": "line",
+          "character_id": 1,
+          "dialogue": "World",
+          "dialogue_file": "dialogue_selma_2.wav"
+        },
+        {
+          "type": "line",
+          "character_id": 3,
+          "dialogue": "Hello",
+          "dialogue_file": "dialogue_selma_3.wav"
+        }
+      ]
+    }
+  ]
+}

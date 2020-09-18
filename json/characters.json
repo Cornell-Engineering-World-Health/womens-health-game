@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Selma",
+    "image": "selma.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Mom",
+    "image": "mom.png"
+  },
+  {
+    "id": 3,
+    "name": "Vivek",
+    "image": "vivek.jpg"
+  },
+  {
+    "id": 4,
+    "name": "J",
+    "image": "j.jpeg"
+  }
+]
