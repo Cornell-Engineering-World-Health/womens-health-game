@@ -1,8 +1,7 @@
 class Character:
-    def __init__(self, **kwargs):
+    def __init__(self, id, name, image):
         self.id = id
         self.name = name
-        # image
         self.active_mouth = None
         self.is_talking = False
         self.image = image

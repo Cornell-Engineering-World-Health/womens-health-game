@@ -1,9 +1,9 @@
 class Line:
-    def __init__(self, character, dialogue, audio):
-        self.dialogue = dialogue
+    def __init__(self, character, text, audio):
+        self.text = text
         self.character = character
         self.audio = audio
 
     def execute(self):
-        print("%s: %s", character, dialogue)
+        print("%s: %s", self.character, self.text)
         # play audio
