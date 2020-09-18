@@ -5,4 +5,4 @@ class Action:
         self.action_type = action_type
 
     def execute(self):
-        print(action_type)
+        print(self.action_type)
