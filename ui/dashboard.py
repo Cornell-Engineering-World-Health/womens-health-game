@@ -2,7 +2,7 @@ from kivy.uix.screenmanager import Screen
 from kivymd.app import MDApp
 from ui.card import Card
 
-class DashBoard(Screen):
+class Dashboard(Screen):
     def __init__(self, **kw):
         super().__init__(**kw)
         self.app = MDApp.get_running_app()
