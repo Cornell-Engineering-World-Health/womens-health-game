@@ -1,4 +1,5 @@
 {
+    "scenes":
     [
         "background": "sunset.jpg",
         "characters":  [
@@ -16,7 +17,7 @@
                 "dialogue_file": "dialogue_selma_1.wav"
             },
             "line": {
-    	           "dialogue": “I’m Selma”,
+    	           "dialogue": "I’m Selma",
                    "dialogue_file": "dialogue_selma_2.wav"
             },
             "action": {
