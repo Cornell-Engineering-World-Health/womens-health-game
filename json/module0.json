@@ -1,60 +1,63 @@
 {
-    "scenes":
-    [
-        "background": "sunset.jpg",
-        "characters":  [
-            1,
-            7,
-            9
-        ],
-        "script": [
-            "action": {
-	               "character": 1,
-                   "type": "enter"
-            }
-            "line": {
-                "dialogue": "Hello",
-                "dialogue_file": "dialogue_selma_1.wav"
-            },
-            "line": {
-    	           "dialogue": "I’m Selma",
-                   "dialogue_file": "dialogue_selma_2.wav"
-            },
-            "action": {
-                "character": 1,
-                "type": "exit"
-            }
-        ]
-    ],
-    [
-        "background": "kitchen.jpg",
-        "characters":  [
-            1,
-            2
-        ],
-        "script": [
-            "action": {
-                "character": 1,
-                "type": "enter"
-            },
-            "action": {
-                "character": 2,
-                "type": "enter"
-            },
-            "line": {
-                "character": 2,
-                "dialogue": "How are you today",
-                "dialogue_file": "dialogue_mom_1.wav"
-            },
-            "line": {
-                "character": 1,
-                "dialogue": "I’m doing well",
-                "dialogue_file": "dialogue_selma_3.wav"
-            },
-            "action": {
-                "character": 2,
-                "type": "exit"
-            }
-        ]
-    ]
+  "assessment_path": "questions0.json",
+  "scenes": [
+    {
+      "background": "sunset.jpg",
+      "characters": [1, 2, 3],
+      "script": [
+        {
+          "type": "action",
+          "character_id": 1,
+          "action_type": "enter"
+        },
+        {
+          "type": "line",
+          "character_id": 2,
+          "dialogue": "Hello",
+          "dialogue_file": "dialogue_selma_1.wav"
+        },
+        {
+          "type": "line",
+          "character_id": 1,
+          "dialogue": "World",
+          "dialogue_file": "dialogue_selma_2.wav"
+        },
+        {
+          "type": "line",
+          "character_id": 3,
+          "dialogue": "Hello",
+          "dialogue_file": "dialogue_selma_3.wav"
+        }
+      ]
+    },
+    {
+      "background": "sunrise.jpg",
+      "characters": [1, 2, 3],
+      "script": [
+        {
+          "type": "action",
+          "character_id": 1,
+          "action_type": "enter"
+        },
+        {
+          "type": "line",
+          "character_id": 2,
+          "dialogue": "Hello",
+          "dialogue_file": "dialogue_selma_1.wav"
+        },
+        {
+          "type": "line",
+          "character_id": 1,
+          "dialogue": "World",
+          "dialogue_file": "dialogue_selma_2.wav"
+        },
+        {
+          "type": "line",
+          "character_id": 3,
+          "dialogue": "Hello",
+          "dialogue_file": "dialogue_selma_3.wav"
+        }
+      ]
+    }
+  ]
 }
