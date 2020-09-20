@@ -7,3 +7,6 @@ class Line:
     def execute(self):
         print("%s: %s", self.character, self.text)
         # play audio
+
+    def __str__(self):
+        return (str(self.character) + ': ' + self.text)

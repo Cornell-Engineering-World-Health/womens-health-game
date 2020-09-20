@@ -6,3 +6,7 @@ class Action:
 
     def execute(self):
         print(self.action_type)
+
+    def __str__(self):
+        return (str(self.character) + ': ' + self.action_type + '(' +
+                self.has_been_executed + ')')

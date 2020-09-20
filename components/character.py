@@ -9,3 +9,6 @@ class Character:
     def talk(self):
         self.is_talking = True
         # talk
+
+    def __str__(self):
+        return (self.name + ' (' + str(self.id) + ')')
