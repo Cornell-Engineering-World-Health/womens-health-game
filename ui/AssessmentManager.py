@@ -20,7 +20,7 @@ class AssessmentManager:
                                               question['question_audio'], question["explanation_text"],
                                               question["explanation_audio"], question["image_options"],
                                               question["selected_choices"])
-            else if question["type"] == "drag_and_drop"
+            if question["type"] == "drag_and_drop":
                 new_question = DragAndDrop(question['question_text'], question['question_id'],
                                            question['question_audio'], question["explanation_text"],
                                            question["explanation_audio"], question["ordered_image_ids"],
