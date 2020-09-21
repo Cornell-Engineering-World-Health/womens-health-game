@@ -1,12 +1,13 @@
 #:include kv/loginscreen.kv
 #:include kv/dashboard.kv
+#:include kv/gamescreen.kv
 #:include kv/settingsscreen.kv
 
 NavigationLayout:
     id: nav_layout
 
     ScreenManager:
-
+    
         Screen:
 
             BoxLayout:
@@ -28,8 +29,12 @@ NavigationLayout:
                         id: dashboard
                         name: "dashboard"
 
+                    GameScreen:
+                        id: game_screen
+                        name: "game_screen"
+
                     SettingsScreen:
                         id: settings_screen
                         name: "settings_screen"
 
-    
+        

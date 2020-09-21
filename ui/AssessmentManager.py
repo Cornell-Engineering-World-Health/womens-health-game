@@ -2,9 +2,9 @@ import kivy
 import json
 import random
 
-
-class AssessmentManager:
+class AssessmentManager(Screen):
     def __init__(self, module_number, assessment, current_question):
+
         self.module_number = module_number
         self.assessment = assessment #list of Question types
         self.current_question = current_question

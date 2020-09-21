@@ -16,5 +16,5 @@ class Dashboard(Screen):
     def render_cards(self):
         grid = self.manager.screens[1].ids.grid_card
         for user in self.users:
-            card = CardButton(first_name=user['first_name'], last_name=user['last_name'], village_name=user['village_name'])
+            card = CardButton(screen_manager=self.manager,first_name=user['first_name'], last_name=user['last_name'], village_name=user['village_name'])
             grid.add_widget(card)

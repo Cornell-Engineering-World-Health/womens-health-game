@@ -19,11 +19,19 @@ class Card(FloatLayout):
         self.first_name = self.generateCardLabel(kwargs["first_name"], card_style["title_font"], card_style["first_name_y"])
         self.last_name = self.generateCardLabel(kwargs["last_name"], card_style["title_font"], card_style["last_name_y"])
         self.village_name = self.generateCardLabel(kwargs["village_name"], card_style["subtitle_font"],  card_style["village_name_y"])
-    
+
+        self.sm = kwargs['screen_manager']
+        self.selected_user = {"first_name": kwargs["first_name"], "last_name": kwargs["last_name"]}
 
         self.add_widget(self.first_name)
         self.add_widget(self.last_name)
         self.add_widget(self.village_name)
+
+
+    def next_screen(self): 
+        self.sm.screens[2].ids.user = self.selected_user
+        self.sm.current = 'game_screen'
+    
 
 
     def update_rect(self, *args):
@@ -35,9 +43,11 @@ class Card(FloatLayout):
 
 
 class CardButton(ButtonBehavior, Card):
+
      def on_press(self):
-        print(self)
+        self.next_screen()
+
         #self.manager.screens[2].ids.users = self
-        #self.manager.current = ''
+
 
 
