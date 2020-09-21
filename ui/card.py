@@ -1,6 +1,7 @@
 from kivymd.app import MDApp
 from kivy.uix.floatlayout import FloatLayout
 from kivymd.uix.label import MDLabel
+from kivy.uix.behaviors import ButtonBehavior
 from kivy.graphics import Color, RoundedRectangle
 import kivy.utils
 
@@ -24,10 +25,19 @@ class Card(FloatLayout):
         self.add_widget(self.last_name)
         self.add_widget(self.village_name)
 
+
     def update_rect(self, *args):
         self.rect.pos = self.pos
         self.rect.size = self.size
 
     def generateCardLabel(self, label, style, height):
         return MDLabel(text=label, pos_hint={"center_x": card_style["center_x"], "top": height}, size_hint=card_style["size"], theme_text_color=card_style["theme"], font_style=style, halign="center")
+
+
+class CardButton(ButtonBehavior, Card):
+     def on_press(self):
+        print(self)
+        #self.manager.screens[2].ids.users = self
+        #self.manager.current = ''
+
 
