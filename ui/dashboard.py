@@ -1,6 +1,6 @@
 from kivy.uix.screenmanager import Screen
 from kivymd.app import MDApp
-from ui.card import Card
+from ui.card import Card, CardButton
 
 class Dashboard(Screen):
     def __init__(self, **kw):
@@ -16,5 +16,5 @@ class Dashboard(Screen):
     def render_cards(self):
         grid = self.manager.screens[1].ids.grid_card
         for user in self.users:
-            card = Card(first_name=user['first_name'], last_name=user['last_name'], village_name=user['village_name'])
+            card = CardButton(first_name=user['first_name'], last_name=user['last_name'], village_name=user['village_name'])
             grid.add_widget(card)
