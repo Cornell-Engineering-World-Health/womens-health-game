@@ -14,6 +14,12 @@ class LoginScreen(Screen):
         self.app.title = "Login"
 
     def login(self):
+
+        # TEMP BYPASS
+        if self.login_email == 'EWH':
+            self.manager.current = 'module'
+            return
+        
         try:
             auth = firebase.auth()
             user = auth.sign_in_with_email_and_password(self.login_email, self.login_password)
@@ -23,6 +29,7 @@ class LoginScreen(Screen):
 
             self.manager.screens[0].ids.users = res
             self.manager.current = 'dashboard'
+            
         except Exception:
             print("INVALID USERNAME OR PASSWORD, PLEASE TRY AGAIN")
 
