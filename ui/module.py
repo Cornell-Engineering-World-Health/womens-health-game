@@ -1,15 +1,35 @@
-class Module:
+from kivymd.app import MDApp
+from kivy.uix.screenmanager import Screen
+
+
+class Module(Screen):
     # instances
 
     # **kwargs for json
-    def __init__(self, module_number):
-        self.module_number = module_number
+    def __init__(self, **kw):
+
+        self.module_number = 0
         self.scenes = []
         self.present_characters = []
         self.current_line = 0
         self.current_scene = 0
 
-        self._load(self.module_number)
+        #self._load(self.module_number)
+
+        super().__init__(**kw)
+        self.app = MDApp.get_running_app()
+
+    # built in kivy function that runs before scene is loaded
+    def on_pre_enter(self, *args):
+
+        # loads the current user data into user if they exist
+        if len(self.manager.screens[2].ids) > 0:
+            self.user = self.manager.screens[2].ids.user
+            self.app.title = "Health Friend [Game]  ::  " + self.user['first_name'] + " " + self.user['last_name']
+        else:
+            self.app.title = "Health Friend [Game]  :: EWH"
+
+        
 
     def _load(module_number):
         print('loading')
@@ -25,6 +45,9 @@ class Module:
     def render_scene(self):
         # kivy
         print("rendering...")
+
+    def load_assessment(self):
+        self.manager.current = 'assessment_manager'
 
     def __str__(self):
         str_module = 'Module: ' + str(self.module_number) + '\n'

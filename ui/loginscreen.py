@@ -14,12 +14,17 @@ class LoginScreen(Screen):
         self.app.title = "Login"
 
     def login(self):
-        auth = firebase.auth()
-        user = auth.sign_in_with_email_and_password(self.login_email, self.login_password)
+        try:
+            auth = firebase.auth()
+            user = auth.sign_in_with_email_and_password(self.login_email, self.login_password)
+            self.manager.screens[0].ids.admin = user
+        
+            res = get_students_from_admin_id(user['localId'])
 
-        res = get_students_from_admin_id(user['localId'])
-        self.manager.screens[0].ids.users = res
-        self.manager.current = 'dashboard'
+            self.manager.screens[0].ids.users = res
+            self.manager.current = 'dashboard'
+        except Exception:
+            print("INVALID USERNAME OR PASSWORD, PLEASE TRY AGAIN")
 
     def process_email(self):
         self.login_email = self.manager.screens[0].ids.email.text

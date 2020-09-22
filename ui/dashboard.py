@@ -1,6 +1,6 @@
 from kivy.uix.screenmanager import Screen
 from kivymd.app import MDApp
-from ui.card import Card, CardButton
+from  components.card import Card, CardButton
 
 class Dashboard(Screen):
     def __init__(self, **kw):
@@ -10,7 +10,8 @@ class Dashboard(Screen):
     def on_pre_enter(self, *args):
         if(self.manager.screens):
             self.users = self.manager.screens[0].ids.users
-            self.app.title = "Select a Student"
+            self.admin = self.manager.screens[0].ids.admin
+            self.app.title = self.admin['email']
             self.render_cards()
 
     def render_cards(self):
