@@ -37,6 +37,7 @@ class Card(FloatLayout):
     # load module screen
     def load_module(self): 
         self.sm.screens[2].ids.user = self.selected_user
+        self.sm.screens[2].ids.module_number = 1 # get module number from user 
         self.sm.current = 'module'
 
     def update_rect(self, *args):

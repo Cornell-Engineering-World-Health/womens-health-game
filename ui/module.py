@@ -7,32 +7,32 @@ class Module(Screen):
 
     # **kwargs for json
     def __init__(self, **kw):
+        super().__init__(**kw)
+        self.app = MDApp.get_running_app()
 
+        self.user = None
         self.module_number = 0
         self.scenes = []
         self.present_characters = []
         self.current_line = 0
         self.current_scene = 0
 
-        #self._load(self.module_number)
-
-        super().__init__(**kw)
-        self.app = MDApp.get_running_app()
-
     # built in kivy function that runs before scene is loaded
     def on_pre_enter(self, *args):
 
         # loads the current user data into user if they exist
+
         if len(self.manager.screens[2].ids) > 0:
             self.user = self.manager.screens[2].ids.user
+            self.module_number = self.manager.screens[2].ids.module_number
             self.app.title = "Health Friend [Game]  ::  " + self.user['first_name'] + " " + self.user['last_name']
         else:
-            self.app.title = "Health Friend [Game]  :: EWH"
+            self.app.title = "Health Friend [Game]  ::  EWH"
+        self._load(self.module_number)
+    
 
-        
-
-    def _load(module_number):
-        print('loading')
+    def _load(self, module_number):
+        print('loading', module_number)
 
     # changed from replay
     def play_current_line(self):
@@ -47,6 +47,11 @@ class Module(Screen):
         print("rendering...")
 
     def load_assessment(self):
+        if self.user:
+            self.manager.screens[3].ids = {'user': self.user, 'module_number': self.module_number, 'assessment': None}
+        else:
+            self.manager.screens[3].ids = {'module_number': self.module_number, 'assessment': None}
+
         self.manager.current = 'assessment_manager'
 
     def __str__(self):
