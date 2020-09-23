@@ -1,7 +1,7 @@
 # App Styling
 
 app_style = {
-	"primary_theme": "Blue"
+	"primary_theme": "Red"
 }
 
 card_style = {

@@ -5,6 +5,8 @@ from kivy.lang import Builder
 # Import Screens
 from ui.loginscreen import LoginScreen
 from ui.dashboard import Dashboard
+from ui.module import Module
+from ui.AssessmentManager import AssessmentManager
 from ui.settingsscreen import SettingsScreen
 
 # Import Constants
