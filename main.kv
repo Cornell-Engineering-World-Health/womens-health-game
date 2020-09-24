@@ -1,12 +1,14 @@
 #:include kv/loginscreen.kv
 #:include kv/dashboard.kv
+#:include kv/module.kv
 #:include kv/settingsscreen.kv
+#:include kv/AssessmentManager.kv
 
 NavigationLayout:
     id: nav_layout
 
     ScreenManager:
-
+    
         Screen:
 
             BoxLayout:
@@ -28,8 +30,16 @@ NavigationLayout:
                         id: dashboard
                         name: "dashboard"
 
+                    Module:
+                        id: module
+                        name: "module"
+
+                    AssessmentManager:
+                        id: assessment_manager
+                        name: "assessment_manager"
+
                     SettingsScreen:
                         id: settings_screen
                         name: "settings_screen"
 
-    
+        
