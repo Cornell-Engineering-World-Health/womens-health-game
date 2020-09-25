@@ -8,5 +8,8 @@ class Action:
         print(self.action_type)
 
     def __str__(self):
-        return (str(self.character) + ': ' + self.action_type + '(' +
-                self.has_been_executed + ')')
+        if self.has_been_executed:
+            return ('[Action] Character ' + str(self.character) + ': ' + self.action_type
+                + ' (Executed)')
+        return ('[Action] Character ' + str(self.character) + ': ' + self.action_type
+                + ' (Not executed)')
