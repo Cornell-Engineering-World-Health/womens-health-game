@@ -1,6 +1,10 @@
 import json
-import os.path
-from pathlib import Path
+import sys
+from components.action import Action
+from components.line import Line
+from components.character import Character
+# import os.path
+# from pathlib import Path
 
 from kivymd.app import MDApp
 from kivy.uix.screenmanager import Screen
@@ -51,7 +55,20 @@ class Module(Screen):
         for json_scene in json_scenes:
             character_ids = json_scene['characters']
             background_image = json_scene['background']
-            script = json_scene['script']
+            json_script = json_scene['script']
+            script = []
+            for script_line in json_script:
+                if script_line['type'] == 'action':
+                    character = script_line['character_id']
+                    action_type = script_line['action_type']
+                    # print(Action(character, action_type))
+                    script.append(Action(character, action_type))
+                else:
+                    character = script_line['character_id']
+                    text = script_line['dialogue']
+                    audio_file = script_line['dialogue_file']
+                    # print(Line(character, text, audio_file))
+                    script.append(Line(character, text, audio_file))
             scene = Scene(character_ids, background_image, script)
             self.scenes.append(scene)
 
