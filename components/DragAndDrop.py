@@ -1,16 +1,27 @@
 #import kivy
 import json
 import random
-from Question import Question
+#from Question import Question
+
+from kivy.uix.label import Label
+from kivy.uix.boxlayout import BoxLayout
 
 
-class DragAndDrop(Question):
+class DragAndDrop(DraggableLayoutBehavior, BoxLayout):
 
+    '''
     def __init__(self, question_id, question_text, question_audio, explanation_text, explanation_audio,
                  ordered_image_ids, current_answer):
         Question.__init__(self, question_id, question_text, question_audio, explanation_text, explanation_audio)
         self.ordered_image_ids = ordered_image_ids
+
+
         self.current_answer = current_answer
+    '''
+
+    def __init__(self, **kw):
+        super().__init__(**kw)
+
 
     def render_question(self):
         pass
@@ -26,3 +37,18 @@ class DragAndDrop(Question):
                   'Audio: ' + i.question_audio + ' ' + \
                   'Expl Text: ' + i.explanation_text + ' ' + 'Expl Audio: ' + i.explanation_audio
         return ret
+
+    def compare_pos_to_widget(self, widget, pos):
+        if self.orientation == 'vertical':
+            return 'before' if pos[1] >= widget.center_y else 'after'
+        return 'before' if pos[0] < widget.center_x else 'after'
+
+    def handle_drag_release(self, index, drag_widget):
+        self.add_widget(drag_widget, index)
+
+
+class DragLabel(DraggableObjectBehavior, Label):
+
+    def initiate_drag(self):
+        # during a drag, we remove the widget from the original location
+        self.parent.remove_widget(self)

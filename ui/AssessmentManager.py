@@ -3,6 +3,7 @@ import json
 import random
 from kivymd.app import MDApp
 from kivy.uix.screenmanager import Screen
+from components.DragAndDrop import DragAndDrop
 
 class AssessmentManager(Screen):
     def __init__(self, **kw):
@@ -26,7 +27,14 @@ class AssessmentManager(Screen):
             self.   app.title = "Health Friend [Assessment]  ::  " + self.user['first_name'] + " " + self.user['last_name']
         else:
             self.app.title = "Health Friend [Assessment]  ::  EWH"
-        self._load(self.module_number)
+        #self._load(self.module_number)
+        self.render_drag_and_drop()
+
+
+    def render_drag_and_drop():
+        box = self.manager.screens[3].ids.box
+        drag_and_drop = DragAndDrop()
+        grid.add_widget(drag_and_drop)
 
 
     def _load(self, module_number: int):
