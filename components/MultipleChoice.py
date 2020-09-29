@@ -1,12 +1,9 @@
-import kivy
-import json
-import random
-from Question import Question
+from components.Question import Question
 
 
 class MultipleChoice(Question):
     def __init__(self, question_text, question_id, question_audio, explanation_text, explanation_audio,
-                 image_options, correct_answer, selected_choices):
+                 image_options, correct_answer, selected_choices, on_complete):
         Question.__init__(self, question_text, question_id, question_audio, explanation_text, explanation_audio)
         self.image_options = image_options
         self.correct_answer = correct_answer
@@ -19,6 +16,7 @@ class MultipleChoice(Question):
 
     def verify(self):
         return set(self.selected_choices) == set(self.correct_answer)
+
 
     def __str__(self):
         ret = ''

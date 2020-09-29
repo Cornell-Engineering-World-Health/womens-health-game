@@ -1,9 +1,7 @@
-#import kivy
-import json
-import random
 
 
-class Question():
+
+class Question:
     def __init__(self, question_text, question_id, question_audio, explanation_text, explanation_audio):
         self.question_text = question_text
         self.question_id = question_id
