@@ -1,4 +1,3 @@
-import os
 import kivy
 import json
 import random
@@ -34,13 +33,12 @@ class AssessmentManager(Screen):
         self._load(self.module_number)
 
     def _load(self, module_number: int):
-        print('loading', module_number)
-        with open('assets/json/questions0.json') as file:
+        filepath = "assets/json/questions" + str(module_number) + ".json"
+        with open(filepath) as file:
             data = json.load(file)
         question_dict = data['questions']
         for question in question_dict:
             if question["type"] == 'multiple_choice':
-                print(question)
                 new_question = MultipleChoice(question['question_text'], question['question_id'],
                                               question['question_audio'], question["explanation_text"],
                                               question["explanation_audio"], question["image_options"],

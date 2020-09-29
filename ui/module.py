@@ -43,10 +43,8 @@ class Module(Screen):
         self._load_json(module_number)
 
     def _load_json(self, module_number):
-        print("load json")
         module_path = 'module' + str(module_number) + '.json'
         json_file_path = 'assets/json/' + module_path
-        print(json_file_path)
 
         with open(json_file_path) as json_file:
             json_data_dict = json.load(json_file)
