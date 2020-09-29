@@ -9,6 +9,7 @@ from components.character import Character
 from kivymd.app import MDApp
 from kivy.uix.screenmanager import Screen
 
+
 class Module(Screen):
     # instances
 
@@ -42,8 +43,10 @@ class Module(Screen):
         self._load_json(module_number)
 
     def _load_json(self, module_number):
+        print("load json")
         module_path = 'module' + str(module_number) + '.json'
         json_file_path = 'assets/json/' + module_path
+        print(json_file_path)
 
         with open(json_file_path) as json_file:
             json_data_dict = json.load(json_file)
@@ -61,7 +64,7 @@ class Module(Screen):
                 if script_line['type'] == 'action':
                     character = script_line['character_id']
                     action_type = script_line['action_type']
-                    # print(Action(character, action_type))
+                    print(Action(character, action_type))
                     script.append(Action(character, action_type))
                 else:
                     character = script_line['character_id']
@@ -72,8 +75,8 @@ class Module(Screen):
             scene = Scene(character_ids, background_image, script)
             self.scenes.append(scene)
 
-
     # changed from replay
+
     def play_current_line(self):
         pass
 
@@ -101,6 +104,7 @@ class Module(Screen):
         for i, scene in enumerate(self.scenes):
             str_scene += 'Scene: ' + str(i) + str(scene) + '\n'
         return (str_module + str_scene)
+
 
 class Scene:
     def __init__(self, character_ids, background_image, script):
