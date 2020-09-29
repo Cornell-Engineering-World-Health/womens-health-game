@@ -9,6 +9,7 @@ from components.character import Character
 from kivymd.app import MDApp
 from kivy.uix.screenmanager import Screen
 
+
 class Module(Screen):
     # instances
 
@@ -72,8 +73,8 @@ class Module(Screen):
             scene = Scene(character_ids, background_image, script)
             self.scenes.append(scene)
 
-
     # changed from replay
+
     def play_current_line(self):
         pass
 
@@ -101,6 +102,7 @@ class Module(Screen):
         for i, scene in enumerate(self.scenes):
             str_scene += 'Scene: ' + str(i) + str(scene) + '\n'
         return (str_module + str_scene)
+
 
 class Scene:
     def __init__(self, character_ids, background_image, script):

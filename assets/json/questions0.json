@@ -6,7 +6,9 @@
       "question_id": 1,
       "question_audio": "question1.wav",
       "explanation_audio": "answer1.wav",
-      "type": "multiple_choice"
+      "type": "multiple_choice",
+      "image_options": [],
+      "correct_answer": []
     },
     {
       "question_text": "When does puberty occur in girls?",
@@ -14,7 +16,9 @@
       "question_id": 2,
       "question_audio": "question2.wav",
       "explanation_audio": "answer2.wav",
-      "type": "drag_and_drop"
+      "type": "drag_and_drop",
+      "ordered_image_ids": [],
+      "current_answer": []
     },
     {
       "question_text": "What happens during puberty?",
@@ -22,7 +26,9 @@
       "question_id": 3,
       "question_audio": "question3.wav",
       "explanation_audio": "question4.wav",
-      "type": "multiple_choice"
+      "type": "multiple_choice",
+      "image_options": [],
+      "correct_answer": []
     }
   ]
 }
