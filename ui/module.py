@@ -62,7 +62,7 @@ class Module(Screen):
                 if script_line['type'] == 'action':
                     character = script_line['character_id']
                     action_type = script_line['action_type']
-                    print(Action(character, action_type))
+                    # print(Action(character, action_type))
                     script.append(Action(character, action_type))
                 else:
                     character = script_line['character_id']
