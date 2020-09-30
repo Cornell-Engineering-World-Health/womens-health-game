@@ -9,13 +9,14 @@ from components.Question import Question
 
 class MultipleChoice(Question):
     def __init__(self, question_text, question_id, question_audio, explanation_text, explanation_audio,
-                 image_options, correct_answer):
+                 image_options, correct_answer, on_complete):
         Question.__init__(self, question_text, question_id,
                           question_audio, explanation_text, explanation_audio)
         self.image_options = image_options
         self.correct_answer = correct_answer
         # assert [i for i in self.correct_answer not in self.image_options] == []
         self.selected_choices = []
+        self.on_complete = on_complete
 
     # returns kivy element for this question, renders image_options
     def render_question(self):
@@ -32,7 +33,9 @@ class MultipleChoice(Question):
         pass
 
     def verify(self):
-        return set(self.selected_choices) == set(self.correct_answer)
+        if set(self.selected_choices) == set(self.correct_answer):
+            self.on_complete()
+        return
 
     def __str__(self):
         ret = ''

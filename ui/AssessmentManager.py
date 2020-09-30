@@ -11,11 +11,13 @@ class AssessmentManager(Screen):
     def __init__(self, **kw):
         super().__init__(**kw)
         self.app = MDApp.get_running_app()
-
         self.user = None
         self.module_number = 0
         self.assessment = []  # list of Question types
-        self.current_question = ""
+        self.index = 0
+        self.current_question = ''
+        self.current_question_text = ''
+
 
     # built in kivy function that runs before scene is loaded
     def on_pre_enter(self, *args):
@@ -31,6 +33,8 @@ class AssessmentManager(Screen):
         else:
             self.app.title = "Health Friend [Assessment]  ::  EWH"
         self._load(self.module_number)
+        return
+
 
     def _load(self, module_number: int):
         filepath = "assets/json/questions" + str(module_number) + ".json"
@@ -42,21 +46,27 @@ class AssessmentManager(Screen):
                 new_question = MultipleChoice(question['question_text'], question['question_id'],
                                               question['question_audio'], question["explanation_text"],
                                               question["explanation_audio"], question["image_options"],
-                                              question["correct_answer"])
+                                              question["correct_answer"], lambda x: x.advance_question())
 
             if question["type"] == "drag_and_drop":
                 new_question = DragAndDrop(question['question_text'], question['question_id'],
                                            question['question_audio'], question["explanation_text"],
                                            question["explanation_audio"], question["ordered_image_ids"],
-                                           question["current_answer"])
+                                           question["current_answer"], lambda x: x.advance_question())
             self.assessment.append(new_question)
+        self.current_question = self.assessment[0]
+        self.current_question_text = self.current_question.question_text
         return
 
     def advance_question(self):
-        pass
+        if self.index < len(self.assessment) - 1:
+            self.index = self.index + 1
+            self.current_question = self.assessment[self.index]
+            self.current_question_text = self.current_question.question_text
+        return
 
     def render_question(self):
-        return
+        pass
 
     def __str__(self):
         ret = ''
@@ -66,3 +76,7 @@ class AssessmentManager(Screen):
                 'Audio: ' + i.question_audio + ' ' + \
                 'Expl Text: ' + i.explanation_text + ' ' + 'Expl Audio: ' + i.explanation_audio
         return ret
+
+
+
+
