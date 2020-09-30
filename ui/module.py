@@ -7,6 +7,7 @@ from kivymd.app import MDApp
 from kivy.uix.screenmanager import Screen
 from kivymd.uix.label import MDLabel
 
+
 class Module(Screen):
     # instances
 
@@ -74,6 +75,7 @@ class Module(Screen):
                     script.append(Line(character, text, audio_file))
             scene = Scene(character_ids, background_image, script)
             self.scenes.append(scene)
+<<<<<<< HEAD
             self.current_scene = self.scenes[0]
 
     # changed from replay
@@ -112,6 +114,12 @@ class Module(Screen):
         pass
 
     def _remove_character(self, character):
+=======
+
+    # changed from replay
+
+    def play_current_line(self):
+>>>>>>> 16c7f90fcd2732ad80055181e8d1294e0b0ca9b3
         pass
 
     # can use play_current_line within this fn
@@ -144,6 +152,7 @@ class Module(Screen):
         for i, scene in enumerate(self.scenes):
             str_scene += 'Scene: ' + str(i) + str(scene) + '\n'
         return (str_module + str_scene)
+
 
 class Scene:
     def __init__(self, character_ids, background_image, script):
