@@ -37,10 +37,9 @@ class AssessmentManager(Screen):
 
 
     def render_drag_and_drop(self):
-        #self.manager.current = 'drag_and_drop'
         drag_and_drop = DragAndDrop(question_text="When does puberty occur in girls?", question_id=2, question_audio="question2.wav", explanation_text="Ages 13-16", explanation_audio="answer2.wav", ordered_image_ids=[1,3,2,4], current_answer=[])
-        print("RENDERING")
         self.grid.add_widget(drag_and_drop)
+
 
     def _load(self, module_number: int):
         print('loading', module_number)
