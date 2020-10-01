@@ -36,16 +36,16 @@ class Module(Screen):
         # loads the current user data into user if they exist
 
         # Pre-existing id: float (FloatLayout id)
-        if len(self.manager.screens[2].ids) > 1:
-            self.user = self.manager.screens[2].ids.user
-            self.module_number = self.manager.screens[2].ids.module_number
+        if len(self.ids) > 1:
+            self.user = self.ids.user
+            self.module_number = self.ids.module_number
             self.app.title = "Health Friend [Game]  ::  " + \
                 self.user['first_name'] + " " + self.user['last_name']
         else:
             self.app.title = "Health Friend [Game]  ::  EWH"
 
         # Adding dialogue label to float layout
-        self.manager.screens[2].ids.float.add_widget(self.current_line)
+        self.ids.float.add_widget(self.current_line)
         self._load_module(self.module_number)
         self.render_scene()
 
@@ -134,7 +134,7 @@ class Module(Screen):
             height= 500,
             id=str(character.id)
         )
-        self.manager.screens[2].ids.float.add_widget(new_character)
+        self.ids.float.add_widget(new_character)
 
     def _remove_character(self, character):
         pass
