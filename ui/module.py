@@ -29,13 +29,14 @@ class Module(Screen):
 
         # loads the current user data into user if they exist
 
-        if len(self.manager.screens[2].ids) > 0:
-            self.user = self.manager.screens[2].ids.user
-            self.module_number = self.manager.screens[2].ids.module_number
+        if len(self.ids) > 0:
+            self.user = self.ids.user
+            self.module_number = self.ids.module_number
             self.app.title = "Health Friend [Game]  ::  " + \
                 self.user['first_name'] + " " + self.user['last_name']
         else:
             self.app.title = "Health Friend [Game]  ::  EWH"
+            
         self._load(self.module_number)
 
     def _load(self, module_number):

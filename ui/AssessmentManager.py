@@ -4,6 +4,8 @@ import random
 from kivymd.app import MDApp
 from kivy.uix.screenmanager import Screen
 from components.DragAndDrop import DragAndDrop
+from kivy.clock import Clock
+from kivymd.uix.label import MDLabel
 
 class AssessmentManager(Screen):
     def __init__(self, **kw):
@@ -14,28 +16,31 @@ class AssessmentManager(Screen):
         self.module_number = 0
         self.assessment = [] #list of Question types
         self.current_question = ""
-        
+        self.grid = None
+
+        Clock.schedule_once(self.finished_init)
+
     # built in kivy function that runs before scene is loaded
-    def on_pre_enter(self, *args):
+    def finished_init(self, *args):
 
         # loads the current user data into user
-        ids = self.manager.screens[3].ids
+        ids = self.ids
         if len(ids) > 2:
-            self.user = ids.user
+            self.user = ids
             self.module_number = ids.module_number
             self.assessment = ids.assessment
-            self.   app.title = "Health Friend [Assessment]  ::  " + self.user['first_name'] + " " + self.user['last_name']
+            self.app.title = "Health Friend [Assessment]  ::  " + self.user['first_name'] + " " + self.user['last_name']
         else:
             self.app.title = "Health Friend [Assessment]  ::  EWH"
-        #self._load(self.module_number)
-        self.render_drag_and_drop()
+
+        self.grid = self.manager.screens[3].ids.assessment_layout
 
 
-    def render_drag_and_drop():
-        box = self.manager.screens[3].ids.box
-        drag_and_drop = DragAndDrop()
-        grid.add_widget(drag_and_drop)
-
+    def render_drag_and_drop(self):
+        #self.manager.current = 'drag_and_drop'
+        drag_and_drop = DragAndDrop(question_text="When does puberty occur in girls?", question_id=2, question_audio="question2.wav", explanation_text="Ages 13-16", explanation_audio="answer2.wav", ordered_image_ids=[1,3,2,4], current_answer=[])
+        print("RENDERING")
+        self.grid.add_widget(drag_and_drop)
 
     def _load(self, module_number: int):
         print('loading', module_number)
