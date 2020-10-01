@@ -1,7 +1,7 @@
 class Action:
-    def __init__(self, character, action_type):
+    def __init__(self, character_id, action_type):
         self.has_been_executed = False
-        self.character = character
+        self.character_id = character_id
         self.action_type = action_type
 
     def execute(self):
@@ -9,7 +9,7 @@ class Action:
 
     def __str__(self):
         if self.has_been_executed:
-            return ('[Action] Character ' + str(self.character) + ': ' + self.action_type
+            return ('[Action] Character ' + str(self.character_id) + ': ' + self.action_type
                 + ' (Executed)')
-        return ('[Action] Character ' + str(self.character) + ': ' + self.action_type
+        return ('[Action] Character ' + str(self.character_id) + ': ' + self.action_type
                 + ' (Not executed)')
