@@ -17,5 +17,3 @@ card_style = {
 	"theme": "Primary"
 }
 
-
-

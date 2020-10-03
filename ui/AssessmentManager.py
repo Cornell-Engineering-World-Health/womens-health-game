@@ -1,10 +1,15 @@
 import kivy
 import json
 import random
+from components.Question import Question
 from components.MultipleChoice import MultipleChoice
 from components.DragAndDrop import DragAndDrop
 from kivymd.app import MDApp
 from kivy.uix.screenmanager import Screen
+from components.DragAndDrop import DragAndDrop
+from kivy.clock import Clock
+from kivymd.uix.label import MDLabel
+from kivy.lang import Builder
 
 
 class AssessmentManager(Screen):
@@ -15,44 +20,39 @@ class AssessmentManager(Screen):
         self.module_number = 0
         self.assessment = []  # list of Question types
         self.index = 0
-        self.current_question = ''
         self.current_question_text = ''
-
-
+        self.current_question = ""
+        self.grid = None
+        Clock.schedule_once(self.finished_init)
     # built in kivy function that runs before scene is loaded
-    def on_pre_enter(self, *args):
-
+    def finished_init(self, *args):
         # loads the current user data into user
-        ids = self.manager.screens[3].ids
+        ids = self.ids
         if len(ids) > 2:
             self.user = ids.user
             self.module_number = ids.module_number
-            self.assessment = ids.assessment
-            self.   app.title = "Health Friend [Assessment]  ::  " + \
-                self.user['first_name'] + " " + self.user['last_name']
+            self.app.title = "Health Friend [Assessment]  ::  " + self.user['first_name'] + " " + self.user['last_name']
         else:
             self.app.title = "Health Friend [Assessment]  ::  EWH"
         self._load(self.module_number)
         return
 
-
     def _load(self, module_number: int):
         filepath = "assets/json/questions" + str(module_number) + ".json"
         with open(filepath) as file:
             data = json.load(file)
-        question_dict = data['questions']
-        for question in question_dict:
+        question_dicts = data['questions']
+        for question in question_dicts:
             if question["type"] == 'multiple_choice':
-                new_question = MultipleChoice(question['question_text'], question['question_id'],
-                                              question['question_audio'], question["explanation_text"],
-                                              question["explanation_audio"], question["image_options"],
-                                              question["correct_answer"], lambda x: x.advance_question())
-
+                new_question = MultipleChoice(question_text = question['question_text'], question_id =question['question_id'],
+                            question_audio = question['question_audio'], explanation_text = question["explanation_text"],
+                            explanation_audio = question["explanation_audio"], image_options = question["image_options"],
+                            correct_answer = question["correct_answer"], on_complete = lambda x: x.advance_question)
             if question["type"] == "drag_and_drop":
-                new_question = DragAndDrop(question['question_text'], question['question_id'],
-                                           question['question_audio'], question["explanation_text"],
-                                           question["explanation_audio"], question["ordered_image_ids"],
-                                           question["current_answer"], lambda x: x.advance_question())
+                new_question = DragAndDrop(question_text = question['question_text'], question_id = question['question_id'],
+                                           question_audio = question['question_audio'], explanation_text = question["explanation_text"],
+                                           explanation_audio = question["explanation_audio"], ordered_image_ids = question["ordered_image_ids"],
+                                           current_answer = question["current_answer"], on_complete = lambda x: x.advance_question)
             self.assessment.append(new_question)
         self.current_question = self.assessment[0]
         self.current_question_text = self.current_question.question_text

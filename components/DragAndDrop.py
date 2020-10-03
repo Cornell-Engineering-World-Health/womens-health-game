@@ -2,17 +2,34 @@
 import json
 import random
 from components.Question import Question
+from kivy.uix.button import Button
 
+from kivy.uix.boxlayout import BoxLayout
+from kivy.lang import Builder
 
-class DragAndDrop(Question):
+from kivydnd.dragndropwidget import DragNDropWidget
 
-    def __init__(self, question_id, question_text, question_audio, explanation_text, explanation_audio,
-                 ordered_image_ids, current_answer, on_complete):
-        Question.__init__(self, question_id, question_text,
-                          question_audio, explanation_text, explanation_audio)
-        self.ordered_image_ids = ordered_image_ids
-        self.current_answer = current_answer
-        self.on_complete = on_complete
+class  DraggableButton(Button, DragNDropWidget):
+    def __init__(self, **kw):
+        super(DraggableButton, self).__init__(**kw)
+
+class DragAndDrop(BoxLayout, Question):
+
+    Builder.load_file('kv/draganddrop.kv')
+
+    def __init__(self, **kwargs):
+        Question.__init__(self, question_id=kwargs['question_id'], question_text=kwargs['question_text'],
+                          question_audio=kwargs['question_audio'], explanation_text=kwargs['explanation_text'],
+                          explanation_audio=kwargs['explanation_audio'])
+        self.ordered_image_ids = kwargs['ordered_image_ids']
+        self.current_answer = kwargs['current_answer']
+        self.on_complete = kwargs['on_complete']
+
+    def correct(self, calling_widget):
+        print ("Correct!")
+
+    def wrong(self, the_widget=None, parent=None, kv_root=None):
+        print("Wrong place!")
 
     def render_question(self):
         pass
@@ -31,3 +48,4 @@ class DragAndDrop(Question):
                 'Audio: ' + i.question_audio + ' ' + \
                 'Expl Text: ' + i.explanation_text + ' ' + 'Expl Audio: ' + i.explanation_audio
         return ret
+
