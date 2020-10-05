@@ -5,6 +5,7 @@ from kivy.uix.screenmanager import Screen
 from kivymd.app import MDApp
 from components.card import Card, CardButton
 from components.Question import Question
+from kivy.uix.togglebutton import ToggleButton
 
 from kivy.lang import Builder
 
@@ -24,11 +25,11 @@ class MultipleChoice(Question):
 
     # returns kivy element for this question, renders image_options
     def render_question(self):
-        # grid = self.manager.screens[1].ids.grid_card
-        # grid.add_widget(self.question_text)
-        # for options in self.image_options:
-        #     choice = ToggleButton(screen_manager=self.manager, image=options)
-        #     grid.add_widget(choice)
+        #grid = self.manager.screens[1].ids.grid_card
+        #grid.add_widget(self.question_text)
+        #for options in self.image_options:
+            #choice = ToggleButton(screen_manager=self.manager, image=options)
+            #grid.add_widget(choice)
         pass
 
     def toggle_button(self):
@@ -39,7 +40,6 @@ class MultipleChoice(Question):
     def verify(self):
         if set(self.selected_choices) == set(self.correct_answer):
             self.on_complete()
-        return
 
     def __str__(self):
         ret = ''
