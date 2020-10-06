@@ -39,10 +39,6 @@ class Module(Screen):
         if len(self.ids) > 1:
             self.user = self.ids.user
             self.module_number = self.ids.module_number
-            self.app.title = "Health Friend [Game]  ::  " + \
-                self.user['first_name'] + " " + self.user['last_name']
-        # else:
-        #     self.app.title = "Health Friend [Game]  ::  EWH"
 
         # Adding dialogue label to float layout
         self.ids.float.add_widget(self.current_line)
