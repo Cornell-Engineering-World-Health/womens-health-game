@@ -1,65 +1,71 @@
 <DragAndDrop>:
 
+    canvas:
+        Color: 
+            rgba: 0.870, 0.678, 0.502, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
     BoxLayout:
         orientation: 'vertical'
         id: from_box
-        pos_hint: {'center_x': .1, 'center_y': .7}
+        pos_hint: {'center_x': .3, 'center_y': .5}
+        size_hint_y: .5
+        size_hint_x: .7
         spacing: 75
 
         DraggableButton:
             droppable_zone_objects: [box_1]
             drop_func: root.correct
             failed_drop_func: root.wrong
-            size_hint: None, None
-            size: 350, 155 
+            size_hint: .3, .1
             background_color: 0, 0, 0, 0
 
             Image:
                 source: 'assets/drag-and-drop/shape1.png'
                 y: self.parent.y
                 x: self.parent.x
-                size: 340, 150 
+                size: self.parent.size
                 allow_stretch: False
 
         DraggableButton:
             droppable_zone_objects: [box_2]
             drop_func: root.correct
             failed_drop_func: root.wrong
-            size_hint: None, None
-            size: 350, 155  
+            size_hint: .3, .1
             background_color: 0, 0, 0, 0
 
             Image:
                 source: 'assets/drag-and-drop/shape2.png'
                 y: self.parent.y
                 x: self.parent.x
-                size: 340, 150 
+                size: self.parent.size
                 allow_stretch: False
-
 
         DraggableButton:
             droppable_zone_objects: [box_3]
             drop_func: root.correct
             failed_drop_func: root.wrong
-            size_hint: None, None
-            size: 350, 155 
+            size_hint: .3, .1
             background_color: 0, 0, 0, 0
 
             Image:
                 source: 'assets/drag-and-drop/shape3.png'
                 y: self.parent.y
                 x: self.parent.x
-                size: 340, 150 
+                size: self.parent.size
                 allow_stretch: False
 
 
     BoxLayout:
+
         id: to_box
         orientation: 'vertical'
         pos_hint: {'center_x': .5, 'center_y': .5}
         spacing: 50
         size_hint_y: .8
-        size_hint_x: .6 
+        size_hint_x: .5
 
         Label:
             id: box_1
@@ -71,7 +77,6 @@
                     size: self.size
                     radius: [50,]
             pos_hint: {'center_x': .4}
-
 
         Label:
             id: box_2
