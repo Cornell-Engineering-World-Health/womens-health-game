@@ -31,9 +31,9 @@ class AssessmentManager(Screen):
             self.user = ids
             self.module_number = ids.module_number
             self.assessment = ids.assessment
-            self.app.title = "Health Friend [Assessment]  ::  " + self.user['first_name'] + " " + self.user['last_name']
-        else:
-            self.app.title = "Health Friend [Assessment]  ::  EWH"
+            # self.app.title = "Health Friend [Assessment]  ::  " + self.user['first_name'] + " " + self.user['last_name']
+        # else:
+        #     self.app.title = "Health Friend [Assessment]  ::  EWH"
 
         self.grid = self.manager.screens[3].ids.assessment_layout
 
