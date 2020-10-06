@@ -17,3 +17,7 @@ card_style = {
 	"theme": "Primary"
 }
 
+dnd_from_style = {
+	"drop_func": "root.correct"
+}
+
