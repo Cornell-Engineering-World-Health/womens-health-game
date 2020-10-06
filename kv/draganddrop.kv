@@ -3,31 +3,55 @@
     BoxLayout:
         orientation: 'vertical'
         id: from_box
-        spacing: 20
+        pos_hint: {'center_x': .1, 'center_y': .7}
+        spacing: 75
 
         DraggableButton:
-            text: 'Button 1'
             droppable_zone_objects: [box_1]
             drop_func: root.correct
             failed_drop_func: root.wrong
             size_hint: None, None
-            size: 250, 250 
+            size: 350, 155 
+            background_color: 0, 0, 0, 0
+
+            Image:
+                source: 'assets/drag-and-drop/shape1.png'
+                y: self.parent.y
+                x: self.parent.x
+                size: 340, 150 
+                allow_stretch: False
 
         DraggableButton:
-            text: 'Button 2'
             droppable_zone_objects: [box_2]
             drop_func: root.correct
             failed_drop_func: root.wrong
             size_hint: None, None
-            size: 250, 250 
+            size: 350, 155  
+            background_color: 0, 0, 0, 0
+
+            Image:
+                source: 'assets/drag-and-drop/shape2.png'
+                y: self.parent.y
+                x: self.parent.x
+                size: 340, 150 
+                allow_stretch: False
+
 
         DraggableButton:
-            text: 'Button 3'
             droppable_zone_objects: [box_3]
             drop_func: root.correct
             failed_drop_func: root.wrong
             size_hint: None, None
-            size: 250, 250 
+            size: 350, 155 
+            background_color: 0, 0, 0, 0
+
+            Image:
+                source: 'assets/drag-and-drop/shape3.png'
+                y: self.parent.y
+                x: self.parent.x
+                size: 340, 150 
+                allow_stretch: False
+
 
     BoxLayout:
         id: to_box
@@ -39,7 +63,6 @@
 
         Label:
             id: box_1
-            text: 'box 1'
             canvas.before:
                 Color:
                     rgb: 0.647, 0.196, .137
@@ -52,7 +75,6 @@
 
         Label:
             id: box_2
-            text: 'box 2'
             canvas.before:
                 Color:
                     rgb: 0.647, 0.196, .137
@@ -64,7 +86,6 @@
 
         Label:
             id: box_3
-            text: 'box 3'
             canvas.before:
                 Color:
                     rgb: 0.647, 0.196, .137
