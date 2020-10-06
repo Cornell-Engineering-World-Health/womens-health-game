@@ -29,29 +29,25 @@
             size_hint: None, None
             size: 250, 250 
 
-        DraggableButton:
-            text: 'Button 4'
-            droppable_zone_objects: [box_4]
-            drop_func: root.correct
-            failed_drop_func: root.wrong
-            size_hint: None, None
-            size: 250, 250 
-
     BoxLayout:
         id: to_box
         orientation: 'vertical'
-        pos_hint: {'center_x': 1}
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        spacing: 50
+        size_hint_y: .8
+        size_hint_x: .6 
 
         Label:
             id: box_1
             text: 'box 1'
             canvas.before:
                 Color:
-                    rgb: 0.4, 0.4, 1
-                Rectangle:
+                    rgb: 0.647, 0.196, .137
+                RoundedRectangle:
                     pos: self.pos
                     size: self.size
-            size_hint: 0.5, 0.4
+                    radius: [50,]
+            pos_hint: {'center_x': .4}
 
 
         Label:
@@ -59,32 +55,21 @@
             text: 'box 2'
             canvas.before:
                 Color:
-                    rgb: 0.4, 1, .4
-                Rectangle:
+                    rgb: 0.647, 0.196, .137
+                RoundedRectangle:
                     pos: self.pos
                     size: self.size
-            size_hint: 0.5, 0.4
+                    radius: [50,]
+            pos_hint: {'center_x': .4}
 
         Label:
             id: box_3
             text: 'box 3'
             canvas.before:
                 Color:
-                    rgb: 0.4, 1, 1
-                Rectangle:
+                    rgb: 0.647, 0.196, .137
+                RoundedRectangle:
                     pos: self.pos
                     size: self.size
-            size_hint: 0.5, 0.4
-
-        Label:
-            id: box_4
-            text: 'box 4'
-            canvas.before:
-                Color:
-                    rgb: 1, 1, .4
-                Rectangle:
-                    pos: self.pos
-                    size: self.size
-            size_hint: 0.5, 0.4
-
-
+                    radius: [50,]
+            pos_hint: {'center_x': .4}
