@@ -31,9 +31,9 @@ class AssessmentManager(Screen):
         if len(ids) > 2:
             self.user = ids.user
             self.module_number = ids.module_number
-        #     self.app.title = "Health Friend [Assessment]  ::  " + self.user['first_name'] + " " + self.user['last_name']
-        # else:
-        #     self.app.title = "Health Friend [Assessment]  ::  EWH"
+            self.app.title = "Health Friend [Assessment]  ::  " + self.user['first_name'] + " " + self.user['last_name']
+        else:
+            self.app.title = "Health Friend [Assessment]  ::  EWH"
         self._load(self.module_number)
         return
 

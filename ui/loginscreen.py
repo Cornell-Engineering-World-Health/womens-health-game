@@ -12,7 +12,7 @@ class LoginScreen(Screen):
 
     def on_pre_enter(self, *args):
         authorize()
-        # self.app.title = "Login"
+        self.app.title = "Login"
 
     def login(self):
         # TEMP BYPASS
