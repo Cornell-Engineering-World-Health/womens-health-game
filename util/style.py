@@ -1,7 +1,9 @@
 # App Styling
 
 app_style = {
-	"primary_theme": "Red"
+	"primary_theme": "Red",
+	"assessment_background": [0.870, 0.678, 0.502,1],
+	"button_color": [0.647, 0.196, .137],
 }
 
 card_style = {
@@ -18,6 +20,18 @@ card_style = {
 }
 
 dnd_from_style = {
-	"drop_func": "root.correct"
+	"size_hint": (.3,.1),
+	"background_color": [0,0,0,0],
+	"sources": ['assets/drag-and-drop/shape1.png', 'assets/drag-and-drop/shape2.png', 
+				'assets/drag-and-drop/shape3.png'],
+	"layout_size_x": .7,
+	"layout_size_y": .5,
+	"spacing": 75,
 }
 
+dnd_to_style = {
+	"pos_hint_x": .4,
+	"layout_size_x": .5,
+	"layout_size_y": .8,
+	"spacing": 50
+}

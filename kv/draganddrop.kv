@@ -1,10 +1,12 @@
 #:import dnd_from_style util.style.dnd_from_style
+#:import dnd_to_style util.style.dnd_to_style
+#:import app_style util.style.app_style
 
 <DragAndDrop>:
 
     canvas:
         Color: 
-            rgba: 0.870, 0.678, 0.502, 1
+            rgba: app_style['assessment_background']
         Rectangle:
             size: self.size
             pos: self.pos
@@ -13,19 +15,21 @@
         orientation: 'vertical'
         id: from_box
         pos_hint: {'center_x': .3, 'center_y': .5}
-        size_hint_y: .5
-        size_hint_x: .7
-        spacing: 75
+
+        size_hint_x: dnd_from_style['layout_size_x']
+        size_hint_y: dnd_from_style['layout_size_y']
+ 
+        spacing: dnd_from_style['spacing']
 
         DraggableButton:
             droppable_zone_objects: [box_1]
             drop_func: root.correct
             failed_drop_func: root.wrong
-            size_hint: .3, .1
-            background_color: 0, 0, 0, 0
+            size_hint: dnd_from_style['size_hint']
+            background_color: dnd_from_style['background_color']
 
             Image:
-                source: 'assets/drag-and-drop/shape1.png'
+                source: dnd_from_style['sources'][0]
                 y: self.parent.y
                 x: self.parent.x
                 size: self.parent.size
@@ -35,11 +39,11 @@
             droppable_zone_objects: [box_2]
             drop_func: root.correct
             failed_drop_func: root.wrong
-            size_hint: .3, .1
-            background_color: 0, 0, 0, 0
+            size_hint: dnd_from_style['size_hint']
+            background_color: dnd_from_style['background_color']
 
             Image:
-                source: 'assets/drag-and-drop/shape2.png'
+                source: dnd_from_style['sources'][1]
                 y: self.parent.y
                 x: self.parent.x
                 size: self.parent.size
@@ -49,55 +53,55 @@
             droppable_zone_objects: [box_3]
             drop_func: root.correct
             failed_drop_func: root.wrong
-            size_hint: .3, .1
-            background_color: 0, 0, 0, 0
+            size_hint: dnd_from_style['size_hint']
+            background_color: dnd_from_style['background_color']
 
             Image:
-                source: 'assets/drag-and-drop/shape3.png'
+                source: dnd_from_style['sources'][2]
                 y: self.parent.y
                 x: self.parent.x
                 size: self.parent.size
                 allow_stretch: False
-
 
     BoxLayout:
 
         id: to_box
         orientation: 'vertical'
         pos_hint: {'center_x': .5, 'center_y': .5}
-        spacing: 50
-        size_hint_y: .8
-        size_hint_x: .5
+        spacing: dnd_to_style['spacing']
+
+        size_hint_x: dnd_to_style['layout_size_x']
+        size_hint_y: dnd_to_style['layout_size_y']
 
         Label:
             id: box_1
             canvas.before:
                 Color:
-                    rgb: 0.647, 0.196, .137
+                    rgb: app_style['button_color']
                 RoundedRectangle:
                     pos: self.pos
                     size: self.size
                     radius: [50,]
-            pos_hint: {'center_x': .4}
+            pos_hint: {'center_x': dnd_to_style['pos_hint_x']}
 
         Label:
             id: box_2
             canvas.before:
                 Color:
-                    rgb: 0.647, 0.196, .137
+                    rgb: app_style['button_color']
                 RoundedRectangle:
                     pos: self.pos
                     size: self.size
                     radius: [50,]
-            pos_hint: {'center_x': .4}
+            pos_hint: {'center_x': dnd_to_style['pos_hint_x']}
 
         Label:
             id: box_3
             canvas.before:
                 Color:
-                    rgb: 0.647, 0.196, .137
+                    rgb: app_style['button_color']
                 RoundedRectangle:
                     pos: self.pos
                     size: self.size
                     radius: [50,]
-            pos_hint: {'center_x': .4}
+            pos_hint: {'center_x': dnd_to_style['pos_hint_x']}
