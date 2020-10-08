@@ -1,25 +1,67 @@
 <LoginScreen>:
-
+    canvas:
+        Color:
+            rgba: 0.708, 0.281, 0.097, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
 	FloatLayout:
+        MDIconButton:
+            icon: "settings"
+            user_font_size: "40sp"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            pos_hint: {'x':.8, 'y':.8}
+            on_press: app.settings()
 
-        MDTextFieldRect:
-        	id: email
-        	hint_text: "EMAIL"
-        	pos_hint: {'x':.3, 'y':.575}
-        	size_hint: (.4, .05)
-        	on_text: root.process_email()
+        Label:
+            text: 'EDUCATOR \nLOGIN'
+            text_color: 1, 1, 1, 1
+            halign: 'center'
+            font_size: '50sp'
+            bold: True
+            pos_hint: {'x':.3, 'y':.75}
+            size_hint: (.4, .05)
+
+        MDTextFieldRound:
+            id: email
+            hint_text: "EMAIL"
+            pos_hint: {'x': .3, 'y': .5}
+            size_hint: (.4, .08)
+            color_active: 1, 1, 1, 1
+            normal_color: 1, 1, 1, 1
+            on_text: root.process_email()
 
 
-        MDTextFieldRect:
-        	id: password
-        	hint_text: "PASSWORD"
-        	password: True
-        	pos_hint: {'x':.3, 'y':.475}
-        	size_hint: (.4, .05)
-        	on_text: root.process_password()
+        MDTextFieldRound:
+            id: password
+            hint_text: "PASSWORD"
+            password: True
+            pos_hint: {'x':.3, 'y':.4}
+            size_hint: (.4, .08)
+            color_active: 1, 1, 1, 1
+            normal_color: 1, 1, 1, 1
+            password: True
+            on_text: root.process_password()
 
-        Button:
+        RoundButton:
             text: 'Login'
+            color: 0,0,0,1
+            font_size: '20sp'
+            bold: True
             on_press: root.login()
-            pos_hint: {"x": .3, "y": .35}
-            size_hint: (.4, .075)
+            size_hint: (.2, .075)
+            pos_hint: {"x": .4, "y": .2}
+
+<RoundButton@Button>:
+    background_color: (0,0,0,0)
+    background_normal: ''
+    back_color: (0.925,0.786,0.27,1)
+    border_radius: [50]
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: self.border_radius
