@@ -7,11 +7,11 @@ from components.card import Card, CardButton
 from components.Question import Question
 from kivy.uix.togglebutton import ToggleButton
 
+
 from kivy.lang import Builder
 
 
-class MultipleChoice(Question):
-
+class MultipleChoice(Question, Screen):
     Builder.load_file('kv/multiplechoice.kv')
 
     def __init__(self, **kwargs):
@@ -31,7 +31,6 @@ class MultipleChoice(Question):
             #choice = ToggleButton(screen_manager=self.manager, image=options)
             #grid.add_widget(choice)
         pass
-
     def toggle_button(self):
         # choice = state = 'down'
         # update grid
@@ -41,11 +40,4 @@ class MultipleChoice(Question):
         if set(self.selected_choices) == set(self.correct_answer):
             self.on_complete()
 
-    def __str__(self):
-        ret = ''
-        for i in self.assessment:
-            ret = ret + '\n Question: '
-            ret = ret + ' ' + 'Text: ' + i.question_text + ' ' + 'ID: ' + str(i.question_id) + ' ' + \
-                'Audio: ' + i.question_audio + ' ' + \
-                'Expl Text: ' + i.explanation_text + ' ' + 'Expl Audio: ' + i.explanation_audio
-        return ret
+

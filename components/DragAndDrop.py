@@ -13,11 +13,12 @@ class  DraggableButton(Button, DragNDropWidget):
     def __init__(self, **kw):
         super(DraggableButton, self).__init__(**kw)
 
-class DragAndDrop(BoxLayout, Question):
+class DragAndDrop(BoxLayout):
 
     Builder.load_file('kv/draganddrop.kv')
 
     def __init__(self, **kwargs):
+        super().__init__()
         Question.__init__(self, question_id=kwargs['question_id'], question_text=kwargs['question_text'],
                           question_audio=kwargs['question_audio'], explanation_text=kwargs['explanation_text'],
                           explanation_audio=kwargs['explanation_audio'])
@@ -31,8 +32,6 @@ class DragAndDrop(BoxLayout, Question):
     def wrong(self, the_widget=None, parent=None, kv_root=None):
         print("Wrong place!")
 
-    def render_question(self):
-        pass
 
     def verify(self):
         if len([i for i in range(len(self.current_answer)) if self.current_answer[i] == self.ordered_image_ids[i]]) == \
