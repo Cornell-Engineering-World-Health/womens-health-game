@@ -24,6 +24,10 @@ class MyApp(MDApp):
 
     def settings(self):
     	MDApp.get_running_app().root.ids.screen_manager.current = 'settings_screen'
+    
+    def login(self):
+      	MDApp.get_running_app().root.ids.screen_manager.current = 'login_screen'
+        #TODO: backend log out
 
 # Start App
 MyApp().run()

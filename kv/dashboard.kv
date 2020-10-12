@@ -1,12 +1,23 @@
 <Dashboard>:
+    BoxLayout:
+        orientation: "vertical"
 
-    ScrollView:
-    
-        GridLayout:
-            id: grid_card
-            cols: 3
-            padding: 10, 10
-            spacing: 10, 10
-            size_hint_y: None
-            height: self.minimum_height
-            row_default_height: 500
+        MDToolbar:
+            title: "Instructor A"
+            md_bg_color: 1, 1, 1, 1
+            specific_text_color: 0, 0, 0, 1
+            left_action_items: [["arrow-left", lambda x: app.login()]]
+            round: '50dp'
+
+        ScrollView:
+            GridLayout:
+                id: grid_card
+                cols: 3
+                padding: 30, 30
+                spacing: 30, 30
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: 500
+                md_bg_color: 0.925,0.786,0.27,1
+                
+                
