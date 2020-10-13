@@ -1,6 +1,6 @@
 from kivy.uix.screenmanager import Screen
 from kivymd.app import MDApp
-from  components.card import Card, CardButton
+from  components.card import Card
 
 class Dashboard(Screen):
     def __init__(self, **kw):

@@ -11,8 +11,8 @@ card_style = {
 	"background_color": (0, 0, .4, 0.1),
 	"center_x": .5,
 	"size": (.5, .3),
-	"name_y": 0.9,
-	"village_name_y": 0.8,
+	"name_y": 0.8,
+	"village_name_y": 0.7,
 	"title_font": "Subtitle1",
 	"subtitle_font": "Subtitle2",
 	"theme": "Primary"
