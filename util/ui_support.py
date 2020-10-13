@@ -2,18 +2,6 @@ from kivy.uix.image import Image
 from kivy.lang import Builder
 from kivy.uix.button import Button
 
-# kv="""
-# <RoundedButton@Button>:
-#     background_color: 0,0,0,0
-#     canvas.before:
-#         Color:
-#             rgba: (.4,.4,.4,1) if self.state=='normal' else (0,.7,.7,1)  # visual feedback of press
-#         RoundedRectangle:
-#             pos: self.pos
-#             size: self.size
-#             radius: [50,]
-
-# """
 kv="""
 <RoundButton@Button>:
     background_color: (0,0,0,0)
@@ -29,7 +17,7 @@ kv="""
             radius: self.border_radius
 """
 
-class RoundedButton(Button):
+class RoundButton(Button):
     pass
 
 Builder.load_string(kv)

@@ -1,14 +1,14 @@
 # App Styling
 
 app_style = {
-	"primary_theme": "Red",
+	"primary_theme": "Gray",
 	"assessment_background": [0.870, 0.678, 0.502,1],
 	"button_color": [0.647, 0.196, .137],
 }
 
 card_style = {
 	"radius": [(40.0, 40.0), (40.0, 40.0), (40.0, 40.0), (40.0, 40.0)],
-	"background_color": (0, 0, .4, 0.1),
+	"background_color": (1,1,1,1),
 	"center_x": .5,
 	"size": (.5, .3),
 	"name_y": 0.8,

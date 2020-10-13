@@ -8,7 +8,7 @@ from kivymd.uix.button import MDFillRoundFlatButton
 import kivy.utils
 
 from util.style import card_style
-from util.ui_support import RoundedButton
+from util.ui_support import RoundButton
 
 class Card(FloatLayout):
 
@@ -64,8 +64,7 @@ class Card(FloatLayout):
         return MDLabel(text="%d %% \ncompleted"%progress, pos_hint={"center_x": 0.8, "top": 0.55}, size_hint=card_style["size"], theme_text_color="Custom", text_color= (0.227, 0.655, 0.427, 1), font_style="Caption", halign="center")
 
     def selectionButton(self):
-        bt = MDFillRoundFlatButton(text="Select", text_color=(0,0,0,1),pos_hint={"center_x": card_style["center_x"], "top": 0.2}, md_bg_color = (0.925,0.786,0.27,1))
-        #bt = RoundedButton(text="Select", color=(0,0,0,1) , font_size= '10sp', bold= True, pos_hint={"center_x": card_style["center_x"], "top": 0.2},size_hint=(.2, .075))
+        bt = RoundButton(text="Select", color=(0,0,0,1), font_size= '15sp', bold= True, pos_hint={"center_x": card_style["center_x"], "top": 0.2},size_hint=(.5, .15))
         bt.bind(on_press=self.load_module)
         return bt
 
