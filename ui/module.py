@@ -6,6 +6,7 @@ import json
 from kivymd.app import MDApp
 from kivy.uix.screenmanager import Screen
 from kivymd.uix.label import MDLabel
+from kivymd.uix.button import MDIconButton
 from kivy.uix.image import Image
 
 class Module(Screen):
@@ -20,9 +21,12 @@ class Module(Screen):
         self.module_number = 0
         self.scenes = []
         self.scene_characters = []
+        self.screen_positions = []
+        self.screen_characters = 0
         self.current_scene = None
+        self.script_iterator = -1
         self.current_line = MDLabel(
-            pos_hint= {"x": .3, "top": .9},
+            pos_hint= {"x": .3, "top": 1},
             size_hint= (.4, .1),
             text= "",
             halign= "center",
@@ -46,8 +50,34 @@ class Module(Screen):
 
         # Adding dialogue label to float layout
         self.ids.float.add_widget(self.current_line)
+
+        self._init_module_ui()
         self._load_module(self.module_number)
-        self.render_scene()
+        self._load_characters()
+        # self.render_scene()
+
+    # Screen positioning: assuming maximum of 3 characters on screen at one time
+    def _init_module_ui(self):
+        # 3 character positions on screen at once
+        self.screen_positions.append({'x': -0.3, 'top': 0.75})
+        self.screen_positions.append({'x': 0, 'top': 0.9})
+        self.screen_positions.append({'x': 0.3, 'top': 0.75})
+
+        # Add next and previous buttons
+        # Change icon directory to assets/button...
+        # Ripple effect on click?
+        # next_button = MDIconButton(
+        #     icon="assets/character-mouths/idle_happy.png",
+        #     pos_hint={'x': 0.9, 'top': 0.5},
+        #     user_font_size='64sp'
+        # )
+        # prev_button = MDIconButton(
+        #     icon="assets/character-mouths/idle_happy.png",
+        #     pos_hint={'x': 0, 'top': 0.5},
+        #     user_font_size='64sp'
+        # )
+        # self.ids.float.add_widget(next_button)
+        # self.ids.float.add_widget(prev_button)
 
     def _load_module(self, module_number):
         self._load_module_json(module_number)
@@ -82,18 +112,32 @@ class Module(Screen):
             self.scenes.append(scene)
             self.current_scene = self.scenes[0]
 
-    # can use play_current_line within this fn
-    def advance_to_next_line(self, line):
-        pass
+    def advance_line(self):
+        if (self.script_iterator < len(self.current_scene.script)):
+            self.script_iterator += 1
+            line = self.current_scene.script[self.script_iterator]
+            print(line)
+            self.play_current_line(line)
+        
+    # When rewinding a line, should we remove characters that were just added?
+    # Need to handle adding the same character twice when rewinding
+    def previous_line(self):
+        if (self.script_iterator > 0):
+            self.script_iterator -= 1
+            line = self.current_scene.script[self.script_iterator]
+            print(line)
+            self.play_current_line(line)
 
-    def render_scene(self):
-        scene = self.current_scene
-        script = scene.script
-        self._load_characters()
+    # def render_scene(self):
+    #     scene = self.current_scene
+    #     script = scene.script
+    #     self._load_characters()
+    #     print(script)
 
-        for script_line in script:
-            self.play_current_line(script_line)
-        self.scene_characters = []
+    #     for script_line in script:
+    #         print(script_line)
+    #         self.play_current_line(script_line)
+    #     self.scene_characters = []
 
     def play_current_line(self, line):
         if (type(line) == Line):
@@ -104,8 +148,10 @@ class Module(Screen):
                 if character.id == line.character_id:
                     line_character = character
             if (line.action_type == 'enter'):
+                self.screen_characters += 1
                 self._render_character(line_character)
             else:
+                self.screen_characters -= 1
                 self._remove_character(line_character)
 
     def _load_characters(self):
@@ -126,18 +172,23 @@ class Module(Screen):
     def _render_character(self, character):
         # Load image from character as kivy object
         image_file_path = 'assets/characters/' + character.image
-        # image_file_path = 'assets/characters/salma.png'
+        # Position character based off # of characters on screen
+        pos = self._position_character()
         new_character = Image(
             source=image_file_path,
-            pos_hint= {"x": .3, "top": .9},
+            pos_hint=pos,
             size_hint_y= None,
             height= 500,
             id=str(character.id)
         )
         self.ids.float.add_widget(new_character)
 
+    # Returns a Kivy position as a dictionary (x and top)
+    def _position_character(self):
+        return self.screen_positions[self.screen_characters - 1]
+
     def _remove_character(self, character):
-        pass
+        self.ids.float.remove_widget(character)
 
     def load_assessment(self):
         if self.user:

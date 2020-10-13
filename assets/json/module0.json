@@ -2,7 +2,7 @@
   "assessment_path": "questions0.json",
   "scenes": [
     {
-      "background": "sunset.jpg",
+      "background": "house_lined.jpg",
       "characters": [1, 2, 3],
       "script": [
         {
@@ -12,15 +12,25 @@
         },
         {
           "type": "line",
-          "character_id": 2,
+          "character_id": 1,
           "dialogue": "Hello",
           "dialogue_file": "dialogue_selma_1.wav"
         },
         {
+          "type": "action",
+          "character_id": 2,
+          "action_type": "enter"
+        },
+        {
           "type": "line",
-          "character_id": 1,
+          "character_id": 2,
           "dialogue": "World",
           "dialogue_file": "dialogue_selma_2.wav"
+        },
+        {
+          "type": "action",
+          "character_id": 3,
+          "action_type": "enter"
         },
         {
           "type": "line",
@@ -31,7 +41,7 @@
       ]
     },
     {
-      "background": "sunrise.jpg",
+      "background": "meeting.jpg",
       "characters": [1, 2, 3],
       "script": [
         {
