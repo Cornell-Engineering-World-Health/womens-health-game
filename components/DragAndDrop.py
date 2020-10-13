@@ -38,12 +38,5 @@ class DragAndDrop(BoxLayout):
                 len(self.current_answer):
             self.on_complete()
 
-    def __str__(self):
-        ret = ''
-        for i in self.assessment:
-            ret = ret + '\n Question: '
-            ret = ret + ' ' + 'Text: ' + i.question_text + ' ' + 'ID: ' + str(i.question_id) + ' ' + \
-                'Audio: ' + i.question_audio + ' ' + \
-                'Expl Text: ' + i.explanation_text + ' ' + 'Expl Audio: ' + i.explanation_audio
-        return ret
+
 
