@@ -1,22 +1,22 @@
 [
   {
     "id": 1,
-    "name": "Selma",
-    "image": "selma.jpg"
+    "name": "Salma",
+    "image": "salma.png"
   },
   {
     "id": 2,
-    "name": "Mom",
-    "image": "mom.png"
+    "name": "Granny",
+    "image": "granny.png"
   },
   {
     "id": 3,
-    "name": "Vivek",
-    "image": "vivek.jpg"
+    "name": "Sukhi",
+    "image": "sukhi.png"
   },
   {
     "id": 4,
-    "name": "J",
-    "image": "j.jpeg"
+    "name": "Anna",
+    "image": "anna.png"
   }
 ]
