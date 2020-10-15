@@ -137,6 +137,8 @@ class Module(Screen):
         else:
             # Set script iterator to end of script
             self.script_iterator = len(self.current_scene.script) - 1
+            # Advance to assessment
+            self.load_assessment()
         
     # Rewinds the line that was just played and plays the prev line
     def previous_line(self):
@@ -170,17 +172,6 @@ class Module(Screen):
                     self.lines = []
                     self.line_iterator = -1
             self.script_iterator -= 1
-
-    # def render_scene(self):
-    #     scene = self.current_scene
-    #     script = scene.script
-    #     self._load_characters()
-    #     print(script)
-
-    #     for script_line in script:
-    #         print(script_line)
-    #         self.play_current_line(script_line)
-    #     self.scene_characters = []
 
     def play_line(self, line):
         if (type(line) == Line):
