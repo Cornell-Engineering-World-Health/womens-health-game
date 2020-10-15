@@ -3,21 +3,15 @@
     FloatLayout:
         id: float
 
-        Button:
-            text: 'ASSESSMENT'
-            on_press: root.load_assessment()
-            pos_hint: {"x": .3, "y": .35}
-            size_hint: (.4, .075)
-
         MDIconButton:
-            icon: 'assets/character-mouths/idle_happy.png'
-            pos_hint: {'x': 0.9, 'top': 0.5}
+            icon: 'assets/next-arrow.png'
+            pos_hint: {'x': 0.85, 'top': 0.6}
             user_font_size: '64sp'
             on_press: root.advance_line()
 
         MDIconButton:
-            icon: 'assets/character-mouths/idle_happy.png'
-            pos_hint: {'x': 0, 'top': 0.5}
+            icon: 'assets/prev-arrow.png'
+            pos_hint: {'x': -0.05, 'top': 0.6}
             user_font_size: '64sp'
             on_press: root.previous_line()
 

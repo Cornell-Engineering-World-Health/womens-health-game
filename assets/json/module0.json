@@ -35,7 +35,7 @@
         {
           "type": "line",
           "character_id": 3,
-          "dialogue": "Hello",
+          "dialogue": "Bye",
           "dialogue_file": "dialogue_selma_3.wav"
         }
       ]
