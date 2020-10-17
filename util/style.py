@@ -1,4 +1,5 @@
 # App Styling
+from ui.AssessmentManager import AssessmentManager
 
 app_style = {
 	"primary_theme": "Red"
