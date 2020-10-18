@@ -35,10 +35,10 @@ class Card(FloatLayout):
         self.add_widget(self.name)
         self.add_widget(self.village_name)
         self.add_widget(self.selectionButton())
-        self.add_widget(MDLabel(text="Progress", pos_hint={"center_x": 0.2, "top": 0.6}, size_hint=card_style["size"], theme_text_color=card_style["theme"], font_style="Caption", halign="center"))
-        self.add_widget(self.module(0)) # TODO: get module number
-        self.add_widget(self.progress(50))  # TODO: get progress
-        self.add_widget(self.photo('assets/placeholders/student.jpeg')) #TODO: get user profile
+        # self.add_widget(MDLabel(text="Progress", pos_hint={"center_x": 0.2, "top": 0.6}, size_hint=card_style["size"], theme_text_color=card_style["theme"], font_style="Caption", halign="center"))
+        # self.add_widget(self.module(0)) # TODO: get module number
+        # self.add_widget(self.progress(50))  # TODO: get progress
+        self.add_widget(self.photo('assets/profile.png'))
 
     # load module screen
     def load_module(self, instance): 
@@ -51,17 +51,17 @@ class Card(FloatLayout):
         self.rect.size = self.size
     
     def photo(self, source):
-        return Image(source=source, pos_hint= {"center_x": 0.5, "top": 0.95}, size_hint_y= None, height= 100)
+        return Image(source=source, pos_hint= {"center_x": 0.5, "top": 0.85}, size_hint_y= None, height= 120)
         #return RoundedButton(background_normal=source, background_down=source, pos_hint= {"center_x": 0.5, "top": 0.95}, size_hint =(.2, .2))
 
     def generateCardLabel(self, label, style, height):
         return MDLabel(text=label, pos_hint={"center_x": card_style["center_x"], "top": height}, size_hint=card_style["size"], theme_text_color=card_style["theme"], font_style=style, halign="center")
 
-    def module(self, module):
-        return MDLabel(text="Module %d"%module, pos_hint={"center_x": 0.22, "top": 0.5}, size_hint=card_style["size"], theme_text_color=card_style["theme"], font_style="Subtitle2", halign="center")
+    # def module(self, module):
+    #     return MDLabel(text="Module %d"%module, pos_hint={"center_x": 0.22, "top": 0.5}, size_hint=card_style["size"], theme_text_color=card_style["theme"], font_style="Subtitle2", halign="center")
     
-    def progress(self, progress):
-        return MDLabel(text="%d %% \ncompleted"%progress, pos_hint={"center_x": 0.8, "top": 0.55}, size_hint=card_style["size"], theme_text_color="Custom", text_color= (0.227, 0.655, 0.427, 1), font_style="Caption", halign="center")
+    # def progress(self, progress):
+    #     return MDLabel(text="%d %% \ncompleted"%progress, pos_hint={"center_x": 0.8, "top": 0.55}, size_hint=card_style["size"], theme_text_color="Custom", text_color= (0.227, 0.655, 0.427, 1), font_style="Caption", halign="center")
 
     def selectionButton(self):
         bt = RoundButton(text="Select", color=(0,0,0,1), font_size= '15sp', bold= True, pos_hint={"center_x": card_style["center_x"], "top": 0.2},size_hint=(.5, .15))

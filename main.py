@@ -8,6 +8,7 @@ from ui.dashboard import Dashboard
 from ui.module import Module
 from ui.AssessmentManager import AssessmentManager
 from ui.settingsscreen import SettingsScreen
+from ui.splashscreen import SplashScreen
 
 # Import Constants
 from util.constants import _title_
@@ -27,7 +28,6 @@ class MyApp(MDApp):
     
     def login(self):
       	MDApp.get_running_app().root.ids.screen_manager.current = 'login_screen'
-        #TODO: backend log out
-
+    
 # Start App
 MyApp().run()
