@@ -1,16 +1,10 @@
-import kivy
 import json
-import random
-from components.Question import Question
 from components.MultipleChoice import MultipleChoice
-from components.DragAndDrop import DragAndDrop
 from kivymd.app import MDApp
 from kivy.uix.screenmanager import Screen
 from components.DragAndDrop import DragAndDrop
 from kivy.clock import Clock
-from kivy.uix.gridlayout import GridLayout
-from kivymd.uix.label import MDLabel
-from kivy.lang import Builder
+
 
 
 class AssessmentManager(Screen):
@@ -20,7 +14,7 @@ class AssessmentManager(Screen):
         self.user = None
         self.module_number = 0
         self.assessment = []  # list of Question types
-        self.index = 0
+        self.index = -1
         self.current_question_text = ''
         self.current_question = ""
         self.types = []
@@ -52,7 +46,7 @@ class AssessmentManager(Screen):
                 new_question = MultipleChoice(question_text = question['question_text'], question_id =question['question_id'],
                             question_audio = question['question_audio'], explanation_text = question["explanation_text"],
                             explanation_audio = question["explanation_audio"], image_options = question["image_options"],
-                            correct_answer = question["correct_answer"], on_complete = lambda x: x.advance_question())
+                            correct_answer = question["correct_answer"], choices = question['choices'], on_complete = lambda x: x.advance_question())
             if question["type"] == "drag_and_drop":
                 self.types.append(0)
                 new_question = DragAndDrop(question_text = question['question_text'], question_id = question['question_id'],
@@ -65,6 +59,8 @@ class AssessmentManager(Screen):
         return
 
     def advance_question(self):
+        if self.index >= 0:
+            self.grid.remove_widget(self.current_question)
         if self.index < len(self.assessment) - 1:
             self.index = self.index + 1
             self.current_question = self.assessment[self.index]
@@ -75,17 +71,7 @@ class AssessmentManager(Screen):
 
     def render_question (self):
         curr = self.assessment[self.index]
-        if self.types[self.index] == 0:
-            widget = DragAndDrop(question_text=curr.question_text, question_id=curr.question_id,
-                                    question_audio=curr.question_audio, explanation_text=curr.explanation_text,
-                                    explanation_audio=curr.explanation_audio, ordered_image_ids=curr.ordered_image_ids, current_answer=curr.current_answer,
-                                 on_complete = lambda x: x.advance_question())
-        #else:
-            #widget = MultipleChoice(question_text = curr.question_text, question_id = curr.question_id,
-                            #question_audio = curr.question_audio, explanation_text = curr.explanation_text,
-                            #explanation_audio = curr.explanation_audio, image_options = curr.image_options,
-                            #correct_answer = curr.correct_answer, on_complete = lambda x: x.advance_question())
-        self.grid.add_widget(widget)
+        self.grid.add_widget(curr)
 
 
     def __str__(self):

@@ -26,6 +26,7 @@ class DragAndDrop(BoxLayout):
         self.current_answer = kwargs['current_answer']
         self.on_complete = kwargs['on_complete']
 
+
     def correct(self, calling_widget):
         print ("Correct!")
 
