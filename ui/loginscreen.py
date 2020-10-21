@@ -2,7 +2,6 @@ from kivy.uix.screenmanager import Screen
 from kivymd.app import MDApp
 
 from util.client import get_students_from_admin_id, authorize, login
-from util.firebase import firebase
 
 
 class LoginScreen(Screen):
