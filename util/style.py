@@ -1,14 +1,4 @@
 # App Styling
-#from ui.AssessmentManager import AssessmentManager
-import json
-
-def get_dnd_images(module_number, question_index):
-	filepath = "assets/json/questions" + str(module_number) + ".json"
-	with open(filepath) as file:
-		data = json.load(file)
-	questions = data['questions']
-	dnd = [questions[x]['ordered_image_ids'] for x in range(len(questions)) if questions[x]['type'] == 'drag_and_drop']
-	return dnd[question_index]
 
 app_style = {
 	"primary_theme": "Red",
@@ -32,7 +22,6 @@ card_style = {
 dnd_from_style = {
 	"size_hint": (.3,.1),
 	"background_color": [0,0,0,0],
-	"sources": get_dnd_images(0, 0),
 	"layout_size_x": .7,
 	"layout_size_y": .5,
 	"spacing": 75,
