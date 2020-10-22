@@ -39,4 +39,3 @@ class DragAndDrop(BoxLayout):
             self.on_complete()
 
 
-
