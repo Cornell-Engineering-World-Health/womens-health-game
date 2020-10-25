@@ -7,6 +7,8 @@ from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
 
+from kivy.properties import ListProperty
+
 from kivydnd.dragndropwidget import DragNDropWidget
 
 class  DraggableButton(Button, DragNDropWidget):
@@ -15,7 +17,7 @@ class  DraggableButton(Button, DragNDropWidget):
 
 class DragAndDrop(BoxLayout):
 
-    Builder.load_file('kv/draganddrop.kv')
+    ordered_image_ids = ListProperty(["", "", ""])
 
     def __init__(self, **kwargs):
         super().__init__()
@@ -25,6 +27,8 @@ class DragAndDrop(BoxLayout):
         self.ordered_image_ids = kwargs['ordered_image_ids']
         self.current_answer = kwargs['current_answer']
         self.on_complete = kwargs['on_complete']
+        Builder.load_file('kv/draganddrop.kv')
+
 
     def correct(self, calling_widget):
         print ("Correct!")
@@ -37,6 +41,4 @@ class DragAndDrop(BoxLayout):
         if len([i for i in range(len(self.current_answer)) if self.current_answer[i] == self.ordered_image_ids[i]]) == \
                 len(self.current_answer):
             self.on_complete()
-
-
 

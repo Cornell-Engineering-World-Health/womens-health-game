@@ -3,6 +3,7 @@
 #:include kv/module.kv
 #:include kv/settingsscreen.kv
 #:include kv/AssessmentManager.kv
+#:include kv/splashscreen.kv
 
 # NavigationLayout:
 #     id: nav_layout
@@ -16,6 +17,10 @@ ScreenManager:
 
             ScreenManager:
                 id: screen_manager
+
+                SplashScreen:
+                    id: splash_screen
+                    name: "splash_screen"
 
                 LoginScreen:
                     id: login_screen

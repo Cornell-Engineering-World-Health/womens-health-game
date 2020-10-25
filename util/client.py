@@ -50,6 +50,7 @@ def get_students_from_admin_id(id):
 def on_success(req, result):
 	print('REQUEST SUCCESFUL', result)
 
+# login
 def login(email, password):
 	try:
 		auth = firebase.auth()
@@ -58,6 +59,7 @@ def login(email, password):
 	except Exception as err:
 		print("ERROR", err)
 
+# logout
 def logout(sm):
 	try:
 		sm.screens[0].ids.users = None
