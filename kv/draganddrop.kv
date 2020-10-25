@@ -5,7 +5,7 @@
 <DragAndDrop>:
 
     canvas:
-        Color: 
+        Color:
             rgba: app_style['assessment_background']
         Rectangle:
             size: self.size
@@ -18,7 +18,7 @@
 
         size_hint_x: dnd_from_style['layout_size_x']
         size_hint_y: dnd_from_style['layout_size_y']
- 
+
         spacing: dnd_from_style['spacing']
 
         DraggableButton:
@@ -29,7 +29,7 @@
             background_color: dnd_from_style['background_color']
 
             Image:
-                source: dnd_from_style['sources'][0]
+                source: root.ordered_image_ids[0]
                 y: self.parent.y
                 x: self.parent.x
                 size: self.parent.size
@@ -43,7 +43,7 @@
             background_color: dnd_from_style['background_color']
 
             Image:
-                source: dnd_from_style['sources'][1]
+                source: root.ordered_image_ids[1]
                 y: self.parent.y
                 x: self.parent.x
                 size: self.parent.size
@@ -57,7 +57,7 @@
             background_color: dnd_from_style['background_color']
 
             Image:
-                source: dnd_from_style['sources'][2]
+                source: root.ordered_image_ids[2]
                 y: self.parent.y
                 x: self.parent.x
                 size: self.parent.size

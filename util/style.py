@@ -21,8 +21,6 @@ card_style = {
 dnd_from_style = {
 	"size_hint": (.3,.1),
 	"background_color": [0,0,0,0],
-	"sources": ['assets/drag-and-drop/shape1.png', 'assets/drag-and-drop/shape2.png', 
-				'assets/drag-and-drop/shape3.png'],
 	"layout_size_x": .7,
 	"layout_size_y": .5,
 	"spacing": 75,
