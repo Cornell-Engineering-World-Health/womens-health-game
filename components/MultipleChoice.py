@@ -3,7 +3,7 @@ import json
 import random
 from kivy.uix.screenmanager import Screen
 from kivymd.app import MDApp
-from components.card import Card, CardButton
+from components.card import Card
 from components.Question import Question
 from kivy.uix.togglebutton import ToggleButton
 

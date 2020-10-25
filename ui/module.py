@@ -219,10 +219,10 @@ class Module(Screen):
 
     def load_assessment(self):
         if self.user:
-            self.manager.screens[3].ids = {
+            self.manager.screens[4].ids = {
                 'user': self.user, 'module_number': self.module_number, 'assessment': None}
         else:
-            self.manager.screens[3].ids = {
+            self.manager.screens[4].ids = {
                 'module_number': self.module_number, 'assessment': None}
 
         self.manager.current = 'assessment_manager'

@@ -41,3 +41,4 @@ class DragAndDrop(BoxLayout):
         if len([i for i in range(len(self.current_answer)) if self.current_answer[i] == self.ordered_image_ids[i]]) == \
                 len(self.current_answer):
             self.on_complete()
+
