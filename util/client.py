@@ -3,6 +3,7 @@ import os
 import json
 import threading
 from kivy.network.urlrequest import UrlRequest
+from util.firebase import firebase
 
 API_KEY = ' '
 
@@ -48,6 +49,14 @@ def get_students_from_admin_id(id):
 # print request results from successful api call
 def on_success(req, result):
 	print('REQUEST SUCCESFUL', result)
+
+def login(email, password):
+	try:
+		auth = firebase.auth()
+		user = auth.sign_in_with_email_and_password(email, password)
+		return user
+	except Exception as err:
+		print("ERROR", err)
 
 def logout(sm):
 	try:
