@@ -3,7 +3,6 @@ import os
 import json
 import threading
 from kivy.network.urlrequest import UrlRequest
-from util.firebase import firebase
 
 API_KEY = ' '
 
