@@ -22,6 +22,8 @@ class LoginScreen(Screen):
             self.ids.admin = login(self.login_email, self.login_password)
             res = get_students_from_admin_id(self.ids.admin['localId'])
             self.ids.users = res
+            self.ids.email.text = ""
+            self.ids.password.text = ""
             self.manager.current = 'dashboard'
         except NameError as err:
             print("ERROR", err)
