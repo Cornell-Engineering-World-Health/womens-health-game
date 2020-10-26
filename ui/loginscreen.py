@@ -1,7 +1,7 @@
 from kivy.uix.screenmanager import Screen
 from kivymd.app import MDApp
 
-from util.client import get_students_from_admin_id, authorize, login
+from util.client import get_students_from_admin_id, login
 
 
 class LoginScreen(Screen):
@@ -10,7 +10,6 @@ class LoginScreen(Screen):
         self.app = MDApp.get_running_app()
 
     def on_pre_enter(self, *args):
-        authorize()
         self.app.title = "Login"
 
     def login(self):
@@ -25,8 +24,10 @@ class LoginScreen(Screen):
             self.manager.current = 'dashboard'
         except NameError as err:
             print("ERROR", err)
+        except TypeError as err:
+            print("ERROR AUTH0 REQUESTS FULL", )
         except Exception as err:
-            print("INVALID USERNAME OR PASSWORD, PLEASE TRY AGAIN")
+            print(type(err), "INVALID USERNAME OR PASSWORD, PLEASE TRY AGAIN")
 
     def process_email(self):
         self.login_email = self.ids.email.text
