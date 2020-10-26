@@ -14,7 +14,6 @@ API_KEY = os.getenv('API_KEY')
 
 # takes in endpoint and optional data
 def _api_call(endpoint, data=None):
-	print("KEY", API_KEY)
 	headers = {'Content-Type':'application/json', 'accept':'application/json', 'X-API-Key':API_KEY}
 	req = UrlRequest('https://menstralhealthgameserver.herokuapp.com/api/' + endpoint, on_success=on_success, req_headers=headers, req_body=data)
 	req.wait(delay=0.5)
