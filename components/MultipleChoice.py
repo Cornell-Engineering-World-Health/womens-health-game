@@ -1,6 +1,12 @@
 from kivy.properties import ListProperty
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.widget import Widget
+import kivy
+import json
+import random
+from kivy.uix.screenmanager import Screen
+from kivymd.app import MDApp
+from components.card import Card
 from components.Question import Question
 from kivy.lang import Builder
 from kivy.properties import ListProperty

@@ -3,43 +3,43 @@
 #:include kv/module.kv
 #:include kv/settingsscreen.kv
 #:include kv/AssessmentManager.kv
+#:include kv/splashscreen.kv
 
-NavigationLayout:
-    id: nav_layout
+# NavigationLayout:
+#     id: nav_layout
 
-    ScreenManager:
+ScreenManager:
+
+    Screen:
+
+        BoxLayout:
+            orientation: 'vertical'
+
+            ScreenManager:
+                id: screen_manager
+
+                SplashScreen:
+                    id: splash_screen
+                    name: "splash_screen"
+
+                LoginScreen:
+                    id: login_screen
+                    name: "login_screen"
+
+                Dashboard:
+                    id: dashboard
+                    name: "dashboard"
+
+                Module:
+                    id: module
+                    name: "module"
+
+                AssessmentManager:
+                    id: assessment_manager
+                    name: "assessment_manager"
+
+                SettingsScreen:
+                    id: settings_screen
+                    name: "settings_screen"
+
     
-        Screen:
-
-            BoxLayout:
-                orientation: 'vertical'
-
-                MDToolbar:
-                    title: app.title
-                    elevation: 10
-                    right_action_items: [['settings', lambda x: app.settings()]]
-
-                ScreenManager:
-                    id: screen_manager
-
-                    LoginScreen
-                        id: login_screen
-                        name: "login_screen"
-
-                    Dashboard:
-                        id: dashboard
-                        name: "dashboard"
-
-                    Module:
-                        id: module
-                        name: "module"
-
-                    AssessmentManager:
-                        id: assessment_manager
-                        name: "assessment_manager"
-
-                    SettingsScreen:
-                        id: settings_screen
-                        name: "settings_screen"
-
-        

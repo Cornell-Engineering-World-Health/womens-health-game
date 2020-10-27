@@ -1,90 +1,107 @@
+#:import dnd_from_style util.style.dnd_from_style
+#:import dnd_to_style util.style.dnd_to_style
+#:import app_style util.style.app_style
+
 <DragAndDrop>:
+
+    canvas:
+        Color:
+            rgba: app_style['assessment_background']
+        Rectangle:
+            size: self.size
+            pos: self.pos
 
     BoxLayout:
         orientation: 'vertical'
         id: from_box
-        spacing: 20
+        pos_hint: {'center_x': .3, 'center_y': .5}
+
+        size_hint_x: dnd_from_style['layout_size_x']
+        size_hint_y: dnd_from_style['layout_size_y']
+
+        spacing: dnd_from_style['spacing']
 
         DraggableButton:
-            text: 'Button 1'
             droppable_zone_objects: [box_1]
             drop_func: root.correct
             failed_drop_func: root.wrong
-            size_hint: None, None
-            size: 250, 250 
+            size_hint: dnd_from_style['size_hint']
+            background_color: dnd_from_style['background_color']
+
+            Image:
+                source: root.ordered_image_ids[0]
+                y: self.parent.y
+                x: self.parent.x
+                size: self.parent.size
+                allow_stretch: False
 
         DraggableButton:
-            text: 'Button 2'
             droppable_zone_objects: [box_2]
             drop_func: root.correct
             failed_drop_func: root.wrong
-            size_hint: None, None
-            size: 250, 250 
+            size_hint: dnd_from_style['size_hint']
+            background_color: dnd_from_style['background_color']
+
+            Image:
+                source: root.ordered_image_ids[1]
+                y: self.parent.y
+                x: self.parent.x
+                size: self.parent.size
+                allow_stretch: False
 
         DraggableButton:
-            text: 'Button 3'
             droppable_zone_objects: [box_3]
             drop_func: root.correct
             failed_drop_func: root.wrong
-            size_hint: None, None
-            size: 250, 250 
+            size_hint: dnd_from_style['size_hint']
+            background_color: dnd_from_style['background_color']
 
-        DraggableButton:
-            text: 'Button 4'
-            droppable_zone_objects: [box_4]
-            drop_func: root.correct
-            failed_drop_func: root.wrong
-            size_hint: None, None
-            size: 250, 250 
+            Image:
+                source: root.ordered_image_ids[2]
+                y: self.parent.y
+                x: self.parent.x
+                size: self.parent.size
+                allow_stretch: False
 
     BoxLayout:
+
         id: to_box
         orientation: 'vertical'
-        pos_hint: {'center_x': 1}
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        spacing: dnd_to_style['spacing']
+
+        size_hint_x: dnd_to_style['layout_size_x']
+        size_hint_y: dnd_to_style['layout_size_y']
 
         Label:
             id: box_1
-            text: 'box 1'
             canvas.before:
                 Color:
-                    rgb: 0.4, 0.4, 1
-                Rectangle:
+                    rgb: app_style['button_color']
+                RoundedRectangle:
                     pos: self.pos
                     size: self.size
-            size_hint: 0.5, 0.4
-
+                    radius: [50,]
+            pos_hint: {'center_x': dnd_to_style['pos_hint_x']}
 
         Label:
             id: box_2
-            text: 'box 2'
             canvas.before:
                 Color:
-                    rgb: 0.4, 1, .4
-                Rectangle:
+                    rgb: app_style['button_color']
+                RoundedRectangle:
                     pos: self.pos
                     size: self.size
-            size_hint: 0.5, 0.4
+                    radius: [50,]
+            pos_hint: {'center_x': dnd_to_style['pos_hint_x']}
 
         Label:
             id: box_3
-            text: 'box 3'
             canvas.before:
                 Color:
-                    rgb: 0.4, 1, 1
-                Rectangle:
+                    rgb: app_style['button_color']
+                RoundedRectangle:
                     pos: self.pos
                     size: self.size
-            size_hint: 0.5, 0.4
-
-        Label:
-            id: box_4
-            text: 'box 4'
-            canvas.before:
-                Color:
-                    rgb: 1, 1, .4
-                Rectangle:
-                    pos: self.pos
-                    size: self.size
-            size_hint: 0.5, 0.4
-
-
+                    radius: [50,]
+            pos_hint: {'center_x': dnd_to_style['pos_hint_x']}

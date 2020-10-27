@@ -18,7 +18,8 @@
       "question_audio": "question2.wav",
       "explanation_audio": "answer2.wav",
       "type": "drag_and_drop",
-      "ordered_image_ids": [],
+      "ordered_image_ids": ["assets/drag-and-drop/shape1.png", "assets/drag-and-drop/shape2.png", 
+        "assets/drag-and-drop/shape3.png"],
       "current_answer": []
     },
     {

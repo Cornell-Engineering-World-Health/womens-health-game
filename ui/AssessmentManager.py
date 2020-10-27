@@ -20,6 +20,7 @@ class AssessmentManager(Screen):
         self.types = []
         self.grid = None
         Clock.schedule_once(self.finished_init)
+        
     # built in kivy function that runs before scene is loaded
     def finished_init(self, *args):
         # loads the current user data into user
