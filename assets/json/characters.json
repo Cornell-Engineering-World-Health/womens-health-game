@@ -18,45 +18,5 @@
     "id": 4,
     "name": "Anna",
     "image": "anna.png"
-  },
-  {
-    "id": 5,
-    "name": "Biju Bai",
-    "image": "biju_bai.png"
-  },
-  {
-    "id": 6,
-    "name": "Kamla",
-    "image": "kamla.png"
-  },
-  {
-    "id": 7,
-    "name": "Seema",
-    "image": "seema.png"
-  },
-  {
-    "id": 8,
-    "name": "Fiza",
-    "image": "fiza.png"
-  },
-  {
-    "id": 9,
-    "name": "Kirann",
-    "image": "kirann.png"
-  },
-  {
-    "id": 10,
-    "name": "Ramesh",
-    "image": "ramesh.png"
-  },
-  {
-    "id": 11,
-    "name": "Vishal",
-    "image": "vishal.png"
-  },
-  {
-    "id": 12,
-    "name": "Teacher",
-    "image": "teacher.png"
-  },
+  }
 ]
