@@ -64,7 +64,7 @@ class Module(Screen):
         self.load_module(self.module_number)
         self.load_characters()
         self.load_background()
-        self._init_module_buttons()
+        self._init_game_buttons()
         # Adding dialogue label to float layout - REMOVE WHEN AUDIO COMES IN
         self.ids.float.add_widget(self.current_line)
 
@@ -75,22 +75,31 @@ class Module(Screen):
         self.screen_positions.append({'x': 0, 'top': 0.6})
         self.screen_positions.append({'x': 0.3, 'top': 0.45})
 
-    def _init_module_buttons(self):
+    def _init_game_buttons(self):
         next_icon = MDIconButton(
-            icon='assets/next-arrow.png',
-            pos_hint={'x': 0.85, 'top': 0.6},
+            icon='assets/game/next-arrow.png',
+            pos_hint={'x': 0.92, 'center-y': 0.5},
+            size_hint=(0.08, 0.1),
             user_font_size='64sp',
             on_press=self.advance_line
         )
-        # next_icon.bind(on_press=self.advance_line)
         prev_icon = MDIconButton(
-            icon='assets/prev-arrow.png',
-            pos_hint={'x': -0.05, 'top': 0.6},
+            icon='assets/game/prev-arrow.png',
+            pos_hint={'x': 0, 'center-y': 0.5},
+            size_hint=(0.08, 0.1),
             user_font_size='64sp',
             on_press=self.previous_line
         )
+        module_icon = MDIconButton(
+            icon='assets/game/modules.png',
+            pos_hint={'x': 0, 'top': 1},
+            size_hint=(0.08, 0.1),
+            user_font_size='64sp',
+            on_press=self.load_module_screen
+        )
         self.ids.float.add_widget(next_icon)
         self.ids.float.add_widget(prev_icon)
+        self.ids.float.add_widget(module_icon)
 
     def load_module(self, module_number):
         self._load_module_json(module_number)
@@ -237,7 +246,7 @@ class Module(Screen):
     def _remove_character(self, character):
         for widget in self.ids.float.children:
             # Check if widget has associated ID (not a button)
-            if (widget.id):
+            if widget.id:
                 try:
                     # self.ids.float.remove_widget(widget) if (int(widget.id) == character.id)
                     if (int(widget.id) == character.id):
@@ -246,6 +255,14 @@ class Module(Screen):
                 except:
                     pass
 
+    # Go to module selection screen
+    # Instance parameter added for Kivy on_press callback
+    def load_module_screen(self, instance):
+        if self.user:
+            pass
+        else:
+            self.manager.current = 'dashboard'
+    
     def load_assessment(self):
         if self.user:
             self.manager.screens[4].ids = {
