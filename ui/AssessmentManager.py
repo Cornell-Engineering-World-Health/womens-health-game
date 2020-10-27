@@ -54,8 +54,8 @@ class AssessmentManager(Screen):
                                            explanation_audio = question["explanation_audio"], ordered_image_ids = question["ordered_image_ids"],
                                            current_answer = question["current_answer"], on_complete = lambda x: x.advance_question())
             self.assessment.append(new_question)
-        self.current_question = self.assessment[0]
-        self.current_question_text = self.current_question.question_text
+        print(self.types)
+        self.advance_question()
         return
 
     def advance_question(self):
@@ -71,7 +71,8 @@ class AssessmentManager(Screen):
 
     def render_question (self):
         curr = self.assessment[self.index]
-        self.grid.add_widget(curr)
+        self.grid.add_widget(self.assessment[1])
+
 
 
     def __str__(self):

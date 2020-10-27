@@ -17,7 +17,6 @@ class MultipleChoice(GridLayout):
         Question.__init__(self, question_id=kwargs['question_id'], question_text=kwargs['question_text'],
                           question_audio=kwargs['question_audio'], explanation_text=kwargs['explanation_text'],
                           explanation_audio=kwargs['explanation_audio'])
-        print(self.question_text)
         self.choices = kwargs['choices']
         self.image_options = kwargs['image_options']
         self.selected = []
