@@ -258,10 +258,7 @@ class Module(Screen):
     # Go to module selection screen
     # Instance parameter added for Kivy on_press callback
     def load_module_screen(self, instance):
-        if self.user:
-            pass
-        else:
-            self.manager.current = 'dashboard'
+        pass
     
     def load_assessment(self):
         if self.user:
