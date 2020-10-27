@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 API_KEY = os.getenv('API_KEY')
 
+
 # API REQUESTS
 
 # takes in endpoint and optional data
@@ -32,5 +33,14 @@ def login(email, password):
 		auth = firebase.auth()
 		user = auth.sign_in_with_email_and_password(email, password)
 		return user
+	except Exception as err:
+		print("ERROR", err)
+
+# logout
+def logout(sm):
+	try:
+		sm.screens[0].ids.users = None
+		sm.screens[0].ids.admin = None
+		sm.current = 'login_screen'
 	except Exception as err:
 		print("ERROR", err)
