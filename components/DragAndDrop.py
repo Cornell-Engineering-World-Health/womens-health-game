@@ -30,15 +30,14 @@ class DragAndDrop(BoxLayout):
         Builder.load_file('kv/draganddrop.kv')
 
 
+
     def correct(self, calling_widget):
+        self.current_answer.append(calling_widget)
+        if len(self.current_answer) == 4: self.on_complete
         print ("Correct!")
 
     def wrong(self, the_widget=None, parent=None, kv_root=None):
         print("Wrong place!")
 
 
-    def verify(self):
-        if len([i for i in range(len(self.current_answer)) if self.current_answer[i] == self.ordered_image_ids[i]]) == \
-                len(self.current_answer):
-            self.on_complete()
 
