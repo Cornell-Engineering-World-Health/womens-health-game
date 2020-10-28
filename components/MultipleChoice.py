@@ -1,3 +1,6 @@
+from kivy.properties import ListProperty
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.widget import Widget
 import kivy
 import json
 import random
@@ -5,39 +8,37 @@ from kivy.uix.screenmanager import Screen
 from kivymd.app import MDApp
 from components.card import Card
 from components.Question import Question
-from kivy.uix.togglebutton import ToggleButton
-
-
 from kivy.lang import Builder
+from kivy.properties import ListProperty
+from kivy.properties import StringProperty
 
 
-class MultipleChoice(Question, Screen):
-    Builder.load_file('kv/multiplechoice.kv')
 
+class MultipleChoice(GridLayout):
+    choices = ListProperty(["", "", "", ""])
+    question_text = StringProperty("")
+    selected = []
     def __init__(self, **kwargs):
-        Question.__init__(self, question_id=kwargs['question_id'], question_text=kwargs['question_text'], question_audio=kwargs['question_audio'], explanation_text=kwargs['explanation_text'],explanation_audio=kwargs['explanation_audio'])
+        super().__init__()
+        Question.__init__(self, question_id=kwargs['question_id'], question_text=kwargs['question_text'],
+                          question_audio=kwargs['question_audio'], explanation_text=kwargs['explanation_text'],
+                          explanation_audio=kwargs['explanation_audio'])
+        self.choices = kwargs['choices']
         self.image_options = kwargs['image_options']
+        self.selected = []
         self.correct_answer = kwargs['correct_answer']
         self.on_complete = kwargs['on_complete']
-        self.selected_choices = []
+        Builder.load_file('kv/multiplechoice.kv')
 
-
-
-    # returns kivy element for this question, renders image_options
-    def render_question(self):
-        #grid = self.manager.screens[1].ids.grid_card
-        #grid.add_widget(self.question_text)
-        #for options in self.image_options:
-            #choice = ToggleButton(screen_manager=self.manager, image=options)
-            #grid.add_widget(choice)
-        pass
-    def toggle_button(self):
-        # choice = state = 'down'
-        # update grid
-        pass
 
     def verify(self):
-        if set(self.selected_choices) == set(self.correct_answer):
-            self.on_complete()
+        if set(self.correct_answer) == set(self.selected):
+            self.ids["feedback"].text = "Correct!"
+            self.on_complete
+        else:
+            self.ids["feedback"].text = "Incorrect"
+
+
+
 
 
