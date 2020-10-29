@@ -1,7 +1,9 @@
 <MultipleChoice>:
 
-    FloatLayout:
+    GridLayout:
         size: (300, 200)
+        rows: 0
+        cols: 0
         orientation: "vertical"
         Label:
             color: (0, 0, 0, 1)
@@ -55,6 +57,8 @@
         Button:
             id: submit
             text: "Submit"
+            pos: 600, 50
+            size: 300, 200
             on_release:
                 root.verify()
                 feedback.text = feedback.text

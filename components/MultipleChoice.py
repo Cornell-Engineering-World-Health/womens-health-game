@@ -20,6 +20,7 @@ class MultipleChoice(GridLayout):
     question_text = StringProperty("")
     selected = []
     def __init__(self, **kwargs):
+        Builder.load_file('kv/multiplechoice.kv')
         super().__init__()
         Question.__init__(self, question_id=kwargs['question_id'], question_text=kwargs['question_text'],
                           question_audio=kwargs['question_audio'], explanation_text=kwargs['explanation_text'],
@@ -29,13 +30,13 @@ class MultipleChoice(GridLayout):
         self.selected = []
         self.correct_answer = kwargs['correct_answer']
         self.on_complete = kwargs['on_complete']
-        Builder.load_file('kv/multiplechoice.kv')
+
 
 
     def verify(self):
         if set(self.correct_answer) == set(self.selected):
             self.ids["feedback"].text = "Correct!"
-            self.on_complete
+            self.on_complete()
         else:
             self.ids["feedback"].text = "Incorrect"
 

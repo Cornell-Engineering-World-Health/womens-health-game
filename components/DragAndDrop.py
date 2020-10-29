@@ -20,6 +20,7 @@ class DragAndDrop(BoxLayout):
     ordered_image_ids = ListProperty(["", "", ""])
 
     def __init__(self, **kwargs):
+        Builder.load_file('kv/draganddrop.kv')
         super().__init__()
         Question.__init__(self, question_id=kwargs['question_id'], question_text=kwargs['question_text'],
                           question_audio=kwargs['question_audio'], explanation_text=kwargs['explanation_text'],
@@ -27,14 +28,15 @@ class DragAndDrop(BoxLayout):
         self.ordered_image_ids = kwargs['ordered_image_ids']
         self.current_answer = kwargs['current_answer']
         self.on_complete = kwargs['on_complete']
-        Builder.load_file('kv/draganddrop.kv')
+
 
 
 
     def correct(self, calling_widget):
         self.current_answer.append(calling_widget)
-        if len(self.current_answer) == 4:
-            self.on_complete
+        print(self.current_answer)
+        if len(self.current_answer) == len(self.ordered_image_ids):
+            self.on_complete()
         print ("Correct!")
 
     def wrong(self, the_widget=None, parent=None, kv_root=None):
