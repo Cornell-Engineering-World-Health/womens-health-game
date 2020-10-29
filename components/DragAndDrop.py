@@ -33,7 +33,8 @@ class DragAndDrop(BoxLayout):
 
     def correct(self, calling_widget):
         self.current_answer.append(calling_widget)
-        if len(self.current_answer) == 4: self.on_complete
+        if len(self.current_answer) == 4:
+            self.on_complete
         print ("Correct!")
 
     def wrong(self, the_widget=None, parent=None, kv_root=None):
