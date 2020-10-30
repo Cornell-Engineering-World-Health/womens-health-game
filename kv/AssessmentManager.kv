@@ -2,21 +2,12 @@
 
     FloatLayout:
         id: assessment_grid
-        cols: 2
-        padding: 10, 10
-        spacing: 10, 10
-        size_hint_y: None
-        row_default_height: 500
-        Label:
-            color: 0, 2, 3, 9
-            id: name
-            text: root.current_question_text
-            font_size: '24sp'
         Button:
-            text: "Submit"
+            text: "Start"
+            id: submit
             on_release:
                 root.advance_question()
-                name.text = root.current_question_text
+
 
 
 

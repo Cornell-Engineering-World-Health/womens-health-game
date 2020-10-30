@@ -60,22 +60,48 @@ class Module(Screen):
         else:
             self.app.title = "Health Friend [Game]  ::  EWH"
 
-        # Adding dialogue label to float layout
+        self.init_module_ui()
+        self.load_module(self.module_number)
+        self.load_characters()
+        self.load_background()
+        self._init_game_buttons()
+        # Adding dialogue label to float layout - REMOVE WHEN AUDIO COMES IN
         self.ids.float.add_widget(self.current_line)
 
-        self._init_module_ui()
-        self._load_module(self.module_number)
-        self._load_characters()
-        # self.render_scene()
-
     # Screen positioning: assuming maximum of 3 characters on screen at one time
-    def _init_module_ui(self):
+    def init_module_ui(self):
         # 3 character positions on screen at once
         self.screen_positions.append({'x': -0.3, 'top': 0.45})
         self.screen_positions.append({'x': 0, 'top': 0.6})
         self.screen_positions.append({'x': 0.3, 'top': 0.45})
 
-    def _load_module(self, module_number):
+    def _init_game_buttons(self):
+        next_icon = MDIconButton(
+            icon='assets/game/next-arrow.png',
+            pos_hint={'x': 0.92, 'center-y': 0.5},
+            size_hint=(0.08, 0.1),
+            user_font_size='64sp',
+            on_press=self.advance_line
+        )
+        prev_icon = MDIconButton(
+            icon='assets/game/prev-arrow.png',
+            pos_hint={'x': 0, 'center-y': 0.5},
+            size_hint=(0.08, 0.1),
+            user_font_size='64sp',
+            on_press=self.previous_line
+        )
+        module_icon = MDIconButton(
+            icon='assets/game/modules.png',
+            pos_hint={'x': 0, 'top': 1},
+            size_hint=(0.08, 0.1),
+            user_font_size='64sp',
+            on_press=self.load_module_screen
+        )
+        self.ids.float.add_widget(next_icon)
+        self.ids.float.add_widget(prev_icon)
+        self.ids.float.add_widget(module_icon)
+
+    def load_module(self, module_number):
         self._load_module_json(module_number)
 
     def _load_module_json(self, module_number):
@@ -108,7 +134,7 @@ class Module(Screen):
             self.scenes.append(scene)
             self.current_scene = self.scenes[0]
 
-    def _load_characters(self):
+    def load_characters(self):
         json_file_path = 'assets/json/characters.json'
 
         with open(json_file_path) as json_file:
@@ -123,8 +149,19 @@ class Module(Screen):
                     character_obj = Character(char_id, char_name, char_image)
                     self.scene_characters.append(character_obj)
 
+    def load_background(self):
+        image_file_path = 'assets/backgrounds/' + self.current_scene.background_image
+        background = Image(
+            source=image_file_path,
+            keep_ratio=False,
+            allow_stretch=True,
+            id=str(image_file_path)
+        )
+        self.ids.float.add_widget(background)
+
     # Plays the current line and advances the script_iterator
-    def advance_line(self):
+    # Instance parameter added for Kivy on_press callback
+    def advance_line(self, instance):
         self.script_iterator += 1
         if (self.script_iterator < len(self.current_scene.script)):
             # Check if a line has been executed already
@@ -132,7 +169,7 @@ class Module(Screen):
             if (type(line) == Line):
                 self.lines.append(line)
                 self.line_iterator += 1
-            print('Executing: ' + str(line))
+            # print('Executing: ' + str(line))
             self.play_line(line)
         else:
             # Set script iterator to end of script
@@ -141,11 +178,12 @@ class Module(Screen):
             self.load_assessment()
         
     # Rewinds the line that was just played and plays the prev line
-    def previous_line(self):
+    # Instance parameter added for Kivy on_press callback
+    def previous_line(self, instance):
         if (self.script_iterator >= 0):
             # Undo line that was just played
             line = self.current_scene.script[self.script_iterator]
-            print('Rewinding: ' + str(line))
+            # print('Rewinding: ' + str(line))
             # If an Action was just played:
             # Remove character if it just entered, or add character if it was just removed
             if (type(line) == Action):
@@ -208,7 +246,7 @@ class Module(Screen):
     def _remove_character(self, character):
         for widget in self.ids.float.children:
             # Check if widget has associated ID (not a button)
-            if (widget.id):
+            if widget.id:
                 try:
                     # self.ids.float.remove_widget(widget) if (int(widget.id) == character.id)
                     if (int(widget.id) == character.id):
@@ -217,6 +255,11 @@ class Module(Screen):
                 except:
                     pass
 
+    # Go to module selection screen
+    # Instance parameter added for Kivy on_press callback
+    def load_module_screen(self, instance):
+        pass
+    
     def load_assessment(self):
         if self.user:
             self.manager.screens[4].ids = {
