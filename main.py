@@ -9,6 +9,7 @@ from ui.module import Module
 from ui.AssessmentManager import AssessmentManager
 from ui.settingsscreen import SettingsScreen
 from ui.splashscreen import SplashScreen
+from ui.menuscreen import MenuScreen
 
 # Import Constants
 from util.constants import _title_
