@@ -3,6 +3,7 @@ import json
 import random
 from components.Question import Question
 from kivy.uix.button import Button
+from kivy.uix.image import Image
 
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
@@ -30,10 +31,22 @@ class DragAndDrop(BoxLayout):
         self.on_complete = kwargs['on_complete']
 
 
+    def _get_id(self, id):
+        id_dict = {
+        '1': self.ids.box_1,
+        '2': self.ids.box_2,
+        '3': self.ids.box_3
+        }
+        return id_dict.get(id, "ERROR")
 
+    def _replace_image(self, id):
+        old_widget = self._get_id(id)
+        self.ids.to_box.remove_widget(old_widget)
+        self.ids.to_box.add_widget(Image(source='assets/drag-and-drop/shape' + id + '.png'), index=(3 - int(id)))
 
     def correct(self, calling_widget):
         self.current_answer.append(calling_widget)
+        self._replace_image(calling_widget.text)
         print(self.current_answer)
         if len(self.current_answer) == len(self.ordered_image_ids):
             self.on_complete()
@@ -41,6 +54,3 @@ class DragAndDrop(BoxLayout):
 
     def wrong(self, the_widget=None, parent=None, kv_root=None):
         print("Wrong place!")
-
-
-
