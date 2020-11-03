@@ -1,9 +1,11 @@
+#:import app_style util.style.app_style
 <AssessmentManager>:
 
     FloatLayout:
         id: assessment_grid
         Button:
             text: "Start"
+            background_color: app_style['assessment_background']
             id: submit
             on_release:
                 root.advance_question()

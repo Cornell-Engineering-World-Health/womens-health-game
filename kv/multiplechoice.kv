@@ -1,4 +1,12 @@
+#:import app_style util.style.app_style
 <MultipleChoice>:
+
+    canvas:
+        Color:
+            rgba: app_style['assessment_background']
+        Rectangle:
+            size: self.size
+            pos: self.pos
 
     GridLayout:
         size: (300, 200)
@@ -6,9 +14,10 @@
         cols: 0
         orientation: "vertical"
         Label:
-            color: (0, 0, 0, 1)
-            pos: (650, 900)
+            font_size: '24sp'
+            pos: (700, 900)
             text: root.question_text + " Select all that apply."
+
 
 
         Label:
@@ -20,45 +29,48 @@
         Button:
             id: option1
             text: root.choices[0]
-            background_color: (1, 1, 1, 1)
+            background_color:app_style['assessment_background']
             size: 300, 200
             pos: 200, 500
             on_press: root.selected.append(option1.text) if option1.text not in root.selected else root.selected.remove(option1.text)
-            on_release: option1.background_color = (0, 0, 1, 1) if option1.text in root.selected else (1, 1, 1, 1)
+            on_release: option1.background_color = (0, 0, 1, 1) if option1.text in root.selected else app_style['assessment_background']
 
 
         Button:
             id: option2
             text: root.choices[1]
-            background_color: (1, 1, 1, 1)
+            background_color: app_style['assessment_background']
             pos: 200, 200
             size: 300, 200
             on_press: root.selected.append(option2.text) if option2.text not in root.selected else root.selected.remove(option2.text)
-            on_release: option2.background_color = (0, 0, 1, 1) if option2.text in root.selected else (1, 1, 1, 1)
+            on_release: option2.background_color = (0, 0, 1, 1) if option2.text in root.selected else app_style['assessment_background']
 
         Button:
             id: option3
             text: root.choices[2]
-            background_color: (1, 1, 1, 1)
+            background_color: app_style['assessment_background']
             pos: 1000, 500
             size: 300, 200
-            on_press: root.selected.append(option3.text) if option3.text not in root.selected else root.selected.remove(option3.text)
-            on_release: option3.background_color = (0, 0, 1, 1) if option3.text in root.selected else (1, 1, 1, 1)
+            on_press:
+                root.selected.append(option3.text) if option3.text not in root.selected else root.selected.remove(option3.text)
+                root.verify()
+            on_release: option3.background_color = (0, 0, 1, 1) if option3.text in root.selected else app_style['assessment_background']
 
         Button:
             id: option4
             text: root.choices[3]
-            background_color: (1, 1, 1, 1)
+            background_color: app_style['assessment_background']
             pos: 1000, 200
             size: 300, 200
             on_press: root.selected.append(option4.text) if option4.text not in root.selected else root.selected.remove(option4.text)
-            on_release: option4.background_color = (0, 0, 1, 1) if option4.text in root.selected else (1, 1, 1, 1)
+            on_release: option4.background_color = (0, 0, 1, 1) if option4.text in root.selected else app_style['assessment_background']
 
         Button:
             id: submit
             text: "Submit"
             pos: 600, 50
             size: 300, 200
+            background_color: app_style['assessment_background']
             on_release:
                 root.verify()
                 feedback.text = feedback.text
