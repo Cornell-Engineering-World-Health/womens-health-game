@@ -4,16 +4,6 @@
         "id": 0,
         "title":"Changes in the Body",
         "preview": "assets/backgrounds/house_lined.jpg"
-      },
-      {
-        "id": 1,
-        "title":"Changes in the Body",
-        "preview": "assets/backgrounds/house_lined.jpg"
-        },
-      {
-        "id": 2,
-        "title":"Changes in the Body",
-        "preview": "assets/backgrounds/house_lined.jpg"
-        }
+      }
       ]
 }
