@@ -42,7 +42,7 @@ class DragAndDrop(BoxLayout):
     def _replace_image(self, id):
         old_widget = self._get_id(id)
         self.ids.to_box.remove_widget(old_widget)
-        self.ids.to_box.add_widget(Image(source='assets/drag-and-drop/shape' + id + '.png'))
+        self.ids.to_box.add_widget(Image(source='assets/drag-and-drop/shape' + id + '.png'), index=(3 - int(id)))
 
     def correct(self, calling_widget):
         self.current_answer.append(calling_widget)
