@@ -18,6 +18,17 @@ card_style = {
 	"theme": "Primary"
 }
 
+module_card_style = {
+	"radius": [(40.0, 40.0), (40.0, 40.0), (40.0, 40.0), (40.0, 40.0)],
+	"background_color": (1,1,1,1),
+	"center_x": .5,
+	"size": (1, .3),
+	"id_y": 0.53,
+	"title_y": 0.45,
+	"module_font": "Subtitle2",
+	"theme": "Primary"
+}
+
 dnd_from_style = {
 	"size_hint": (.3,.1),
 	"background_color": [0,0,0,0],

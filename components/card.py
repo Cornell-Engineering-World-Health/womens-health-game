@@ -40,11 +40,11 @@ class Card(FloatLayout):
         # self.add_widget(self.progress(50))  # TODO: get progress
         self.add_widget(self.photo('assets/profile.png'))
 
-    # load module screen
-    def load_module(self, instance): 
-        self.sm.screens[2].ids.user = self.selected_user
-        self.sm.screens[2].ids.module_number = 1 # get module number from user 
-        self.sm.current = 'module'
+    # menu screen
+    def menu(self, instance): 
+        self.sm.screens[6].ids.user = self.selected_user
+        #self.sm.screens[2].ids.module_number = 1 # get module number from user 
+        self.sm.current = 'menu_screen'
 
     def update_rect(self, *args):
         self.rect.pos = self.pos
@@ -65,7 +65,7 @@ class Card(FloatLayout):
 
     def selectionButton(self):
         bt = RoundButton(text="Select", color=(0,0,0,1), font_size= '15sp', bold= True, pos_hint={"center_x": card_style["center_x"], "top": 0.2},size_hint=(.5, .15))
-        bt.bind(on_press=self.load_module)
+        bt.bind(on_press=self.menu)
         return bt
 
 

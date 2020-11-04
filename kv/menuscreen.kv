@@ -1,0 +1,31 @@
+<MenuScreen>:
+    canvas:
+        Color:
+            rgba: 0.708, 0.281, 0.097, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    BoxLayout:
+        orientation: "vertical"
+
+        MDToolbar:
+            title: app.title
+            md_bg_color: 1, 1, 1, 1
+            specific_text_color: 0, 0, 0, 1
+            left_action_items: [["arrow-left", lambda x: root.back()]]
+            round: '50dp'
+
+        ScrollView:
+            MDGridLayout:
+                id: grid_module_card
+                cols: 3
+                padding: 30, 30
+                spacing: 30, 30
+                size_hint_y: None
+                height: self.minimum_height
+                adaptive_height: True
+                row_default_height: 500
+                md_bg_color: 0.708, 0.281, 0.097, 1
+                col_default_width: (self.width - self.padding[0] - self.padding[2] - self.cols * self.spacing[0])/self.cols
+                
+                
