@@ -1,6 +1,7 @@
 #import kivy
 import json
 import random
+from kivy.core.audio import SoundLoader
 from components.Question import Question
 from kivy.uix.button import Button
 
@@ -28,6 +29,9 @@ class DragAndDrop(BoxLayout):
         self.ordered_image_ids = kwargs['ordered_image_ids']
         self.current_answer = kwargs['current_answer']
         self.on_complete = kwargs['on_complete']
+        self.question_audio = SoundLoader.load(self.question_audio)
+        self.question_audio.play()
+        self.explanation_audio = SoundLoader.load(self.explanation_audio)
 
 
 
@@ -40,6 +44,7 @@ class DragAndDrop(BoxLayout):
         print ("Correct!")
 
     def wrong(self, the_widget=None, parent=None, kv_root=None):
+        self.explanation_audio.play()
         print("Wrong place!")
 
 

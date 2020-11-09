@@ -53,7 +53,7 @@
             size: 300, 200
             on_press:
                 root.selected.append(option3.text) if option3.text not in root.selected else root.selected.remove(option3.text)
-                root.verify()
+   
             on_release: option3.background_color = (0, 0, 1, 1) if option3.text in root.selected else app_style['assessment_background']
 
         Button:
