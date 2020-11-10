@@ -8,6 +8,7 @@ from kivy.uix.screenmanager import Screen
 from kivymd.uix.label import MDLabel
 from kivymd.uix.button import MDIconButton
 from kivy.uix.image import Image
+from kivy.clock import Clock
 
 class Module(Screen):
     # instances
@@ -45,6 +46,8 @@ class Module(Screen):
             theme_text_color= "Primary",
             id= 'dialogue_text'
         )
+        # character id mapped to mouth widget
+        self.id_to_mouth = {}
 
     # built in kivy function that runs before scene is loaded
     def on_pre_enter(self, *args):
@@ -146,7 +149,8 @@ class Module(Screen):
                     char_id = character['id']
                     char_name = character['name']
                     char_image = character['image']
-                    character_obj = Character(char_id, char_name, char_image)
+                    char_mouth_pos = (character['mouth_offset_top'],character['mouth_offset_x'],character['mouth_size'])
+                    character_obj = Character(char_id, char_name, char_image, char_mouth_pos)
                     self.scene_characters.append(character_obj)
 
     def load_background(self):
@@ -162,6 +166,7 @@ class Module(Screen):
     # Plays the current line and advances the script_iterator
     # Instance parameter added for Kivy on_press callback
     def advance_line(self, instance):
+        self._stop_talking()
         self.script_iterator += 1
         if (self.script_iterator < len(self.current_scene.script)):
             # Check if a line has been executed already
@@ -180,6 +185,7 @@ class Module(Screen):
     # Rewinds the line that was just played and plays the prev line
     # Instance parameter added for Kivy on_press callback
     def previous_line(self, instance):
+        self._stop_talking()
         if (self.script_iterator >= 0):
             # Undo line that was just played
             line = self.current_scene.script[self.script_iterator]
@@ -214,6 +220,10 @@ class Module(Screen):
     def play_line(self, line):
         if (type(line) == Line):
             self.current_line.text = line.text
+            # animate mouth
+            for character in self.scene_characters:
+                if character.id == line.character_id:
+                    self._animate_mouth(character)
         else:
             line_character = None
             for character in self.scene_characters:
@@ -237,7 +247,34 @@ class Module(Screen):
             id=str(character.id)
         )
         self.ids.float.add_widget(new_character)
+        self._render_mouth(character) # render mouth separately
         self.screen_characters += 1
+
+    def _render_mouth(self, character):
+        character_pos = dict(self._position_character())
+        character_pos['top'] -= character.mouth_offset_top 
+        character_pos['x'] -= character.mouth_offset_x
+        character.mouth_pos = character_pos # update character's mouth position
+        current_mouth = Image(
+            source=character.current_mouth,
+            pos_hint=character.mouth_pos,
+            size_hint_y= character.mouth_size,
+            height= 500,
+            id='mouth_'+str(character.id)
+        )
+        self.ids.float.add_widget(current_mouth)
+        self.id_to_mouth[character.id] = current_mouth # add mouth to id-mouth map
+
+    def _animate_mouth(self, character):
+        character.talk()
+        self.id_to_mouth[character.id].source = character.current_mouth # change source of the rendered mouth
+
+    def _stop_talking(self):
+        # stop whoever is talking
+        for c in self.scene_characters:
+            if c.is_talking:
+                c.stop()
+                self.id_to_mouth[c.id].source = c.current_mouth
 
     # Returns a Kivy position as a dictionary (x and top)
     def _position_character(self):
@@ -252,6 +289,8 @@ class Module(Screen):
                     if (int(widget.id) == character.id):
                         self.ids.float.remove_widget(widget)
                         self.screen_characters -= 1
+                        self.ids.float.remove_widget(self.id_to_mouth[character.id])
+                        del self.id_to_mouth[character.id] # delete id-mouth mapping
                 except:
                     pass
 
