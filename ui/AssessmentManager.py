@@ -4,6 +4,7 @@ from kivymd.app import MDApp
 from kivy.uix.screenmanager import Screen
 from components.DragAndDrop import DragAndDrop
 from kivy.clock import Clock
+from kivy.core.audio import SoundLoader
 
 
 
@@ -69,6 +70,9 @@ class AssessmentManager(Screen):
     def render_question(self):
         curr = self.assessment[self.index]
         self.grid.add_widget(curr)
+        question_audio = SoundLoader.load("rushes.wav")
+        question_audio.play()
+
 
 
 
