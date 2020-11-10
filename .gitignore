@@ -3,10 +3,9 @@ venv
 .DS_Store
 /env
 
-util/key.json
+util/.env
 util/__pycache__
 ui/__pycache__
 kv/__pycache__
 kivydnd/__pycache__
 components/__pycache__
-

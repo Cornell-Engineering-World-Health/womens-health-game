@@ -4,6 +4,7 @@ from kivymd.app import MDApp
 from kivy.uix.screenmanager import Screen
 from components.DragAndDrop import DragAndDrop
 from kivy.clock import Clock
+from kivy.core.audio import SoundLoader
 
 
 
@@ -47,32 +48,31 @@ class AssessmentManager(Screen):
                 new_question = MultipleChoice(question_text = question['question_text'], question_id =question['question_id'],
                             question_audio = question['question_audio'], explanation_text = question["explanation_text"],
                             explanation_audio = question["explanation_audio"], image_options = question["image_options"],
-                            correct_answer = question["correct_answer"], choices = question['choices'], on_complete = lambda x: x.advance_question())
+                            correct_answer = question["correct_answer"], choices = question['choices'], on_complete = self.advance_question)
             if question["type"] == "drag_and_drop":
                 self.types.append(0)
                 new_question = DragAndDrop(question_text = question['question_text'], question_id = question['question_id'],
                                            question_audio = question['question_audio'], explanation_text = question["explanation_text"],
                                            explanation_audio = question["explanation_audio"], ordered_image_ids = question["ordered_image_ids"],
-                                           current_answer = question["current_answer"], on_complete = lambda x: x.advance_question())
+                                           current_answer = question["current_answer"], on_complete = self.advance_question)
             self.assessment.append(new_question)
-        print(self.types)
-        self.advance_question()
-        return
+
 
     def advance_question(self):
-        if self.index >= 0:
-            self.grid.remove_widget(self.current_question)
+        self.grid.clear_widgets()
         if self.index < len(self.assessment) - 1:
             self.index = self.index + 1
-            self.current_question = self.assessment[self.index]
-            self.current_question_text = self.current_question.question_text
-        self.render_question()
-        return
+            self.render_question()
+        else:
+            self.manager.current = "module"
 
 
-    def render_question (self):
+    def render_question(self):
         curr = self.assessment[self.index]
-        self.grid.add_widget(self.assessment[1])
+        self.grid.add_widget(curr)
+        question_audio = SoundLoader.load("rushes.wav")
+        question_audio.play()
+
 
 
 

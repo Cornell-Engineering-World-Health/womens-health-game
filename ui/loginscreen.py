@@ -16,7 +16,7 @@ class LoginScreen(Screen):
         # TEMP BYPASS
         if self.login_email == 'EWH':
             self.manager.current = 'module'
-
+            return
         try:
             self.ids.admin = login(self.login_email, self.login_password)
             res = get_students_from_admin_id(self.ids.admin['localId'])
@@ -26,10 +26,8 @@ class LoginScreen(Screen):
             self.manager.current = 'dashboard'
         except NameError as err:
             print("ERROR", err)
-        except TypeError as err:
-            print("ERROR AUTH0 REQUESTS FULL", )
         except Exception as err:
-            print(type(err), "INVALID USERNAME OR PASSWORD, PLEASE TRY AGAIN")
+            print("INVALID USERNAME OR PASSWORD, PLEASE TRY AGAIN")
 
     def process_email(self):
         self.login_email = self.ids.email.text
