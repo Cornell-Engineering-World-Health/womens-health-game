@@ -12,6 +12,10 @@ from kivy.properties import ListProperty
 
 from kivydnd.dragndropwidget import DragNDropWidget
 
+from kivy.clock import Clock
+from functools import partial
+
+
 class  DraggableButton(Button, DragNDropWidget):
     def __init__(self, **kw):
         super(DraggableButton, self).__init__(**kw)
@@ -44,9 +48,12 @@ class DragAndDrop(BoxLayout):
         self.ids.to_box.remove_widget(old_widget)
         self.ids.to_box.add_widget(Image(source='assets/drag-and-drop/shape' + id + '.png'), index=(3 - int(id)))
 
+    def call_back(self, id, *largs):
+        self._replace_image(id)
+
     def correct(self, calling_widget):
         self.current_answer.append(calling_widget)
-        self._replace_image(calling_widget.text)
+        Clock.schedule_once(partial(self.call_back, calling_widget.text), 1)
         print(self.current_answer)
         if len(self.current_answer) == len(self.ordered_image_ids):
             self.on_complete()
