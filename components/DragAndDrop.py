@@ -30,7 +30,6 @@ class DragAndDrop(BoxLayout):
         self.current_answer = kwargs['current_answer']
         self.on_complete = kwargs['on_complete']
         self.question_audio = SoundLoader.load(self.question_audio)
-        self.question_audio.play()
         self.explanation_audio = SoundLoader.load(self.explanation_audio)
 
 
@@ -40,6 +39,7 @@ class DragAndDrop(BoxLayout):
         self.current_answer.append(calling_widget)
         print(self.current_answer)
         if len(self.current_answer) == len(self.ordered_image_ids):
+            self.explanation_audio.stop()
             self.on_complete()
         print ("Correct!")
 
