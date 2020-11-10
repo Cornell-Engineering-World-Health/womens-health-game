@@ -12,6 +12,7 @@ from kivy.lang import Builder
 from kivy.properties import ListProperty
 from kivy.properties import StringProperty
 from kivy.uix.screenmanager import Screen
+from kivy.core.audio import SoundLoader
 
 
 
@@ -30,15 +31,20 @@ class MultipleChoice(GridLayout):
         self.selected = []
         self.correct_answer = kwargs['correct_answer']
         self.on_complete = kwargs['on_complete']
+        self.question_audio = SoundLoader.load(self.question_audio)
+        self.explanation_audio = SoundLoader.load(self.explanation_audio)
+
 
 
 
     def verify(self):
         if set(self.correct_answer) == set(self.selected):
             self.ids["feedback"].text = "Correct!"
+            self.explanation_audio.stop()
             self.on_complete()
         else:
             self.ids["feedback"].text = "Incorrect"
+            self.explanation_audio.play()
 
 
 
