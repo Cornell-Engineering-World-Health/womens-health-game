@@ -5,7 +5,7 @@ class Character:
         self.is_talking = False
         self.image = image
         self.idle_mouth = 'assets/character-mouths/idle_neutral.png'
-        self.talking_mouth = 'assets/character-mouths/test_mouth.gif'
+        self.talking_mouth = 'assets/character-mouths/anim_neutral.gif'
         self.current_mouth = 'assets/character-mouths/idle_neutral.png'
         self.mouth_offset_top, self.mouth_offset_x, self.mouth_size = mouth_pos
 

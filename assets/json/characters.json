@@ -3,25 +3,25 @@
     "id": 1,
     "name": "Salma",
     "image": "salma.png",
-    "mouth_offset_top": 0.101,
-    "mouth_offset_x": 0.004,
-    "mouth_size": 0.03
+    "mouth_offset_top": 0.102,
+    "mouth_offset_x": 0.005,
+    "mouth_size": 0.02
   },
   {
     "id": 2,
     "name": "Granny",
     "image": "granny.png",
-    "mouth_offset_top": 0.101,
+    "mouth_offset_top": 0.108,
     "mouth_offset_x": 0.004,
-    "mouth_size": 0.03
+    "mouth_size": 0.02
   },
   {
     "id": 3,
     "name": "Sukhi",
     "image": "sukhi.png",
-    "mouth_offset_top": 0.101,
+    "mouth_offset_top": 0.122,
     "mouth_offset_x": 0.004,
-    "mouth_size": 0.03
+    "mouth_size": 0.02
   },
   {
     "id": 4,
