@@ -70,7 +70,7 @@ class AssessmentManager(Screen):
     def render_question(self):
         curr = self.assessment[self.index]
         self.grid.add_widget(curr)
-        question_audio = SoundLoader.load("rushes.wav")
+        question_audio = SoundLoader.load(curr.question_audio)
         question_audio.play()
 
 
