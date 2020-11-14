@@ -21,7 +21,7 @@ class AssessmentManager(Screen):
         self.types = []
         self.grid = None
         Clock.schedule_once(self.finished_init)
-        
+
     # built in kivy function that runs before scene is loaded
     def finished_init(self, *args):
         # loads the current user data into user
@@ -64,8 +64,11 @@ class AssessmentManager(Screen):
             self.index = self.index + 1
             self.render_question()
         else:
-            self.manager.current = "module"
+            self.on_assessment_complete()
 
+    def on_assessment_complete(self):
+        print("DONE")
+        self.manager.current = "menu_screen"
 
     def render_question(self):
         curr = self.assessment[self.index]
@@ -84,7 +87,3 @@ class AssessmentManager(Screen):
                 'Audio: ' + i.question_audio + ' ' + \
                 'Expl Text: ' + i.explanation_text + ' ' + 'Expl Audio: ' + i.explanation_audio
         return ret
-
-
-
-
