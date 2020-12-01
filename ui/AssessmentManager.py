@@ -47,7 +47,6 @@ class AssessmentManager(Screen):
                             question_audio = question['question_audio'], explanation_text = question["explanation_text"],
                             explanation_audio = question["explanation_audio"], image_options = question["image_options"],
                             correct_answer = question["correct_answer"], choices = question['choices'], on_complete = self.advance_question)
-                print(new_question.image_options)
             if question["type"] == "drag_and_drop":
                 new_question = DragAndDrop(question_text = question['question_text'], question_id = question['question_id'],
                                            question_audio = question['question_audio'], explanation_text = question["explanation_text"],
