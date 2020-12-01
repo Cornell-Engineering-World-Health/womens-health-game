@@ -23,7 +23,7 @@
 
         DraggableButton:
             text: '1'
-            color: 0,0,0,0
+            color: app_style['assessment_background']
             droppable_zone_objects: [box_1]
             drop_func: root.correct
             failed_drop_func: root.wrong
@@ -40,7 +40,7 @@
 
         DraggableButton:
             text: '2'
-            color: 0,0,0,0
+            color: app_style['assessment_background']
             droppable_zone_objects: [box_2]
             drop_func: root.correct
             failed_drop_func: root.wrong
@@ -83,11 +83,11 @@
             id: box_1
             canvas.before:
                 Color:
-                    rgb: app_style['button_color']
+                    rgb: app_style['assessment_background']
                 RoundedRectangle:
                     pos: self.pos
                     size: self.size
-                    radius: [50,]
+                    radius: [200,]
                     source: 'assets/game/male.png'
             pos_hint: {'center_x': dnd_to_style['pos_hint_x']}
 
@@ -95,11 +95,11 @@
             id: box_2
             canvas.before:
                 Color:
-                    rgb: app_style['button_color']
+                    rgb: app_style['assessment_background']
                 RoundedRectangle:
                     pos: self.pos
                     size: self.size
-                    radius: [50,]
+                    radius: [200,]
                     source: 'assets/game/female.png'
             pos_hint: {'center_x': dnd_to_style['pos_hint_x']}
 
@@ -107,10 +107,10 @@
             id: box_3
             canvas.before:
                 Color:
-                    rgb: app_style['button_color']
+                    rgb: app_style['assessment_background']
                 RoundedRectangle:
                     pos: self.pos
                     size: self.size
-                    radius: [50,]
+                    radius: [200,]
                     source: 'assets/game/both.jpg'
             pos_hint: {'center_x': dnd_to_style['pos_hint_x']}
