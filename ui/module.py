@@ -8,6 +8,9 @@ from kivy.uix.screenmanager import Screen
 from kivymd.uix.label import MDLabel
 from kivymd.uix.button import MDIconButton
 from kivy.uix.image import Image
+from kivy.clock import Clock
+from kivy.core.audio import SoundLoader
+
 
 class Module(Screen):
     # instances
@@ -20,6 +23,10 @@ class Module(Screen):
         self.user = None
         # Current module
         self.module_number = 0
+        # Audio path (define swhich language - English or Hindi)
+        self.audio_path = 'assets/audio/english/'
+        # Boolean checking if a sound is playing
+        self.is_sound = False
         # List of scenes in the current module
         self.scenes = []
         # All the character objects in the scene
@@ -36,15 +43,8 @@ class Module(Screen):
         self.lines = []
         # The index of the line that was executed; default is -1
         self.line_iterator = -1
-        # Current dialogue label (to be replaced with audio file)
-        self.current_line = MDLabel(
-            pos_hint= {"x": .3, "top": 1},
-            size_hint= (.4, .1),
-            text= "",
-            halign= "center",
-            theme_text_color= "Primary",
-            id= 'dialogue_text'
-        )
+        # character id mapped to mouth widget
+        self.id_to_mouth = {}
 
     # built in kivy function that runs before scene is loaded
     def on_pre_enter(self, *args):
@@ -60,22 +60,47 @@ class Module(Screen):
         else:
             self.app.title = "Health Friend [Game]  ::  EWH"
 
-        # Adding dialogue label to float layout
-        self.ids.float.add_widget(self.current_line)
-
-        self._init_module_ui()
-        self._load_module(self.module_number)
-        self._load_characters()
-        # self.render_scene()
+        # Init and loading functions for module
+        self.init_module_ui()
+        self.load_module(self.module_number)
+        self.load_characters()
+        self.load_background()
+        self.init_game_buttons()
 
     # Screen positioning: assuming maximum of 3 characters on screen at one time
-    def _init_module_ui(self):
+    def init_module_ui(self):
         # 3 character positions on screen at once
         self.screen_positions.append({'x': -0.3, 'top': 0.45})
         self.screen_positions.append({'x': 0, 'top': 0.6})
         self.screen_positions.append({'x': 0.3, 'top': 0.45})
 
-    def _load_module(self, module_number):
+    def init_game_buttons(self):
+        next_icon = MDIconButton(
+            icon='assets/game/next-arrow.png',
+            pos_hint={'x': 0.92, 'center-y': 0.5},
+            size_hint=(0.08, 0.1),
+            user_font_size='64sp',
+            on_press=self.advance_line
+        )
+        prev_icon = MDIconButton(
+            icon='assets/game/prev-arrow.png',
+            pos_hint={'x': 0, 'center-y': 0.5},
+            size_hint=(0.08, 0.1),
+            user_font_size='64sp',
+            on_press=self.previous_line
+        )
+        module_icon = MDIconButton(
+            icon='assets/game/modules.png',
+            pos_hint={'x': 0, 'top': 1},
+            size_hint=(0.08, 0.1),
+            user_font_size='64sp',
+            on_press=self.load_module_screen
+        )
+        self.ids.float.add_widget(next_icon)
+        self.ids.float.add_widget(prev_icon)
+        self.ids.float.add_widget(module_icon)
+
+    def load_module(self, module_number):
         self._load_module_json(module_number)
 
     def _load_module_json(self, module_number):
@@ -108,7 +133,7 @@ class Module(Screen):
             self.scenes.append(scene)
             self.current_scene = self.scenes[0]
 
-    def _load_characters(self):
+    def load_characters(self):
         json_file_path = 'assets/json/characters.json'
 
         with open(json_file_path) as json_file:
@@ -120,62 +145,82 @@ class Module(Screen):
                     char_id = character['id']
                     char_name = character['name']
                     char_image = character['image']
-                    character_obj = Character(char_id, char_name, char_image)
+                    char_mouth_pos = (character['mouth_offset_top'],character['mouth_offset_x'],character['mouth_size'])
+                    character_obj = Character(char_id, char_name, char_image, char_mouth_pos)
                     self.scene_characters.append(character_obj)
 
+    def load_background(self):
+        image_file_path = 'assets/backgrounds/' + self.current_scene.background_image
+        background = Image(
+            source=image_file_path,
+            keep_ratio=False,
+            allow_stretch=True,
+            id=str(image_file_path)
+        )
+        self.ids.float.add_widget(background)
+
     # Plays the current line and advances the script_iterator
-    def advance_line(self):
-        self.script_iterator += 1
-        if (self.script_iterator < len(self.current_scene.script)):
-            # Check if a line has been executed already
-            line = self.current_scene.script[self.script_iterator]
-            if (type(line) == Line):
-                self.lines.append(line)
-                self.line_iterator += 1
-            print('Executing: ' + str(line))
-            self.play_line(line)
-        else:
-            # Set script iterator to end of script
-            self.script_iterator = len(self.current_scene.script) - 1
-            # Advance to assessment
-            self.load_assessment()
+    # Callback parameter added for Kivy on_press callback
+    def advance_line(self, callback):
+        # Check if a sound is currently playing; advance if no sound playing
+        if (not self.is_sound):
+            self.script_iterator += 1
+            if (self.script_iterator < len(self.current_scene.script)):
+                # Check if a line has been executed already
+                line = self.current_scene.script[self.script_iterator]
+                if (type(line) == Line):
+                    self.lines.append(line)
+                    self.line_iterator += 1
+                # print('Executing: ' + str(line))
+                self.play_line(line)
+            else:
+                # Set script iterator to end of script
+                self.script_iterator = len(self.current_scene.script) - 1
+                # Advance to assessment
+                self.load_assessment()
         
     # Rewinds the line that was just played and plays the prev line
-    def previous_line(self):
-        if (self.script_iterator >= 0):
-            # Undo line that was just played
-            line = self.current_scene.script[self.script_iterator]
-            print('Rewinding: ' + str(line))
-            # If an Action was just played:
-            # Remove character if it just entered, or add character if it was just removed
-            if (type(line) == Action):
-                if (line.action_type == 'enter'):
-                    line_character = None
-                    for character in self.scene_characters:
-                        if character.id == line.character_id:
-                            line_character = character
-                    self._remove_character(line_character)
+    # Callback parameter added for Kivy on_press callback
+    def previous_line(self, callback):
+        # Check if a sound is currently playing; rewind if no sound playing
+        if (not self.is_sound):
+            if (self.script_iterator >= 0):
+                # Undo line that was just played
+                line = self.current_scene.script[self.script_iterator]
+                # print('Rewinding: ' + str(line))
+                # If an Action was just played:
+                # Remove character if it just entered, or add character if it was just removed
+                if (type(line) == Action):
+                    if (line.action_type == 'enter'):
+                        line_character = None
+                        for character in self.scene_characters:
+                            if character.id == line.character_id:
+                                line_character = character
+                        self._remove_character(line_character)
+                    else:
+                        self._render_character(line_character)
+                # If current line was a Line:
+                # Play previous line
                 else:
-                    self._render_character(line_character)
-            # If current line was a Line:
-            # Play previous line
-            else:
-                # Check if a line in the script has been executed yet
-                if (self.line_iterator > 0):
-                    self.line_iterator -= 1
-                    self.lines.pop()
-                    self.play_line(self.lines[self.line_iterator])
-                else:
-                    # Remove dialogue label if no line has been executed
-                    self.current_line.text = ""
-                    # Update tracking variables
-                    self.lines = []
-                    self.line_iterator = -1
-            self.script_iterator -= 1
+                    # Check if a line in the script has been executed yet
+                    if (self.line_iterator > 0):
+                        self.line_iterator -= 1
+                        self.lines.pop()
+                        # self.play_line(self.lines[self.line_iterator])
+                    else:
+                        # Update tracking variables
+                        self.lines = []
+                        self.line_iterator = -1
+                self.script_iterator -= 1
 
     def play_line(self, line):
         if (type(line) == Line):
-            self.current_line.text = line.text
+            # print('Playing: ' + str(line))
+            self.play_audio(line.audio_file)
+            # Animate mouth
+            for character in self.scene_characters:
+                if character.id == line.character_id:
+                    self._animate_mouth(character)
         else:
             line_character = None
             for character in self.scene_characters:
@@ -185,6 +230,22 @@ class Module(Screen):
                 self._render_character(line_character)
             else:
                 self._remove_character(line_character)
+
+    def play_audio(self, audio):
+        audio_file = self.audio_path + audio
+        # Disable next/prev buttons
+        self.is_sound = True
+        sound = SoundLoader.load(audio_file)
+        sound.bind(on_stop=self.on_audio_finish)
+        sound.play()
+    
+    # Callback function for when audio is finished playing
+    def on_audio_finish(self, sound):
+        # Enable next/prev buttons
+        self.is_sound = False
+        sound.unload()
+        # Stop character animation
+        self._stop_talking()
 
     def _render_character(self, character):
         # Load image from character as kivy object
@@ -199,7 +260,34 @@ class Module(Screen):
             id=str(character.id)
         )
         self.ids.float.add_widget(new_character)
+        self._render_mouth(character) # render mouth separately
         self.screen_characters += 1
+
+    def _render_mouth(self, character):
+        character_pos = dict(self._position_character())
+        character_pos['top'] -= character.mouth_offset_top 
+        character_pos['x'] -= character.mouth_offset_x
+        character.mouth_pos = character_pos # update character's mouth position
+        current_mouth = Image(
+            source=character.current_mouth,
+            pos_hint=character.mouth_pos,
+            size_hint_y= character.mouth_size,
+            height= 500,
+            id='mouth_'+str(character.id)
+        )
+        self.ids.float.add_widget(current_mouth)
+        self.id_to_mouth[character.id] = current_mouth # add mouth to id-mouth map
+
+    def _animate_mouth(self, character):
+        character.talk()
+        self.id_to_mouth[character.id].source = character.current_mouth # change source of the rendered mouth
+
+    def _stop_talking(self):
+        # stop whoever is talking
+        for c in self.scene_characters:
+            if c.is_talking:
+                c.stop()
+                self.id_to_mouth[c.id].source = c.current_mouth
 
     # Returns a Kivy position as a dictionary (x and top)
     def _position_character(self):
@@ -208,15 +296,22 @@ class Module(Screen):
     def _remove_character(self, character):
         for widget in self.ids.float.children:
             # Check if widget has associated ID (not a button)
-            if (widget.id):
+            if widget.id:
                 try:
                     # self.ids.float.remove_widget(widget) if (int(widget.id) == character.id)
                     if (int(widget.id) == character.id):
                         self.ids.float.remove_widget(widget)
                         self.screen_characters -= 1
+                        self.ids.float.remove_widget(self.id_to_mouth[character.id])
+                        del self.id_to_mouth[character.id] # delete id-mouth mapping
                 except:
                     pass
 
+    # Go to module selection screen
+    # Callback parameter added for Kivy on_press callback
+    def load_module_screen(self, callback):
+        self.manager.current = 'menu_screen'
+    
     def load_assessment(self):
         if self.user:
             self.manager.screens[4].ids = {

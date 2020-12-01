@@ -2,61 +2,97 @@
   {
     "id": 1,
     "name": "Salma",
-    "image": "salma.png"
+    "image": "salma.png",
+    "mouth_offset_top": 0.102,
+    "mouth_offset_x": 0.005,
+    "mouth_size": 0.02
   },
   {
     "id": 2,
     "name": "Granny",
-    "image": "granny.png"
+    "image": "granny.png",
+    "mouth_offset_top": 0.108,
+    "mouth_offset_x": 0.004,
+    "mouth_size": 0.02
   },
   {
     "id": 3,
     "name": "Sukhi",
-    "image": "sukhi.png"
+    "image": "sukhi.png",
+    "mouth_offset_top": 0.122,
+    "mouth_offset_x": 0.004,
+    "mouth_size": 0.02
   },
   {
     "id": 4,
     "name": "Anna",
-    "image": "anna.png"
+    "image": "anna.png",
+    "mouth_offset_top": 0.101,
+    "mouth_offset_x": 0.004,
+    "mouth_size": 0.03
   },
   {
     "id": 5,
     "name": "Biju Bai",
-    "image": "biju_bai.png"
+    "image": "biju_bai.png",
+    "mouth_offset_top": 0.101,
+    "mouth_offset_x": 0.004,
+    "mouth_size": 0.03
   },
   {
     "id": 6,
     "name": "Kamla",
-    "image": "kamla.png"
+    "image": "kamla.png",
+    "mouth_offset_top": 0.101,
+    "mouth_offset_x": 0.004,
+    "mouth_size": 0.03
   },
   {
     "id": 7,
     "name": "Seema",
-    "image": "seema.png"
+    "image": "seema.png",
+    "mouth_offset_top": 0.101,
+    "mouth_offset_x": 0.004,
+    "mouth_size": 0.03
   },
   {
     "id": 8,
     "name": "Fiza",
-    "image": "fiza.png"
+    "image": "fiza.png",
+    "mouth_offset_top": 0.101,
+    "mouth_offset_x": 0.004,
+    "mouth_size": 0.03
   },
   {
     "id": 9,
     "name": "Kirann",
-    "image": "kirann.png"
+    "image": "kirann.png",
+    "mouth_offset_top": 0.101,
+    "mouth_offset_x": 0.004,
+    "mouth_size": 0.03
   },
   {
     "id": 10,
     "name": "Ramesh",
-    "image": "ramesh.png"
+    "image": "ramesh.png",
+    "mouth_offset_top": 0.101,
+    "mouth_offset_x": 0.004,
+    "mouth_size": 0.03
   },
   {
     "id": 11,
     "name": "Vishal",
-    "image": "vishal.png"
+    "image": "vishal.png",
+    "mouth_offset_top": 0.101,
+    "mouth_offset_x": 0.004,
+    "mouth_size": 0.03
   },
   {
     "id": 12,
     "name": "Teacher",
-    "image": "teacher.png"
+    "image": "teacher.png",
+    "mouth_offset_top": 0.101,
+    "mouth_offset_x": 0.004,
+    "mouth_size": 0.03
   }
 ]
