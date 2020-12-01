@@ -7,12 +7,12 @@
       "question_audio": "question1.wav",
       "explanation_audio": "answer1.wav",
       "type": "multiple_choice",
-      "image_options": [],
+      "image_options": ["13.jpg", "10.jpg", "19.jpg", "8.jpg"],
       "choices": ["Ages 13-16", "Ages 10-12", "Ages 19-21", "Ages 8-10"],
       "correct_answer": ["Ages 13-16"]
     },
     {
-      "question_text": "When does puberty occur in girls?",
+      "question_text": "",
       "explanation_text": "Ages 13-16",
       "question_id": 2,
       "question_audio": "question2.wav",
@@ -27,9 +27,9 @@
       "explanation_text": "Increased body hair, menstruation, enlargened breasts",
       "question_id": 3,
       "question_audio": "question3.wav",
-      "explanation_audio": "question4.wav",
+      "explanation_audio": "answer3.wav",
       "type": "multiple_choice",
-      "image_options": [],
+      "image_options": ["pubic.jpeg", "menstruation.png","breasts.jpg", "nothing.png"],
       "choices": ["Increased body hair", "menstruation", "enlargened breasts", "nothing"],
       "correct_answer": ["Increased body hair", "menstruation", "enlargened breasts"]
     }

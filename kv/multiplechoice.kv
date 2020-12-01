@@ -1,6 +1,7 @@
 #:import app_style util.style.app_style
 <MultipleChoice>:
 
+
     canvas:
         Color:
             rgba: app_style['assessment_background']
@@ -13,66 +14,59 @@
         rows: 0
         cols: 0
         orientation: "vertical"
-        Label:
-            font_size: '24sp'
-            pos: (700, 900)
-            text: root.question_text + " Select all that apply."
 
-
-
-        Label:
-            pos: (650, 800)
-            color: (0, 0, 0, 1)
+        Image:
             id: feedback
-            text: ""
+            opacity: 0
+            source: "x.png"
+            pos: (700, 800)
+
 
         Button:
             id: option1
-            text: root.choices[0]
             background_color:app_style['assessment_background']
+            background_normal: root.image_options[0]
             size: 300, 200
             pos: 200, 500
-            on_press: root.selected.append(option1.text) if option1.text not in root.selected else root.selected.remove(option1.text)
-            on_release: option1.background_color = (0, 0, 1, 1) if option1.text in root.selected else app_style['assessment_background']
+            on_press: root.selected.append(root.choices[0]) if root.choices[0] not in root.selected else root.selected.remove(root.choices[0])
+            on_release: option1.background_color = (0, 0, 1, 1) if root.choices[0] in root.selected else app_style['assessment_background']
 
 
         Button:
             id: option2
-            text: root.choices[1]
             background_color: app_style['assessment_background']
+            background_normal: root.image_options[1]
             pos: 200, 200
             size: 300, 200
-            on_press: root.selected.append(option2.text) if option2.text not in root.selected else root.selected.remove(option2.text)
-            on_release: option2.background_color = (0, 0, 1, 1) if option2.text in root.selected else app_style['assessment_background']
+            on_press: root.selected.append(root.choices[1]) if root.choices[1] not in root.selected else root.selected.remove(root.choices[1])
+            on_release: option2.background_color = (0, 0, 1, 1) if root.choices[1] in root.selected else app_style['assessment_background']
 
         Button:
             id: option3
-            text: root.choices[2]
             background_color: app_style['assessment_background']
+            background_normal: root.image_options[2]
             pos: 1000, 500
             size: 300, 200
             on_press:
-                root.selected.append(option3.text) if option3.text not in root.selected else root.selected.remove(option3.text)
+                root.selected.append(root.choices[2]) if root.choices[2] not in root.selected else root.selected.remove(root.choices[2])
    
-            on_release: option3.background_color = (0, 0, 1, 1) if option3.text in root.selected else app_style['assessment_background']
+            on_release: option3.background_color = (0, 0, 1, 1) if root.choices[2] in root.selected else app_style['assessment_background']
 
         Button:
             id: option4
-            text: root.choices[3]
             background_color: app_style['assessment_background']
+            background_normal: root.image_options[3]
             pos: 1000, 200
             size: 300, 200
-            on_press: root.selected.append(option4.text) if option4.text not in root.selected else root.selected.remove(option4.text)
-            on_release: option4.background_color = (0, 0, 1, 1) if option4.text in root.selected else app_style['assessment_background']
+            on_press: root.selected.append(root.choices[3]) if root.choices[3] not in root.selected else root.selected.remove(root.choices[3])
+            on_release: option4.background_color = (0, 0, 1, 1) if root.choices[3] in root.selected else app_style['assessment_background']
 
         Button:
             id: submit
-            text: "Submit"
             pos: 600, 50
             size: 300, 200
-            background_color: app_style['assessment_background']
+            background_normal: 'assets/next-arrow.png'
             on_release:
                 root.verify()
-                feedback.text = feedback.text
 
 

@@ -26,10 +26,11 @@
             drop_func: root.correct
             failed_drop_func: root.wrong
             size_hint: dnd_from_style['size_hint']
-            background_color: dnd_from_style['background_color']
+
+
 
             Image:
-                source: root.ordered_image_ids[0]
+                source: 'testicle.png'
                 y: self.parent.y
                 x: self.parent.x
                 size: self.parent.size
@@ -40,10 +41,10 @@
             drop_func: root.correct
             failed_drop_func: root.wrong
             size_hint: dnd_from_style['size_hint']
-            background_color: dnd_from_style['background_color']
+
 
             Image:
-                source: root.ordered_image_ids[1]
+                source: 'breasts.jpg'
                 y: self.parent.y
                 x: self.parent.x
                 size: self.parent.size
@@ -54,10 +55,9 @@
             drop_func: root.correct
             failed_drop_func: root.wrong
             size_hint: dnd_from_style['size_hint']
-            background_color: dnd_from_style['background_color']
 
             Image:
-                source: root.ordered_image_ids[2]
+                source: 'grow.jpg'
                 y: self.parent.y
                 x: self.parent.x
                 size: self.parent.size
@@ -82,6 +82,7 @@
                     pos: self.pos
                     size: self.size
                     radius: [50,]
+                    source: 'assets/male.png'
             pos_hint: {'center_x': dnd_to_style['pos_hint_x']}
 
         Label:
@@ -93,6 +94,7 @@
                     pos: self.pos
                     size: self.size
                     radius: [50,]
+                    source: 'female.png'
             pos_hint: {'center_x': dnd_to_style['pos_hint_x']}
 
         Label:
@@ -104,4 +106,5 @@
                     pos: self.pos
                     size: self.size
                     radius: [50,]
+                    source: 'both.png'
             pos_hint: {'center_x': dnd_to_style['pos_hint_x']}

@@ -18,7 +18,6 @@ class AssessmentManager(Screen):
         self.index = -1
         self.current_question_text = ''
         self.current_question = ""
-        self.types = []
         self.grid = None
         Clock.schedule_once(self.finished_init)
         
@@ -38,19 +37,18 @@ class AssessmentManager(Screen):
 
 
     def _load(self, module_number: int):
-        filepath = "assets/json/questions" + str(module_number) + ".json"
+        filepath = "assets/json/questions0.json"
         with open(filepath) as file:
             data = json.load(file)
         question_dicts = data['questions']
         for question in question_dicts:
             if question["type"] == 'multiple_choice':
-                self.types.append(1)
                 new_question = MultipleChoice(question_text = question['question_text'], question_id =question['question_id'],
                             question_audio = question['question_audio'], explanation_text = question["explanation_text"],
                             explanation_audio = question["explanation_audio"], image_options = question["image_options"],
                             correct_answer = question["correct_answer"], choices = question['choices'], on_complete = self.advance_question)
+                print(new_question.image_options)
             if question["type"] == "drag_and_drop":
-                self.types.append(0)
                 new_question = DragAndDrop(question_text = question['question_text'], question_id = question['question_id'],
                                            question_audio = question['question_audio'], explanation_text = question["explanation_text"],
                                            explanation_audio = question["explanation_audio"], ordered_image_ids = question["ordered_image_ids"],
