@@ -15,7 +15,7 @@ class LoginScreen(Screen):
     def login(self):
         # TEMP BYPASS
         if self.login_email == 'EWH':
-            self.manager.current = 'assessment_manager'
+            self.manager.current = 'module'
             return
         try:
             self.ids.admin = login(self.login_email, self.login_password)
