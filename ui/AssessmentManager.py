@@ -6,8 +6,6 @@ from components.DragAndDrop import DragAndDrop
 from kivy.clock import Clock
 from kivy.core.audio import SoundLoader
 
-from util.store import update_assessment_state
-
 class AssessmentManager(Screen):
     def __init__(self, **kw):
         super().__init__(**kw)
@@ -62,7 +60,6 @@ class AssessmentManager(Screen):
         self.grid.clear_widgets()
         if self.index < len(self.assessment) - 1:
             self.index = self.index + 1
-            #update_assessment_state(self.ids.user.id, self.index, self.question_id, False)
             self.render_question()
         else:
             self.on_assessment_complete()
