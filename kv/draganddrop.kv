@@ -15,7 +15,6 @@
         orientation: 'vertical'
         id: from_box
         pos_hint: {'center_x': .3, 'center_y': .5}
-
         size_hint_x: dnd_from_style['layout_size_x']
         size_hint_y: dnd_from_style['layout_size_y']
 
@@ -23,16 +22,15 @@
 
         DraggableButton:
             text: '1'
-            color: app_style['assessment_background']
+            pos: 150, 900
+            color: 0, 0, 0, 0
             droppable_zone_objects: [box_1]
             drop_func: root.correct
             failed_drop_func: root.wrong
             size_hint: dnd_from_style['size_hint']
 
-
-
             Image:
-                source: 'assets/game/testicles.png'
+                source: root.ordered_image_ids[0]
                 y: self.parent.y
                 x: self.parent.x
                 size: self.parent.size
@@ -40,6 +38,7 @@
 
         DraggableButton:
             text: '2'
+            pos: 150, 600
             color: app_style['assessment_background']
             droppable_zone_objects: [box_2]
             drop_func: root.correct
@@ -48,7 +47,7 @@
 
 
             Image:
-                source: 'assets/game/breasts.jpg'
+                source: root.ordered_image_ids[1]
                 y: self.parent.y
                 x: self.parent.x
                 size: self.parent.size
@@ -56,14 +55,15 @@
 
         DraggableButton:
             text: '3'
-            color: 0,0,0,0
+            pos: 150, 300
+            color: app_style['assessment_background']
             droppable_zone_objects: [box_3]
             drop_func: root.correct
             failed_drop_func: root.wrong
             size_hint: dnd_from_style['size_hint']
 
             Image:
-                source: 'assets/game/growth.jpg'
+                source: root.ordered_image_ids[2]
                 y: self.parent.y
                 x: self.parent.x
                 size: self.parent.size
@@ -84,11 +84,10 @@
             canvas.before:
                 Color:
                     rgb: app_style['assessment_background']
-                RoundedRectangle:
+                Rectangle:
                     pos: self.pos
-                    size: self.size
-                    radius: [200,]
-                    source: 'assets/game/male.png'
+                    size: (250, 350)
+                    source: root.ordered_image_ids[3]
             pos_hint: {'center_x': dnd_to_style['pos_hint_x']}
 
         Label:
@@ -96,11 +95,10 @@
             canvas.before:
                 Color:
                     rgb: app_style['assessment_background']
-                RoundedRectangle:
+                Rectangle:
                     pos: self.pos
-                    size: self.size
-                    radius: [200,]
-                    source: 'assets/game/female.png'
+                    size: (250, 350)
+                    source: root.ordered_image_ids[4]
             pos_hint: {'center_x': dnd_to_style['pos_hint_x']}
 
         Label:
@@ -108,9 +106,8 @@
             canvas.before:
                 Color:
                     rgb: app_style['assessment_background']
-                RoundedRectangle:
+                Rectangle:
                     pos: self.pos
-                    size: self.size
-                    radius: [200,]
-                    source: 'assets/game/both.jpg'
+                    size: (250, 350)
+                    source: root.ordered_image_ids[5]
             pos_hint: {'center_x': dnd_to_style['pos_hint_x']}

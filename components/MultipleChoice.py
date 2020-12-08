@@ -19,7 +19,6 @@ from kivy.core.audio import SoundLoader
 
 class MultipleChoice(GridLayout):
     image_options = ListProperty(["", "", "", ""])
-    question_text = StringProperty("")
     selected = []
     def __init__(self, **kwargs):
         Builder.load_file('kv/multiplechoice.kv')

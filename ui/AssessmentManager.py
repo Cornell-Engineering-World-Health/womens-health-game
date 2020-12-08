@@ -53,6 +53,7 @@ class AssessmentManager(Screen):
                                            explanation_audio = question["explanation_audio"], ordered_image_ids = question["ordered_image_ids"],
                                            current_answer = question["current_answer"], on_complete = self.advance_question)
             self.assessment.append(new_question)
+        print(self.assessment)
 
 
     def advance_question(self):
@@ -66,6 +67,7 @@ class AssessmentManager(Screen):
 
     def render_question(self):
         curr = self.assessment[self.index]
+        print(curr.question_id)
         self.grid.add_widget(curr)
         question_audio = SoundLoader.load(curr.question_audio)
         question_audio.play()

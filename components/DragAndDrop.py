@@ -12,7 +12,6 @@ from kivy.lang import Builder
 from kivy.properties import ListProperty
 
 from kivydnd.dragndropwidget import DragNDropWidget
-
 from kivy.clock import Clock
 from functools import partial
 
@@ -21,10 +20,10 @@ class  DraggableButton(Button, DragNDropWidget):
     def __init__(self, **kw):
         super(DraggableButton, self).__init__(**kw)
 
+
 class DragAndDrop(BoxLayout):
-
-    ordered_image_ids = ListProperty(["", "", ""])
-
+    ordered_image_ids = ListProperty(["", "", "", "", "", ""])
+    current_answer = []
     def __init__(self, **kwargs):
         Builder.load_file('kv/draganddrop.kv')
         super().__init__()
@@ -54,8 +53,8 @@ class DragAndDrop(BoxLayout):
 
     def correct(self, calling_widget):
         self.current_answer.append(calling_widget)
-        Clock.schedule_once(partial(self.call_back, calling_widget.text), 1)
-        if len(self.current_answer) == len(self.ordered_image_ids):
+        #Clock.schedule_once(partial(self.call_back, calling_widget.text), 1)
+        if len(self.current_answer) == len(self.ordered_image_ids)//2:
             self.explanation_audio.stop()
             self.on_complete()
 

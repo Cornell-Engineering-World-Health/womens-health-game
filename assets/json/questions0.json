@@ -1,37 +1,34 @@
 {
   "questions": [
     {
-      "question_text": "When does puberty occur in girls?",
-      "explanation_text": "Ages 13-16",
+      "question_text": "",
+      "explanation_text": "",
       "question_id": 1,
       "question_audio": "assets/audio/english/question1.wav",
       "explanation_audio": "assets/audio/english/answer1.wav",
-      "type": "multiple_choice",
-      "image_options": ["assets/game/13.jpg", "assets/game/10.jpg", "assets/game/19.jpg", "assets/game/8.jpg"],
-      "choices": ["Ages 13-16", "Ages 10-12", "Ages 19-21", "Ages 8-10"],
-      "correct_answer": ["Ages 13-16"]
+      "type": "drag_and_drop",
+      "ordered_image_ids": ["assets/game/pubic1.png","assets/game/pubic2.png","assets/game/pubic3.png","assets/game/adult.png","assets/game/teen.png", "assets/game/kid.png"],
+      "current_answer": []
     },
     {
       "question_text": "",
-      "explanation_text": "Ages 13-16",
+      "explanation_text": "",
       "question_id": 2,
       "question_audio": "assets/audio/english/question2.wav",
       "explanation_audio": "assets/audio/english/answer2.wav",
       "type": "drag_and_drop",
-      "ordered_image_ids": ["assets/drag-and-drop/shape1.png", "assets/drag-and-drop/shape2.png", 
-        "assets/drag-and-drop/shape3.png"],
+      "ordered_image_ids": ["assets/game/breasts1.png","assets/game/breasts2.png","assets/game/breasts3.png","assets/game/adult.png","assets/game/teen.png", "assets/game/kid.png"],
       "current_answer": []
     },
     {
-      "question_text": "What happens during puberty?",
-      "explanation_text": "Increased body hair, menstruation, enlargened breasts",
+      "question_text": "",
+      "explanation_text": "",
       "question_id": 3,
       "question_audio": "assets/audio/english/question3.wav",
       "explanation_audio": "assets/audio/english/answer3.wav",
-      "type": "multiple_choice",
-      "image_options": ["assets/game/pubic.jpeg", "assets/game/menstruation.jpg","assets/game/breasts.jpg", "assets/game/nothing.png"],
-      "choices": ["Increased body hair", "menstruation", "enlargened breasts", "nothing"],
-      "correct_answer": ["Increased body hair", "menstruation", "enlargened breasts"]
+      "type": "drag_and_drop",
+      "ordered_image_ids": ["assets/game/hips1.png","assets/game/hips2.png","assets/game/hips3.png","assets/game/adult.png","assets/game/teen.png", "assets/game/kid.png"],
+      "current_answer": []
     }
   ]
 }
