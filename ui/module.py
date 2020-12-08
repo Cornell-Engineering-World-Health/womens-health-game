@@ -54,8 +54,6 @@ class Module(Screen):
         # loads the current user data into user if they exist
 
         # Pre-existing id: float (FloatLayout id)
-        #self.user = self.manager.screens[6].ids.user
-        #self.module_number = self.ids.module_number
         if len(self.ids) > 1:
             self.user = self.ids.user
             self.module_number = self.ids.module_number
