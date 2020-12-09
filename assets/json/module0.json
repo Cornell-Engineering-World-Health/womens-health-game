@@ -19,6 +19,30 @@
           "dialogue_file": "dialogue_selma_1.wav"
         },
         {
+          "type": "picture",
+          "name": "hip1",
+          "src": "assets/pictures/hip1.png",
+          "action_type": "enter"
+        },
+        {
+          "type": "picture",
+          "name": "hip2",
+          "src": "assets/pictures/hip2.png",
+          "action_type": "enter"
+        },
+        {
+          "type": "picture",
+          "name": "hip3",
+          "src": "assets/pictures/hip3.png",
+          "action_type": "enter"
+        },
+        {
+          "type": "picture",
+          "name": ["hip1","hip2","hip3"],
+          "src": ["assets/pictures/hip1.png","assets/pictures/hip2.png","assets/pictures/hip3.png"],
+          "action_type": "clear"
+        },
+        {
           "type": "action",
           "character_id": 2,
           "action_type": "enter"
