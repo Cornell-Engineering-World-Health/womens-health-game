@@ -18,7 +18,6 @@ class AssessmentManager(Screen):
         self.index = -1
         self.current_question_text = ''
         self.current_question = ""
-        self.types = []
         self.grid = None
         Clock.schedule_once(self.finished_init)
 
@@ -44,18 +43,17 @@ class AssessmentManager(Screen):
         question_dicts = data['questions']
         for question in question_dicts:
             if question["type"] == 'multiple_choice':
-                self.types.append(1)
                 new_question = MultipleChoice(question_text = question['question_text'], question_id =question['question_id'],
                             question_audio = question['question_audio'], explanation_text = question["explanation_text"],
                             explanation_audio = question["explanation_audio"], image_options = question["image_options"],
                             correct_answer = question["correct_answer"], choices = question['choices'], on_complete = self.advance_question)
             if question["type"] == "drag_and_drop":
-                self.types.append(0)
                 new_question = DragAndDrop(question_text = question['question_text'], question_id = question['question_id'],
                                            question_audio = question['question_audio'], explanation_text = question["explanation_text"],
                                            explanation_audio = question["explanation_audio"], ordered_image_ids = question["ordered_image_ids"],
                                            current_answer = question["current_answer"], on_complete = self.advance_question)
             self.assessment.append(new_question)
+        print(self.assessment)
 
 
     def advance_question(self):
@@ -73,7 +71,7 @@ class AssessmentManager(Screen):
     def render_question(self):
         curr = self.assessment[self.index]
         self.grid.add_widget(curr)
-        question_audio = SoundLoader.load("rushes.wav")
+        question_audio = SoundLoader.load(curr.question_audio)
         question_audio.play()
 
 

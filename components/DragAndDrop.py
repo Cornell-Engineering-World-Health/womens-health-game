@@ -12,7 +12,6 @@ from kivy.lang import Builder
 from kivy.properties import ListProperty
 
 from kivydnd.dragndropwidget import DragNDropWidget
-
 from kivy.clock import Clock
 from functools import partial
 
@@ -21,12 +20,11 @@ class  DraggableButton(Button, DragNDropWidget):
     def __init__(self, **kw):
         super(DraggableButton, self).__init__(**kw)
 
+
 class DragAndDrop(BoxLayout):
-
-    ordered_image_ids = ListProperty(["", "", ""])
-
+    ordered_image_ids = ListProperty(["", "", "", "", "", ""])
+    current_answer = []
     def __init__(self, **kwargs):
-        Builder.load_file('kv/draganddrop.kv')
         super().__init__()
         Question.__init__(self, question_id=kwargs['question_id'], question_text=kwargs['question_text'],
                           question_audio=kwargs['question_audio'], explanation_text=kwargs['explanation_text'],
@@ -34,9 +32,7 @@ class DragAndDrop(BoxLayout):
         self.ordered_image_ids = kwargs['ordered_image_ids']
         self.current_answer = kwargs['current_answer']
         self.on_complete = kwargs['on_complete']
-        self.question_audio = SoundLoader.load(self.question_audio)
         self.explanation_audio = SoundLoader.load(self.explanation_audio)
-
 
     def _get_id(self, id):
         id_dict = {
@@ -49,20 +45,17 @@ class DragAndDrop(BoxLayout):
     def _replace_image(self, id):
         old_widget = self._get_id(id)
         self.ids.to_box.remove_widget(old_widget)
-        self.ids.to_box.add_widget(Image(source='assets/drag-and-drop/shape' + id + '.png'), index=(3 - int(id)))
+        self.ids.to_box.add_widget(Image(source='assets/drag-and-drop/shape' + id + '.png',opacity = 0), index=(3 - int(id)))
 
     def call_back(self, id, *largs):
         self._replace_image(id)
 
     def correct(self, calling_widget):
         self.current_answer.append(calling_widget)
-        Clock.schedule_once(partial(self.call_back, calling_widget.text), 1)
-        print(self.current_answer)
-        if len(self.current_answer) == len(self.ordered_image_ids):
+        #Clock.schedule_once(partial(self.call_back, calling_widget.text), 1)
+        if len(self.current_answer) == len(self.ordered_image_ids)//2:
             self.explanation_audio.stop()
             self.on_complete()
-        print ("Correct!")
 
     def wrong(self, the_widget=None, parent=None, kv_root=None):
         self.explanation_audio.play()
-        print("Wrong place!")
