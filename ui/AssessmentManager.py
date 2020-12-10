@@ -37,7 +37,7 @@ class AssessmentManager(Screen):
 
 
     def _load(self, module_number: int):
-        filepath = "assets/json/questions0.json"
+        filepath = "assets/json/questions" + str(module_number) + ".json"
         with open(filepath) as file:
             data = json.load(file)
         question_dicts = data['questions']
