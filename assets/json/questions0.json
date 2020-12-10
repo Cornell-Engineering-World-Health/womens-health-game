@@ -4,8 +4,8 @@
       "question_text": "",
       "explanation_text": "",
       "question_id": 1,
-      "question_audio": "assets/audio/english/question1.wav",
-      "explanation_audio": "assets/audio/english/answer1.wav",
+      "question_audio": "assets/audio/english/speech.wav",
+      "explanation_audio": "assets/audio/english/speech.wav",
       "type": "drag_and_drop",
       "ordered_image_ids": ["assets/game/pubic1.png","assets/game/pubic2.png","assets/game/pubic3.png","assets/game/adult.png","assets/game/teen.png", "assets/game/kid.png"],
       "current_answer": []
@@ -14,8 +14,8 @@
       "question_text": "",
       "explanation_text": "",
       "question_id": 2,
-      "question_audio": "assets/audio/english/question2.wav",
-      "explanation_audio": "assets/audio/english/answer2.wav",
+      "question_audio": "assets/audio/english/speech.wav",
+      "explanation_audio": "assets/audio/english/speech.wav",
       "type": "drag_and_drop",
       "ordered_image_ids": ["assets/game/breasts1.png","assets/game/breasts2.png","assets/game/breasts3.png","assets/game/adult.png","assets/game/teen.png", "assets/game/kid.png"],
       "current_answer": []
@@ -24,8 +24,8 @@
       "question_text": "",
       "explanation_text": "",
       "question_id": 3,
-      "question_audio": "assets/audio/english/question3.wav",
-      "explanation_audio": "assets/audio/english/answer3.wav",
+      "question_audio": "assets/audio/english/speech.wav",
+      "explanation_audio": "assets/audio/english/speech.wav",
       "type": "drag_and_drop",
       "ordered_image_ids": ["assets/game/hips1.png","assets/game/hips2.png","assets/game/hips3.png","assets/game/adult.png","assets/game/teen.png", "assets/game/kid.png"],
       "current_answer": []
