@@ -25,7 +25,6 @@ class DragAndDrop(BoxLayout):
     ordered_image_ids = ListProperty(["", "", "", "", "", ""])
     current_answer = []
     def __init__(self, **kwargs):
-        Builder.load_file('kv/draganddrop.kv')
         super().__init__()
         Question.__init__(self, question_id=kwargs['question_id'], question_text=kwargs['question_text'],
                           question_audio=kwargs['question_audio'], explanation_text=kwargs['explanation_text'],
