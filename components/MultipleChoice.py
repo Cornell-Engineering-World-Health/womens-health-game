@@ -1,5 +1,6 @@
 from kivy.properties import ListProperty
 from kivy.uix.gridlayout import GridLayout
+from kivy.uix.image import Image
 from kivy.uix.widget import Widget
 import kivy
 import json
@@ -17,11 +18,9 @@ from kivy.core.audio import SoundLoader
 
 
 class MultipleChoice(GridLayout):
-    choices = ListProperty(["", "", "", ""])
-    question_text = StringProperty("")
+    image_options = ListProperty(["", "", "", ""])
     selected = []
     def __init__(self, **kwargs):
-        Builder.load_file('kv/multiplechoice.kv')
         super().__init__()
         Question.__init__(self, question_id=kwargs['question_id'], question_text=kwargs['question_text'],
                           question_audio=kwargs['question_audio'], explanation_text=kwargs['explanation_text'],
@@ -32,7 +31,6 @@ class MultipleChoice(GridLayout):
         self.correct_answer = kwargs['correct_answer']
         self.on_complete = kwargs['on_complete']
         self.on_attempt = kwargs['on_attempt']
-        self.question_audio = SoundLoader.load(self.question_audio)
         self.explanation_audio = SoundLoader.load(self.explanation_audio)
 
 
@@ -41,10 +39,9 @@ class MultipleChoice(GridLayout):
     def verify(self):
         if set(self.correct_answer) == set(self.selected):
             self.on_attempt()
-            self.ids["feedback"].text = "Correct!"
             self.explanation_audio.stop()
             self.on_complete()
         else:
-            self.ids["feedback"].text = "Incorrect"
             self.on_attempt()
             self.explanation_audio.play()
+            self.ids["feedback"].opacity = 1
