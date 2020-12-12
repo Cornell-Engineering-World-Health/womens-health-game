@@ -17,11 +17,9 @@ class Dashboard(Screen):
     def render_cards(self):
         grid = self.manager.screens[2].ids.grid_card
         for user in self.users:
-            card = Card(screen_manager=self.manager,first_name=user['first_name'], last_name=user['last_name'], village_name=user['village_name'])
+            card = Card(screen_manager=self.manager,id=user['_id'], first_name=user['first_name'], last_name=user['last_name'], village_name=user['village_name'])
             grid.add_widget(card)
 
     def on_leave(self):
         grid = self.manager.screens[2].ids.grid_card
         grid.clear_widgets()
-
-

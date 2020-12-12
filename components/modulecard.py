@@ -15,11 +15,11 @@ class ModuleCard(FloatLayout):
     def __init__(self, **kwargs):
         super().__init__()
 
-        # create card shape and background 
+        # create card shape and background
         with self.canvas.before:
             Color(rgba=module_card_style["background_color"])
             self.rect = RoundedRectangle(radius=module_card_style["radius"])
-        self.bind(pos=self.update_rect, size=self.update_rect)        
+        self.bind(pos=self.update_rect, size=self.update_rect)
 
         # access the screen manager via kwargs and set it to variable 'sm'
         self.sm = kwargs['screen_manager']
@@ -43,9 +43,9 @@ class ModuleCard(FloatLayout):
         # self.add_widget(self.progress(50))  # TODO: get progress
 
     # load module screen
-    def load_module(self, instance): 
-        self.sm.screens[2].ids.user = self.selected_user
-        self.sm.screens[2].ids.module_number = self.module_id 
+    def load_module(self, instance):
+        self.sm.screens[3].ids.user = self.selected_user
+        self.sm.screens[3].ids.module_number = self.module.get("id")
         self.sm.current = 'module'
 
     def update_rect(self, *args):
@@ -69,4 +69,3 @@ class ModuleCard(FloatLayout):
               size_hint=(.5, .15))
         bt.bind(on_press=self.load_module)
         return bt
-

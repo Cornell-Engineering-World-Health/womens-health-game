@@ -32,6 +32,7 @@ class DragAndDrop(BoxLayout):
         self.ordered_image_ids = kwargs['ordered_image_ids']
         self.current_answer = kwargs['current_answer']
         self.on_complete = kwargs['on_complete']
+        self.on_attempt = kwargs['on_attempt']
         self.explanation_audio = SoundLoader.load(self.explanation_audio)
 
     def _get_id(self, id):
@@ -54,8 +55,10 @@ class DragAndDrop(BoxLayout):
         self.current_answer.append(calling_widget)
         #Clock.schedule_once(partial(self.call_back, calling_widget.text), 1)
         if len(self.current_answer) == len(self.ordered_image_ids)//2:
+            self.on_attempt()
             self.explanation_audio.stop()
             self.on_complete()
 
     def wrong(self, the_widget=None, parent=None, kv_root=None):
         self.explanation_audio.play()
+        self.on_attempt()

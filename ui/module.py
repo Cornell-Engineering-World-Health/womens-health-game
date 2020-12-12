@@ -11,6 +11,8 @@ from kivy.uix.image import Image
 from kivy.clock import Clock
 from kivy.core.audio import SoundLoader
 
+from util.store import update_module_state, complete_module_state, current_module_state
+
 
 class Module(Screen):
     # instances
@@ -61,11 +63,18 @@ class Module(Screen):
             self.app.title = "Health Friend [Game]  ::  EWH"
 
         # Init and loading functions for module
+        self.load_local_storage()
         self.init_module_ui()
         self.load_module(self.module_number)
         self.load_characters()
         self.load_background()
         self.init_game_buttons()
+
+    # TODO: load in current state and override other values
+    def load_local_storage(self):
+        state = current_module_state(self.user['id'], self.module_number)
+        print("STATE", state)
+        pass
 
     # Screen positioning: assuming maximum of 3 characters on screen at one time
     def init_module_ui(self):
@@ -173,12 +182,16 @@ class Module(Screen):
                     self.line_iterator += 1
                 # print('Executing: ' + str(line))
                 self.play_line(line)
+                # update module state (user_id, module_id, scene, line)
+                update_module_state(self.user['id'], self.module_number, 0, self.line_iterator)
             else:
                 # Set script iterator to end of script
                 self.script_iterator = len(self.current_scene.script) - 1
+                # update module state to complete (user_id, module_id)
+                complete_module_state(self.user['id'], self.module_number)
                 # Advance to assessment
                 self.load_assessment()
-        
+
     # Rewinds the line that was just played and plays the prev line
     # Callback parameter added for Kivy on_press callback
     def previous_line(self, callback):
@@ -238,7 +251,7 @@ class Module(Screen):
         sound = SoundLoader.load(audio_file)
         sound.bind(on_stop=self.on_audio_finish)
         sound.play()
-    
+
     # Callback function for when audio is finished playing
     def on_audio_finish(self, sound):
         # Enable next/prev buttons
@@ -265,7 +278,7 @@ class Module(Screen):
 
     def _render_mouth(self, character):
         character_pos = dict(self._position_character())
-        character_pos['top'] -= character.mouth_offset_top 
+        character_pos['top'] -= character.mouth_offset_top
         character_pos['x'] -= character.mouth_offset_x
         character.mouth_pos = character_pos # update character's mouth position
         current_mouth = Image(
@@ -311,7 +324,7 @@ class Module(Screen):
     # Callback parameter added for Kivy on_press callback
     def load_module_screen(self, callback):
         self.manager.current = 'menu_screen'
-    
+
     def load_assessment(self):
         if self.user:
             self.manager.screens[4].ids = {
