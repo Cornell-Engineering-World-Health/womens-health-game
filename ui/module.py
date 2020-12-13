@@ -1,6 +1,7 @@
 from components.action import Action
 from components.line import Line
 from components.character import Character
+from components.picture import Picture
 
 import json
 from kivymd.app import MDApp
@@ -47,6 +48,8 @@ class Module(Screen):
         self.line_iterator = -1
         # character id mapped to mouth widget
         self.id_to_mouth = {}
+        # image name mapped to image widgets
+        self.images = {}
 
     # built in kivy function that runs before scene is loaded
     def on_pre_enter(self, *args):
@@ -133,11 +136,16 @@ class Module(Screen):
                     character_id = script_line['character_id']
                     action_type = script_line['action_type']
                     script.append(Action(character_id, action_type))
-                else:
+                elif script_line['type'] == 'line':
                     character_id = script_line['character_id']
                     text = script_line['dialogue']
                     audio_file = script_line['dialogue_file']
                     script.append(Line(character_id, text, audio_file))
+                elif script_line['type'] == 'picture':
+                    name = script_line['name']
+                    src = script_line.get('src')
+                    action_type = script_line['action_type']
+                    script.append(Picture(name, src, action_type))
             scene = Scene(character_ids, background_image, script)
             self.scenes.append(scene)
             self.current_scene = self.scenes[0]
@@ -204,17 +212,17 @@ class Module(Screen):
                 # If an Action was just played:
                 # Remove character if it just entered, or add character if it was just removed
                 if (type(line) == Action):
+                    line_character = None
+                    for character in self.scene_characters:
+                        if character.id == line.character_id:
+                            line_character = character
                     if (line.action_type == 'enter'):
-                        line_character = None
-                        for character in self.scene_characters:
-                            if character.id == line.character_id:
-                                line_character = character
                         self._remove_character(line_character)
                     else:
                         self._render_character(line_character)
                 # If current line was a Line:
                 # Play previous line
-                else:
+                elif (type(line) == Line):
                     # Check if a line in the script has been executed yet
                     if (self.line_iterator > 0):
                         self.line_iterator -= 1
@@ -224,6 +232,16 @@ class Module(Screen):
                         # Update tracking variables
                         self.lines = []
                         self.line_iterator = -1
+                # If current line is a Picture:
+                # remove it if it was added; render if it was removed
+                elif (type(line) == Picture):
+                    if (line.action_type == 'enter'):
+                        self._remove_picture(line.name)
+                    elif (line.action_type == 'exit'):
+                        self._render_picture(line.name, line.src)
+                    elif (line.action_type == 'clear'):
+                        for name, src in zip(line.name, line.src):
+                            self._render_picture(name, src)
                 self.script_iterator -= 1
 
     def play_line(self, line):
@@ -234,7 +252,7 @@ class Module(Screen):
             for character in self.scene_characters:
                 if character.id == line.character_id:
                     self._animate_mouth(character)
-        else:
+        elif (type(line) == Action):
             line_character = None
             for character in self.scene_characters:
                 if character.id == line.character_id:
@@ -243,6 +261,15 @@ class Module(Screen):
                 self._render_character(line_character)
             else:
                 self._remove_character(line_character)
+        elif (type(line) == Picture):
+            if (line.action_type == 'enter'):
+                self._render_picture(line.name, line.src)
+            elif (line.action_type == 'exit'):
+                self._remove_picture(line.name)
+            elif (line.action_type == 'clear'):
+                for name in line.name:
+                    self._remove_picture(name)
+            
 
     def play_audio(self, audio):
         audio_file = self.audio_path + audio
@@ -319,6 +346,24 @@ class Module(Screen):
                         del self.id_to_mouth[character.id] # delete id-mouth mapping
                 except:
                     pass
+    
+    # Render picture with default position in the middle.
+    def _render_picture(self, name, src):
+        pos = {'x': 0, 'top': 0.5}
+        image = Image(
+            source=src,
+            pos_hint=pos,
+            size_hint_y= None,
+            height= 500,
+            id=name
+        )
+        self.ids.float.add_widget(image)
+        self.images[name] = image
+    
+    # Remove picture
+    def _remove_picture(self, name):
+        self.ids.float.remove_widget(self.images[name])
+        del self.images[name]
 
     # Go to module selection screen
     # Callback parameter added for Kivy on_press callback
