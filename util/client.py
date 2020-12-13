@@ -20,12 +20,25 @@ def _api_call(endpoint, data=None):
 	req.wait(delay=0.5)
 	return req.result
 
-def new_state(new_state):
-	return  _api_call('state', new_state)
+# GET API CALL for state/user/:user_id
+def get_state_from_user_id(id):
+	return  _api_call('state/user/' + id)
+
+# POST API CALL for state/
+def post_state(new_state):
+	return  _api_call('state', data=new_state)
 
 def update_state(id, new_state):
-	return  _api_call('state/' + id, new_state)
+	new_state['user_id'] = id
+	json_obj = json.dumps(new_state, indent = 4)
+	user_state = get_state_from_user_id(id)
+	if(not user_state):
+		res = post_state(json_obj)
+	else:
+		res = _api_call('state/user/' + id, json_obj)
+	return res
 
+# GET API CALL for state/admin/:admin_id
 def get_students_from_admin_id(id):
 	return _api_call('users/admin/' + id)
 

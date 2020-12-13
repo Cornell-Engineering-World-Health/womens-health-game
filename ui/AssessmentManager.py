@@ -6,7 +6,7 @@ from components.DragAndDrop import DragAndDrop
 from kivy.clock import Clock
 from kivy.core.audio import SoundLoader
 
-from util.store import update_assessment_state, complete_question_state, current_assessment_state
+from util.store import update_assessment_progress, complete_question_state, current_assessment_progress
 
 class AssessmentManager(Screen):
     def __init__(self, **kw):
@@ -41,7 +41,7 @@ class AssessmentManager(Screen):
 
     # TODO: load in current state and override other values
     def load_local_storage(self):
-        state = current_assessment_state(self.user['id'], self.module_number)
+        state = current_assessment_progress(self.user['id'], self.module_number)
         print("STATE", state)
         pass
 
@@ -84,7 +84,7 @@ class AssessmentManager(Screen):
     def attempt(self):
         # update question state to reflect attempt change (user_id, module_id, question_id, attempts)
         self.current_question_attempts += 1
-        update_assessment_state(self.user['id'], self.module_number, self.index, self.current_question_attempts)
+        update_assessment_progress(self.user['id'], self.module_number, self.index, self.current_question_attempts)
 
     def render_question(self):
         curr = self.assessment[self.index]
