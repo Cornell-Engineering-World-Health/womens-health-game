@@ -20,6 +20,12 @@ def _api_call(endpoint, data=None):
 	req.wait(delay=0.5)
 	return req.result
 
+def new_state(new_state):
+	return  _api_call('state', new_state)
+
+def update_state(id, new_state):
+	return  _api_call('state/' + id, new_state)
+
 def get_students_from_admin_id(id):
 	return _api_call('users/admin/' + id)
 
