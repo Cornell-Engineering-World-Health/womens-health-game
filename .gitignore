@@ -9,3 +9,4 @@ ui/__pycache__
 kv/__pycache__
 kivydnd/__pycache__
 components/__pycache__
+storage/game_state.json
