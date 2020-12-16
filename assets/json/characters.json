@@ -94,5 +94,29 @@
     "mouth_offset_top": 0.101,
     "mouth_offset_x": 0.004,
     "mouth_size": 0.03
+  },
+  {
+    "id": 13,
+    "name": "Marina",
+    "image": "marina.png",
+    "mouth_offset_top": 0.101,
+    "mouth_offset_x": 0.004,
+    "mouth_size": 0.03
+  },
+  {
+    "id":  14,
+    "name": "Hansa",
+    "image": "hansa.png",
+    "mouth_offset_top": 0.101,
+    "mouth_offset_x": 0.004,
+    "mouth_size": 0.03
+  },
+  {
+    "id": 15,
+    "name": "Seema",
+    "image": "seema.png",
+    "mouth_offset_top": 0.101,
+    "mouth_offset_x": 0.004,
+    "mouth_size": 0.03
   }
 ]
