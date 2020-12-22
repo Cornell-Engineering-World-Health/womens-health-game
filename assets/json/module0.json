@@ -316,7 +316,7 @@
           "dialogue": "But these changes are not only for pregnancy. The changes prepare the body for processes such as reproduction, nourishment of the baby and regulation of many other processes required for proper functioning of the body. ",
           "dialogue_file": "kiran13.mp3"
         },
-        {"type":  "action",
+        {"type": "action",
         "character_id": 4,
         "action_type":  "enter"
         },
