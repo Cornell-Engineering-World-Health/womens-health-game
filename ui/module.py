@@ -159,7 +159,7 @@ class Module(Screen):
         )
         self.ids.float.add_widget(background)
 
-    # Plays the current line and advances the script_iterator
+    # Plays the current line and advances the script_iteratorc
     # Callback parameter added for Kivy on_press callback
     def advance_line(self, callback):
         # Check if a sound is currently playing; advance if no sound playing
@@ -196,9 +196,9 @@ class Module(Screen):
                         for character in self.scene_characters:
                             if character.id == line.character_id:
                                 line_character = character
-                        self._remove_character(line_character)
-                    else:
-                        self._render_character(line_character)
+                                self._remove_character(line_character)
+                            else:
+                                self._render_character(line_character)
                 # If current line was a Line:
                 # Play previous line
                 else:
@@ -233,6 +233,7 @@ class Module(Screen):
 
     def play_audio(self, audio):
         audio_file = self.audio_path + audio
+        print(audio_file)
         # Disable next/prev buttons
         self.is_sound = True
         sound = SoundLoader.load(audio_file)
@@ -291,6 +292,8 @@ class Module(Screen):
 
     # Returns a Kivy position as a dictionary (x and top)
     def _position_character(self):
+        if self.screen_characters == len(self.screen_positions):
+            self.screen_characters = 0
         return self.screen_positions[self.screen_characters]
 
     def _remove_character(self, character):

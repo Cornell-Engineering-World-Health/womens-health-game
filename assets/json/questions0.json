@@ -4,7 +4,7 @@
       "question_text": "",
       "explanation_text": "",
       "question_id": 1,
-      "question_audio": "assets/audio/english/speech.wav",
+      "question_audio": "assets/audio/english/kiran1.mp3",
       "explanation_audio": "assets/audio/english/speech.wav",
       "type": "drag_and_drop",
       "ordered_image_ids": ["assets/game/pubic1.png","assets/game/pubic2.png","assets/game/pubic3.png","assets/game/adult.png","assets/game/teen.png", "assets/game/kid.png"],

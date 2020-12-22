@@ -40,11 +40,11 @@
           "type": "line",
           "character_id": 8,
           "dialogue": "I am Fiza",
-          "dialogue_file": "fiza1.m4a"
+          "dialogue_file": "fiza1.mp3"
         },
         {
           "type": "action",
-          "character_id": "Salma",
+          "character_id": 1,
           "action_type": "enter"
         },
         {
@@ -55,14 +55,14 @@
         },
         {
           "type": "action",
-          "character_id": "Anna",
+          "character_id": 4,
           "action_type": "enter"
         },
         {
           "type": "line",
           "character_id": 4,
           "dialogue": "I am Anna",
-          "dialogue_file": "anna1.m4a"
+          "dialogue_file": "anna1.mp3"
         },
         {
           "type": "action",
@@ -73,7 +73,7 @@
           "type": "line",
           "character_id": 13,
           "dialogue": "I am Marina. I am Anna's mom",
-          "dialogue_file": "marina1.m4a"
+          "dialogue_file": "marina1.mp3"
         },
         {
           "type": "action",
@@ -84,7 +84,7 @@
           "type": "line",
           "character_id": 11,
           "dialogue": "I am Vishal",
-          "dialogue_file": "vishal1.m4a"
+          "dialogue_file": "vishal1.mp3"
         },
         {
           "type": "action",
@@ -95,7 +95,7 @@
           "type": "line",
           "character_id": 14,
           "dialogue": "I am Hansa. I am Vishal's mom.",
-          "dialogue_file": "hansa1.m4a"
+          "dialogue_file": "hansa1.mp3"
         }]},
     {
       "background": "meeting.jpg",
@@ -113,7 +113,7 @@
         "dialogue_file": "kiran4.mp3"
       }]},
     {
-      "background": "height_comparison.jpg",
+      "background": "meeting.jpg",
       "characters":  [1],
       "script": [
         {"type":  "action",
@@ -127,7 +127,7 @@
           "dialogue_file": "salma2.mp3"
         }]},
     {
-      "background": "breast_comparison.jpg",
+      "background": "meeting.jpg",
       "characters":  [1],
       "script": [
         {"type":  "action",
@@ -152,7 +152,7 @@
           "type": "line",
           "character_id": 13,
           "dialogue": "That’s bad sister! These girls have started discussing bad things, we must immediately stop them.",
-          "dialogue_file": "marina2.m4a"
+          "dialogue_file": "marina2.mp3"
         },
         {"type":  "action",
         "character_id": 9,
@@ -235,7 +235,7 @@
           "type": "line",
           "character_id": 14,
           "dialogue": "Hair started growing on my armpit. ",
-          "dialogue_file": "hansa2.m4a"
+          "dialogue_file": "hansa2.mp3"
         },
         {"type":  "action",
         "character_id": 13,
@@ -245,7 +245,7 @@
           "type": "line",
           "character_id": 13,
           "dialogue": "I had also noticed that my hips had widened",
-          "dialogue_file": "marina3.m4a"
+          "dialogue_file": "marina3.mp3"
         },
         {"type":  "action",
         "character_id": 15,
@@ -255,7 +255,7 @@
           "type": "line",
           "character_id": 15,
           "dialogue": "Also growth in the breasts. ",
-          "dialogue_file": "marina3.m4a"
+          "dialogue_file": "marina3.mp3"
         },
         {
         "type": "action",
@@ -303,7 +303,7 @@
           "type": "line",
           "character_id": 13,
           "dialogue": "Something to do with babies.",
-          "dialogue_file": "marina4.m4a"
+          "dialogue_file": "marina4.mp3"
         },
         {
         "type": "action",
@@ -324,7 +324,7 @@
           "type": "line",
           "character_id": 4,
           "dialogue": "Like what functions? ",
-          "dialogue_file": "anna2.m4a"
+          "dialogue_file": "anna2.mp3"
         },
         {
         "type": "action",
@@ -368,7 +368,7 @@
           "type": "line",
           "character_id": 14,
           "dialogue": "Also I was told that once we have our periods/menses, our reproductive organs are matured and we are ready for reproduction. That is why many of us got married after we got our menses.",
-          "dialogue_file": "hansa3.m4a"
+          "dialogue_file": "hansa3.mp3"
         },
         {
         "type": "action",
@@ -390,7 +390,7 @@
           "type": "line",
           "character_id": 13,
           "dialogue": "Yes because many girls get married early, they go through difficult pregnancies and it affects their health and their babies health. ",
-          "dialogue_file": "marina5.m4a"
+          "dialogue_file": "marina5.mp3"
         },
         {
         "type": "action",

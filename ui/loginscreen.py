@@ -14,20 +14,20 @@ class LoginScreen(Screen):
 
     def login(self):
         # TEMP BYPASS
-        if self.login_email == 'EWH':
-            self.manager.current = 'module'
-            return
-        try:
-            self.ids.admin = login(self.login_email, self.login_password)
-            res = get_students_from_admin_id(self.ids.admin['localId'])
-            self.ids.users = res
-            self.ids.email.text = ""
-            self.ids.password.text = ""
-            self.manager.current = 'dashboard'
-        except NameError as err:
-            print("ERROR", err)
-        except Exception as err:
-            print("INVALID USERNAME OR PASSWORD, PLEASE TRY AGAIN")
+            if self.login_email == 'EWH':
+                self.manager.current = 'module'
+                return
+            try:
+                self.ids.admin = login(self.login_email, self.login_password)
+                res = get_students_from_admin_id(self.ids.admin['localId'])
+                self.ids.users = res
+                self.ids.email.text = ""
+                self.ids.password.text = ""
+                self.manager.current = 'module'
+            except NameError as err:
+                print("ERROR", err)
+            except Exception as err:
+                print("INVALID USERNAME OR PASSWORD, PLEASE TRY AGAIN")
 
     def process_email(self):
         self.login_email = self.ids.email.text
