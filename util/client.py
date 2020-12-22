@@ -17,8 +17,6 @@ API_KEY = os.getenv('API_KEY')
 # takes in endpoint and optional data
 def _api_call(endpoint, data=None):
 	headers = {'Content-Type':'application/json', 'accept':'application/json', 'X-API-Key':API_KEY}
-	if (not os.environ.get('PYTHONHTTPSVERIFY', '') and getattr(ssl, '_create_unverified_context', None)):
-		ssl._create_default_https_context = ssl._create_unverified_context
 	req = UrlRequest('https://menstralhealthgameserver.herokuapp.com/api/' + endpoint, on_success=on_success, req_headers=headers, req_body=data)
 	req.wait(delay=0.5)
 	return req.result

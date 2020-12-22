@@ -196,9 +196,9 @@ class Module(Screen):
                         for character in self.scene_characters:
                             if character.id == line.character_id:
                                 line_character = character
-                                self._remove_character(line_character)
-                            else:
-                                self._render_character(line_character)
+                            self._remove_character(line_character)
+                        else:
+                            self._render_character(line_character)
                 # If current line was a Line:
                 # Play previous line
                 else:
