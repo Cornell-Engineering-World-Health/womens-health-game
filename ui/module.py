@@ -191,14 +191,14 @@ class Module(Screen):
                 # If an Action was just played:
                 # Remove character if it just entered, or add character if it was just removed
                 if (type(line) == Action):
+                    line_character = None
+                    for character in self.scene_characters:
+                        if character.id == line.character_id:
+                            line_character = character
                     if (line.action_type == 'enter'):
-                        line_character = None
-                        for character in self.scene_characters:
-                            if character.id == line.character_id:
-                                line_character = character
-                            self._remove_character(line_character)
-                        else:
-                            self._render_character(line_character)
+                        self._remove_character(line_character)
+                    else:
+                        self._render_character(line_character)
                 # If current line was a Line:
                 # Play previous line
                 else:
