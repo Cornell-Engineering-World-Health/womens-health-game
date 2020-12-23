@@ -27,7 +27,7 @@ class LoginScreen(Screen):
             except NameError as err:
                 print("ERROR", err)
             except Exception as err:
-                print("INVALID USERNAME OR PASSWORD, PLEASE TRY AGAIN")
+                print("INVALID USERNAME OR PASSWORD, PLEASE TRY AGAIN --> " + str(err))
 
     def process_email(self):
         self.login_email = self.ids.email.text

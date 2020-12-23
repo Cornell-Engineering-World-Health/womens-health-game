@@ -5,8 +5,15 @@
   "scenes": [
     {
       "background": "house_lined.jpg",
-      "characters":
-      [9,8, 13, 1, 4],
+      "characters": [
+        9,
+        8,
+        13,
+        1,
+        4,
+        11,
+        14
+      ],
       "script": [
         {
           "type": "action",
@@ -17,23 +24,53 @@
           "type": "line",
           "character_id": 9,
           "dialogue": "Namaste everyone. I am Kiran, your health friend. I am very happy that you have chosen to learn  about your own health. Having the right information about your own health is the first step to lead a healthy life. (Kiran is someone with a good awareness of health, and went through trainings. Progressive person. leadership). To go to the next slide press the button on the right side. To listen again press this button in the center.",
-          "dialogue_file": "kiran1.mp3"
+          "dialogue_file": "hansa1.mp3"
         },
         {
           "type": "line",
-          "character_id":9,
+          "character_id": 9,
           "dialogue": "Let me share more about myself. I along with my husband Ramesh, daughter seema live in our village sambalpur. (name of the village) My in- laws Sukhi Ram and Vimla Devi also stay with us. I have studied till class 8 but could not continue my education due to lack of family support.. But this has not stopped me from learning. Two years back I got trained in a program called Enriche organized by Barefoot College, Tilonia. There I learnt about women’s health. We women feel embarrassed/shy to discuss our bodies.\n        We seldom prioritize our health.\n        We don’t know where to seek information on how to take care of our health.\nThis needs to change. I share the knowledge I have gained with all the girls and women in our village and encourage them to take care of their health/bodies.",
-          "dialogue_file": "kiran2.mp3"
+          "dialogue_file": "fiza1.mp3"
         },
         {
           "type": "line",
           "character_id": 9,
           "dialogue": "Let me introduce you to my friends. Click on each of the characters to know them.",
-          "dialogue_file": "kiran3.mp3"
+          "dialogue_file": "fiza1.mp3"
+        },
+        {
+          "type": "action",
+          "character_id": 9,
+          "action_type": "exit"
         },
         {
           "type": "action",
           "character_id": 8,
+          "action_type": "enter"
+        },
+        {
+          "type": "action",
+          "character_id": 1,
+          "action_type": "enter"
+        },
+        {
+          "type": "action",
+          "character_id": 4,
+          "action_type": "enter"
+        },
+        {
+          "type": "action",
+          "character_id": 13,
+          "action_type": "enter"
+        },
+        {
+          "type": "action",
+          "character_id": 11,
+          "action_type": "enter"
+        },
+        {
+          "type": "action",
+          "character_id": 14,
           "action_type": "enter"
         },
         {
@@ -43,20 +80,10 @@
           "dialogue_file": "fiza1.mp3"
         },
         {
-          "type": "action",
-          "character_id": 1,
-          "action_type": "enter"
-        },
-        {
           "type": "line",
           "character_id": 1,
           "dialogue": "I am Salma. I am Fiza's mom",
           "dialogue_file": "salma1.mp3"
-        },
-        {
-          "type": "action",
-          "character_id": 4,
-          "action_type": "enter"
         },
         {
           "type": "line",
@@ -65,20 +92,10 @@
           "dialogue_file": "anna1.mp3"
         },
         {
-          "type": "action",
-          "character_id": 13,
-          "action_type": "enter"
-        },
-        {
           "type": "line",
           "character_id": 13,
           "dialogue": "I am Marina. I am Anna's mom",
           "dialogue_file": "marina1.mp3"
-        },
-        {
-          "type": "action",
-          "character_id": 11,
-          "action_type": "enter"
         },
         {
           "type": "line",
@@ -87,87 +104,126 @@
           "dialogue_file": "vishal1.mp3"
         },
         {
-          "type": "action",
-          "character_id": 14,
-          "action_type": "enter"
-        },
-        {
           "type": "line",
           "character_id": 14,
           "dialogue": "I am Hansa. I am Vishal's mom.",
           "dialogue_file": "hansa1.mp3"
-        }]},
-    {
-      "background": "meeting.jpg",
-      "characters": [9],
-      "script": [
-      {
-        "type": "action",
-        "character_id": 9,
-        "action_type": "enter"
-      },
-        {
-        "type": "line",
-        "character_id": 9,
-        "dialogue": "I am so happy that you all took out time despite your busy schedule. The women in my community gather once every month to share information on Health and Nutrition, and also discuss other family and community issues.",
-        "dialogue_file": "kiran4.mp3"
-      }]},
-    {
-      "background": "meeting.jpg",
-      "characters":  [1],
-      "script": [
-        {"type":  "action",
-        "character_id": 1,
-        "action_type":  "enter"
         },
+        {
+          "type": "action",
+          "character_id": 8,
+          "action_type": "exit"
+        },
+        {
+          "type": "action",
+          "character_id": 1,
+          "action_type": "exit"
+        },
+        {
+          "type": "action",
+          "character_id": 13,
+          "action_type": "exit"
+        },
+        {
+          "type": "action",
+          "character_id": 4,
+          "action_type": "exit"
+        },
+        {
+          "type": "action",
+          "character_id": 14,
+          "action_type": "exit"
+        },
+        {
+          "type": "action",
+          "character_id": 11,
+          "action_type": "exit"
+        }
+      ]
+    },
+    {
+      "background": "meeting.jpg",
+      "characters": [
+        9
+      ],
+      "script": [
+        {
+          "type": "action",
+          "character_id": 9,
+          "action_type": "enter"
+        },
+        {
+          "type": "action",
+          "character_id": 13,
+          "action_type": "enter"
+        },
+        {
+          "type": "action",
+          "character_id": 1,
+          "action_type": "enter"
+        },
+        {
+          "type": "line",
+          "character_id": 9,
+          "dialogue": "I am so happy that you all took out time despite your busy schedule. The women in my community gather once every month to share information on Health and Nutrition, and also discuss other family and community issues.",
+          "dialogue_file": "kiran4.mp3"
+        }
+      ]
+    },
+    {
+      "background": "meeting.jpg",
+      "characters": [
+        1
+      ],
+      "script": [
         {
           "type": "line",
           "character_id": 1,
           "dialogue": "Sisters I am very worried about something. A few days back while I was talking to  Fiza, she asked me why she is taller than her friends, Anna and Seema.",
           "dialogue_file": "salma2.mp3"
-        }]},
+        }
+      ]
+    },
     {
       "background": "meeting.jpg",
-      "characters":  [1],
+      "characters": [
+        1
+      ],
       "script": [
-        {"type":  "action",
-        "character_id": 1,
-        "action_type":  "enter"
-        },
         {
           "type": "line",
           "character_id": 1,
           "dialogue": "Also after sometime she very hesitantly shared, that they were also discussing why Anna’s chest were growing but none of them could feel anything around theirs. ",
           "dialogue_file": "salma3.mp3"
-        }]},
+        }
+      ]
+    },
     {
       "background": "meeting.jpg",
-      "characters": [9, 1, 14, 4, 15],
+      "characters": [
+        9,
+        1,
+        14,
+        4,
+        15
+      ],
       "script": [
-        {"type":  "action",
-        "character_id": 13,
-        "action_type":  "enter"
-        },
         {
           "type": "line",
           "character_id": 13,
           "dialogue": "That’s bad sister! These girls have started discussing bad things, we must immediately stop them.",
           "dialogue_file": "marina2.mp3"
         },
-        {"type":  "action",
-        "character_id": 9,
-        "action_type":  "enter"
-        },
         {
           "type": "line",
           "character_id": 9,
-          "dialogue": "What are you saying Marina, Why should we stop them?  There is nothing wrong in discussing the changes in your body. In fact we should explain them these and encourage them to have discussions with us. ",
+          "dialogue": "What are you saying Marina, Why should we stop them?  There is nothing wrong in discussing the changes in your body. In fact we should explain them these and encourage them to have discussions with us.",
           "dialogue_file": "kiran5.mp3"
         },
         {
           "type": "line",
           "character_id": 9,
-          "dialogue": "Do you all know that most of the girls get very wrong information and this leads to them feeling ashamed of their bodies and making wrong decisions about their health? ",
+          "dialogue": "Do you all know that most of the girls get very wrong information and this leads to them feeling ashamed of their bodies and making wrong decisions about their health?",
           "dialogue_file": "kiran6.mp3"
         },
         {
@@ -176,10 +232,6 @@
           "dialogue": "Because we are shy, we don’t understand our bodies and then we don’t discuss or identify health issues. Do you all want your daughters /sisters to face the poor health outcomes that you are suffering from?",
           "dialogue_file": "kiran7.mp3"
         },
-        {"type":  "action",
-        "character_id": 1,
-        "action_type":  "enter"
-        },
         {
           "type": "line",
           "character_id": 1,
@@ -187,23 +239,43 @@
           "dialogue_file": "salma4.mp3"
         },
         {
-        "type": "action",
-        "character_id": 9,
-        "action_type": "enter"
-      },
-        {
           "type": "line",
           "character_id": 9,
           "dialogue": "I am happy and willing to share all the information on Women’s Health with you all and our daughters. It is our duty to provide our daughters with the  right information. Let us meet tomorrow and start this conversation with our daughters and also learn together.",
           "dialogue_file": "kiran8.mp3"
-        }]},
+        },
+        {
+          "type": "action",
+          "character_id": 9,
+          "action_type": "exit"
+        },
+        {
+          "type": "action",
+          "character_id": 13,
+          "action_type": "exit"
+        },
+        {
+          "type": "action",
+          "character_id": 1,
+          "action_type": "exit"
+        }
+      ]
+    },
     {
       "background": "teach_lined.jpg",
-      "characters": [9, 1, 14, 13, 15, 4],
+      "characters": [
+        9,
+        1,
+        14,
+        13,
+        15,
+        4
+      ],
       "script": [
-        {"type":  "action",
-        "character_id": 9,
-        "action_type":  "enter"
+        {
+          "type": "action",
+          "character_id": 9,
+          "action_type": "enter"
         },
         {
           "type": "line",
@@ -217,9 +289,15 @@
           "dialogue": "Click on the icons one by one to know the different physical changes in our body between 12-19 years.",
           "dialogue_file": "kiran10.mp3"
         },
-        {"type":  "action",
-        "character_id": 1,
-        "action_type":  "enter"
+        {
+          "type": "action",
+          "character_id": 9,
+          "action_type": "exit"
+        },
+        {
+          "type": "action",
+          "character_id": 1,
+          "action_type": "enter"
         },
         {
           "type": "line",
@@ -227,67 +305,127 @@
           "dialogue": "My height had increased.",
           "dialogue_file": "salma5.mp3"
         },
-        {"type":  "action",
-        "character_id": 14,
-        "action_type":  "enter"
+        {
+          "type": "action",
+          "character_id": 1,
+          "action_type": "exit"
+        },
+        {
+          "type": "action",
+          "character_id": 14,
+          "action_type": "enter"
         },
         {
           "type": "line",
           "character_id": 14,
-          "dialogue": "Hair started growing on my armpit. ",
+          "dialogue": "Hair started growing on my armpit.",
           "dialogue_file": "hansa2.mp3"
         },
-        {"type":  "action",
-        "character_id": 13,
-        "action_type":  "enter"
+        {
+          "type": "action",
+          "character_id": 14,
+          "action_type": "exit"
+        },
+        {
+          "type": "action",
+          "character_id": 13,
+          "action_type": "enter"
         },
         {
           "type": "line",
           "character_id": 13,
-          "dialogue": "I had also noticed that my hips had widened",
-          "dialogue_file": "marina3.mp3"
-        },
-        {"type":  "action",
-        "character_id": 15,
-        "action_type":  "enter"
-        },
-        {
-          "type": "line",
-          "character_id": 15,
-          "dialogue": "Also growth in the breasts. ",
+          "dialogue": "I also noticed that my hips had widened",
           "dialogue_file": "marina3.mp3"
         },
         {
-        "type": "action",
-        "character_id": 13,
-        "action_type": "enter"
-      },
-        {
-          "type": "line",
+          "type": "action",
           "character_id": 13,
+          "action_type": "exit"
+        },
+        {
+          "type": "action",
+          "character_id": 7,
+          "action_type": "enter"
+        },
+        {
+          "type": "line",
+          "character_id": 7,
+          "dialogue": "Also growth in the breasts.",
+          "dialogue_file": "marina3.mp3"
+        },
+        {
+          "type": "action",
+          "character_id": 7,
+          "action_type": "exit"
+        },
+        {
+          "type": "action",
+          "character_id": 9,
+          "action_type": "enter"
+        },
+        {
+          "type": "line",
+          "character_id": 9,
           "dialogue": "Also growth of hair in the pubic region. ",
           "dialogue_file": "kiran11.mp3"
         },
         {
-        "type": "action",
-        "character_id": 1,
-        "action_type": "enter"
-      },
+          "type": "action",
+          "character_id": 9,
+          "action_type": "exit"
+        },
+        {
+          "type": "action",
+          "character_id": 1,
+          "action_type": "enter"
+        },
         {
           "type": "line",
           "character_id": 1,
           "dialogue": "And the onset of menstruation. ",
           "dialogue_file": "salma6.mp3"
-        }]},
+        },
+        {
+          "type": "action",
+          "character_id": 1,
+          "action_type": "exit"
+        }
+      ]
+    },
     {
       "background": "teach_lined.jpg",
-      "characters": [9, 13, 4, 1],
+      "characters": [
+        9,
+        13,
+        4,
+        1
+      ],
       "script": [
         {
-        "type": "action",
-        "character_id": 9,
-        "action_type": "enter"
-      },
+          "type": "action",
+          "character_id": 9,
+          "action_type": "enter"
+        },
+        {
+          "type": "action",
+          "character_id": 13,
+          "action_type": "enter"
+        },
+        {
+          "type": "action",
+          "character_id": 1,
+          "action_type": "enter"
+        },
+        {
+          "type": "action",
+          "character_id": 4,
+          "action_type": "enter"
+        },
+        {
+          "type": "action",
+          "character_id": 14,
+          "action_type": "enter"
+        },
         {
           "type": "line",
           "character_id": 9,
@@ -295,53 +433,29 @@
           "dialogue_file": "kiran12.mp3"
         },
         {
-        "type": "action",
-        "character_id": 13,
-        "action_type": "enter"
-      },
-        {
           "type": "line",
           "character_id": 13,
           "dialogue": "Something to do with babies.",
           "dialogue_file": "marina4.mp3"
         },
         {
-        "type": "action",
-        "character_id": 9,
-        "action_type": "enter"
-      },
-        {
           "type": "line",
           "character_id": 9,
           "dialogue": "But these changes are not only for pregnancy. The changes prepare the body for processes such as reproduction, nourishment of the baby and regulation of many other processes required for proper functioning of the body. ",
           "dialogue_file": "kiran13.mp3"
         },
-        {"type": "action",
-        "character_id": 4,
-        "action_type":  "enter"
-        },
         {
           "type": "line",
           "character_id": 4,
-          "dialogue": "Like what functions? ",
+          "dialogue": "Like what functions?",
           "dialogue_file": "anna2.mp3"
         },
         {
-        "type": "action",
-        "character_id": 9,
-        "action_type": "enter"
-      },
-        {
           "type": "line",
           "character_id": 9,
-          "dialogue": "Few examples are Widening of hip, development of breasts are changes to prepare body for pregnancy.  Wider hips help carry weight of the baby during pregnancy and ensure a wider passage for delivery of the child. Breasts produce milk to provide nutrition to the baby.",
+          "dialogue": "Few examples are widening of hip, development of breasts are changes to prepare body for pregnancy.  Wider hips help carry weight of the baby during pregnancy and ensure a wider passage for delivery of the child. Breasts produce milk to provide nutrition to the baby.",
           "dialogue_file": "kiran14.mp3"
         },
-        {
-        "type": "action",
-        "character_id": 1,
-        "action_type": "enter"
-      },
         {
           "type": "line",
           "character_id": 1,
@@ -349,21 +463,11 @@
           "dialogue_file": "salma7.mp3"
         },
         {
-        "type": "action",
-        "character_id": 9,
-        "action_type": "enter"
-      },
-        {
           "type": "line",
           "character_id": 9,
           "dialogue": "Why are you feeling shy Salma, we need to ask these questions. The pubic hair prevents foreign particles like any germs and dirt from entering our vagina, helps to keep the vagina warm and prevents friction (rubbing from underwear and during sexual activity etc).",
           "dialogue_file": "kiran15.mp3"
         },
-        {
-        "type": "action",
-        "character_id": 14,
-        "action_type": "enter"
-      },
         {
           "type": "line",
           "character_id": 14,
@@ -371,32 +475,17 @@
           "dialogue_file": "hansa3.mp3"
         },
         {
-        "type": "action",
-        "character_id": 9,
-        "action_type": "enter"
-      },
-        {
           "type": "line",
           "character_id": 9,
           "dialogue": "This is not entirely true. The mature reproductive organ is only one step to be able to safely bear a child, Our body needs to go through other changes to be completely ready for safe childbirth. All these changes are completed when we turn 20. ",
           "dialogue_file": "kiran16.mp3"
         },
         {
-        "type": "action",
-        "character_id": 13,
-        "action_type": "enter"
-      },
-        {
           "type": "line",
           "character_id": 13,
           "dialogue": "Yes because many girls get married early, they go through difficult pregnancies and it affects their health and their babies health. ",
           "dialogue_file": "marina5.mp3"
         },
-        {
-        "type": "action",
-        "character_id": 9,
-        "action_type": "enter"
-      },
         {
           "type": "line",
           "character_id": 9,
