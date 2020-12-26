@@ -46,7 +46,7 @@ class DragAndDrop(BoxLayout):
     def _replace_image(self, id):
         old_widget = self._get_id(id)
         self.ids.to_box.remove_widget(old_widget)
-        self.ids.to_box.add_widget(Image(source='assets/drag-and-drop/shape' + id + '.png',opacity = 0), index=(3 - int(id)))
+        self.ids.to_box.add_widget(Image(source=self.ordered_image_ids[int(id) - 1], size=(250, 350)),index=(3 - int(id)))
 
     def call_back(self, id, *largs):
         self._replace_image(id)
