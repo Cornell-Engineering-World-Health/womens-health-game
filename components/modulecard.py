@@ -30,7 +30,7 @@ class ModuleCard(FloatLayout):
         # module
         self.module = kwargs["module"]
         # module labels
-        self.module_id = self.generateCardLabel('Module '+str(self.module.get("id")), module_card_style["module_font"], module_card_style["id_y"])
+        self.module_id = self.generateCardLabel('Module '+str(self.module.get("id") + 1), module_card_style["module_font"], module_card_style["id_y"])
         self.module_title = self.generateCardLabel(self.module.get("title"), module_card_style["module_font"], module_card_style["title_y"])
 
         # add widgets (all labels, buttons, etc) to the screen

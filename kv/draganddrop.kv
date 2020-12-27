@@ -6,8 +6,6 @@
 <DragAndDrop>:
 
     canvas:
-        Color:
-            rgba: app_style['assessment_background']
         Rectangle:
             size: self.size
             pos: self.pos
@@ -19,7 +17,6 @@
 
         DraggableButton:
             text: '1'
-            color: 0, 0, 0, 0
             droppable_zone_objects: [box_1]
             drop_func: root.correct
             failed_drop_func: root.wrong
@@ -34,7 +31,6 @@
 
         DraggableButton:
             text: '2'
-            color: app_style['assessment_background']
             droppable_zone_objects: [box_2]
             drop_func: root.correct
             failed_drop_func: root.wrong
@@ -49,7 +45,6 @@
 
         DraggableButton:
             text: '3'
-            color: app_style['assessment_background']
             droppable_zone_objects: [box_3]
             drop_func: root.correct
             failed_drop_func: root.wrong
@@ -75,9 +70,8 @@
         Label:
             id: box_1
             canvas.before:
-                Color:
-                    rgb: app_style['assessment_background']
                 Rectangle:
+                    id: rect
                     pos: self.pos
                     size: (250, 350)
                     source: root.ordered_image_ids[3]
@@ -86,8 +80,6 @@
         Label:
             id: box_2
             canvas.before:
-                Color:
-                    rgb: app_style['assessment_background']
                 Rectangle:
                     pos: self.pos
                     size: (250, 350)
@@ -97,8 +89,6 @@
         Label:
             id: box_3
             canvas.before:
-                Color:
-                    rgb: app_style['assessment_background']
                 Rectangle:
                     pos: self.pos
                     size: (250, 350)

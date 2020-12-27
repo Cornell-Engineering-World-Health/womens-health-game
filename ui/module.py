@@ -87,7 +87,7 @@ class Module(Screen):
         if len(self.ids) > 1:
             self.user = self.ids.user
             self.module_number = self.ids.module_number
-            self.app.title = "Health Friend [Game]  ::  " + \
+            self.app.title = "Health Friend: " + \
                 self.user['first_name'] + " " + self.user['last_name']
         else:
             print("failed to retrieve user")
