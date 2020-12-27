@@ -1,8 +1,8 @@
 from kivy.uix.screenmanager import Screen
 from kivymd.app import MDApp
 
-from util.client import get_students_from_admin_id, login
-
+from util.client import get_students_from_admin_id, login, update_state
+from util.store import current_state
 
 class LoginScreen(Screen):
     def __init__(self, **kw):
@@ -11,6 +11,15 @@ class LoginScreen(Screen):
 
     def on_pre_enter(self, *args):
         self.app.title = "Login"
+        self.add_local_state_to_backend()
+
+
+    def add_local_state_to_backend(self):
+        state = current_state()
+        for user in state:
+            game_state = state[user]['game_state']
+            for module in range(len(game_state)):
+                update_state(user, game_state[module])
 
     def login(self):
         # TEMP BYPASS
@@ -23,7 +32,8 @@ class LoginScreen(Screen):
                 self.ids.users = res
                 self.ids.email.text = ""
                 self.ids.password.text = ""
-                self.manager.current = 'module'
+                print("self.ids" + str(self.ids))
+                self.manager.current = 'dashboard'
             except NameError as err:
                 print("ERROR", err)
             except Exception as err:

@@ -24,19 +24,19 @@
           "type": "line",
           "character_id": 9,
           "dialogue": "Namaste everyone. I am Kiran, your health friend. I am very happy that you have chosen to learn  about your own health. Having the right information about your own health is the first step to lead a healthy life. (Kiran is someone with a good awareness of health, and went through trainings. Progressive person. leadership). To go to the next slide press the button on the right side. To listen again press this button in the center.",
-          "dialogue_file": "hansa1.mp3"
+          "dialogue_file": "kiran1.mp3"
         },
         {
           "type": "line",
           "character_id": 9,
           "dialogue": "Let me share more about myself. I along with my husband Ramesh, daughter seema live in our village sambalpur. (name of the village) My in- laws Sukhi Ram and Vimla Devi also stay with us. I have studied till class 8 but could not continue my education due to lack of family support.. But this has not stopped me from learning. Two years back I got trained in a program called Enriche organized by Barefoot College, Tilonia. There I learnt about women’s health. We women feel embarrassed/shy to discuss our bodies.\n        We seldom prioritize our health.\n        We don’t know where to seek information on how to take care of our health.\nThis needs to change. I share the knowledge I have gained with all the girls and women in our village and encourage them to take care of their health/bodies.",
-          "dialogue_file": "fiza1.mp3"
+          "dialogue_file": "kiran2.mp3"
         },
         {
           "type": "line",
           "character_id": 9,
           "dialogue": "Let me introduce you to my friends. Click on each of the characters to know them.",
-          "dialogue_file": "fiza1.mp3"
+          "dialogue_file": "kiran3.mp3"
         },
         {
           "type": "action",
@@ -167,47 +167,19 @@
           "character_id": 9,
           "dialogue": "I am so happy that you all took out time despite your busy schedule. The women in my community gather once every month to share information on Health and Nutrition, and also discuss other family and community issues.",
           "dialogue_file": "kiran4.mp3"
-        }
-      ]
-    },
-    {
-      "background": "meeting.jpg",
-      "characters": [
-        1
-      ],
-      "script": [
+        },
         {
           "type": "line",
           "character_id": 1,
           "dialogue": "Sisters I am very worried about something. A few days back while I was talking to  Fiza, she asked me why she is taller than her friends, Anna and Seema.",
           "dialogue_file": "salma2.mp3"
-        }
-      ]
-    },
-    {
-      "background": "meeting.jpg",
-      "characters": [
-        1
-      ],
-      "script": [
+        },
         {
           "type": "line",
           "character_id": 1,
           "dialogue": "Also after sometime she very hesitantly shared, that they were also discussing why Anna’s chest were growing but none of them could feel anything around theirs. ",
           "dialogue_file": "salma3.mp3"
-        }
-      ]
-    },
-    {
-      "background": "meeting.jpg",
-      "characters": [
-        9,
-        1,
-        14,
-        4,
-        15
-      ],
-      "script": [
+        },
         {
           "type": "line",
           "character_id": 13,
@@ -300,10 +272,21 @@
           "action_type": "enter"
         },
         {
+          "type": "picture",
+          "name": "height",
+          "src": "assets/pictures/height.png",
+          "action_type": "enter"
+        },
+        {
           "type": "line",
           "character_id": 1,
           "dialogue": "My height had increased.",
           "dialogue_file": "salma5.mp3"
+        },
+        {
+          "type": "picture",
+          "name": "height",
+          "action_type": "exit"
         },
         {
           "type": "action",
@@ -313,6 +296,12 @@
         {
           "type": "action",
           "character_id": 14,
+          "action_type": "enter"
+        },
+        {
+          "type": "picture",
+          "name": "armpit",
+          "src": "assets/pictures/armpit-growth.png",
           "action_type": "enter"
         },
         {
@@ -322,6 +311,11 @@
           "dialogue_file": "hansa2.mp3"
         },
         {
+          "type": "picture",
+          "name": "armpit",
+          "action_type": "exit"
+        },
+        {
           "type": "action",
           "character_id": 14,
           "action_type": "exit"
@@ -332,12 +326,23 @@
           "action_type": "enter"
         },
         {
+          "type": "picture",
+          "name": "hips",
+          "src": "assets/pictures/hips-growth.png",
+          "action_type": "enter"
+        },
+        {
           "type": "line",
           "character_id": 13,
           "dialogue": "I also noticed that my hips had widened",
           "dialogue_file": "marina3.mp3"
         },
         {
+          "type": "picture",
+          "name": "hips",
+          "action_type": "exit"
+        },
+        {
           "type": "action",
           "character_id": 13,
           "action_type": "exit"
@@ -348,10 +353,21 @@
           "action_type": "enter"
         },
         {
+          "type": "picture",
+          "name": "breast",
+          "src": "assets/pictures/breast-growth.png",
+          "action_type": "enter"
+        },
+        {
           "type": "line",
           "character_id": 7,
           "dialogue": "Also growth in the breasts.",
-          "dialogue_file": "marina3.mp3"
+          "dialogue_file": "seema1.mp3"
+        },
+        {
+          "type": "picture",
+          "name": "breast",
+          "action_type": "exit"
         },
         {
           "type": "action",
@@ -364,10 +380,21 @@
           "action_type": "enter"
         },
         {
+          "type": "picture",
+          "name": "pubic",
+          "src": "assets/pictures/pubic-hair.png",
+          "action_type": "enter"
+        },
+        {
           "type": "line",
           "character_id": 9,
-          "dialogue": "Also growth of hair in the pubic region. ",
+          "dialogue": "Also growth of hair in the pubic region.",
           "dialogue_file": "kiran11.mp3"
+        },
+        {
+          "type": "picture",
+          "name": "pubic",
+          "action_type": "exit"
         },
         {
           "type": "action",
@@ -377,6 +404,12 @@
         {
           "type": "action",
           "character_id": 1,
+          "action_type": "enter"
+        },
+        {
+          "type": "picture",
+          "name": "menstruation",
+          "src": "assets/pictures/menstruation.png",
           "action_type": "enter"
         },
         {
@@ -384,6 +417,12 @@
           "character_id": 1,
           "dialogue": "And the onset of menstruation. ",
           "dialogue_file": "salma6.mp3"
+        },
+        {
+          "type": "picture",
+          "name": "menstruation",
+          "src": "assets/pictures/menstruation.png",
+          "action_type": "exit"
         },
         {
           "type": "action",
@@ -497,6 +536,49 @@
           "character_id": 9,
           "dialogue": "Ok Now let’s have a fun activity . Let me see if you can arrange the changes in the body according to these three stages ",
           "dialogue_file": "kiran18.mp3"
+        },
+        {
+          "type": "action",
+          "character_id": 9,
+          "action_type": "exit"
+        },
+        {
+          "type": "action",
+          "character_id": 13,
+          "action_type": "exit"
+        },
+        {
+          "type": "action",
+          "character_id": 1,
+          "action_type": "exit"
+        },
+        {
+          "type": "action",
+          "character_id": 4,
+          "action_type": "exit"
+        },
+        {
+          "type": "action",
+          "character_id": 14,
+          "action_type": "exit"
+        }
+      ]
+    },
+    {
+      "background": "meeting.jpg",
+      "characters": [
+        9
+      ],
+      "script": [
+        {
+          "type": "action",
+          "character_id": 9,
+          "action_type": "enter"
+        },
+        {
+          "type": "action",
+          "character_id": 9,
+          "action_type": "exit"
         }
       ]
     }

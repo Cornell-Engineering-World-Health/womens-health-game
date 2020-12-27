@@ -3,6 +3,8 @@ from kivymd.app import MDApp
 from  components.modulecard import ModuleCard
 import json
 
+from util.store import init_user
+
 class MenuScreen(Screen):
     def __init__(self, **kw):
         super().__init__(**kw)
@@ -16,6 +18,9 @@ class MenuScreen(Screen):
             with open("assets/json/module_list.json") as file:
                 data = json.load(file)
             self.modules = data["modules"]
+
+            # initialize user in local storage
+            init_user(self.user)
             self.render_cards()
 
     def render_cards(self):
@@ -24,7 +29,7 @@ class MenuScreen(Screen):
             card = ModuleCard(screen_manager=self.manager, user= self.user, module=module)
             grid.add_widget(card)
 
-    # navigate back to dashboard     
+    # navigate back to dashboard
     def back(self):
         self.manager.current = 'dashboard'
 

@@ -7,7 +7,14 @@
       "question_audio": "assets/audio/english/kiran1.mp3",
       "explanation_audio": "assets/audio/english/speech.wav",
       "type": "drag_and_drop",
-      "ordered_image_ids": ["assets/game/pubic1.png","assets/game/pubic2.png","assets/game/pubic3.png","assets/game/adult.png","assets/game/teen.png", "assets/game/kid.png"],
+      "ordered_image_ids": [
+        "assets/pictures/pubic1.png",
+        "assets/pictures/pubic2.png",
+        "assets/pictures/pubic3.png",
+        "assets/pictures/adult.png",
+        "assets/pictures/teen.png",
+        "assets/pictures/kid.png"
+      ],
       "current_answer": []
     },
     {
@@ -17,7 +24,14 @@
       "question_audio": "assets/audio/english/speech.wav",
       "explanation_audio": "assets/audio/english/speech.wav",
       "type": "drag_and_drop",
-      "ordered_image_ids": ["assets/game/breasts1.png","assets/game/breasts2.png","assets/game/breasts3.png","assets/game/adult.png","assets/game/teen.png", "assets/game/kid.png"],
+      "ordered_image_ids": [
+        "assets/pictures/breasts1.png",
+        "assets/pictures/breasts2.png",
+        "assets/pictures/breasts3.png",
+        "assets/pictures/adult.png",
+        "assets/pictures/teen.png",
+        "assets/pictures/kid.png"
+      ],
       "current_answer": []
     },
     {
@@ -27,7 +41,14 @@
       "question_audio": "assets/audio/english/speech.wav",
       "explanation_audio": "assets/audio/english/speech.wav",
       "type": "drag_and_drop",
-      "ordered_image_ids": ["assets/game/hips1.png","assets/game/hips2.png","assets/game/hips3.png","assets/game/adult.png","assets/game/teen.png", "assets/game/kid.png"],
+      "ordered_image_ids": [
+        "assets/pictures/hips1.png",
+        "assets/pictures/hips2.png",
+        "assets/pictures/hips3.png",
+        "assets/pictures/adult.png",
+        "assets/pictures/teen.png",
+        "assets/pictures/kid.png"
+      ],
       "current_answer": []
     }
   ]

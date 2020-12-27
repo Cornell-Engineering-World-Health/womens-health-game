@@ -17,10 +17,30 @@ API_KEY = os.getenv('API_KEY')
 # takes in endpoint and optional data
 def _api_call(endpoint, data=None):
 	headers = {'Content-Type':'application/json', 'accept':'application/json', 'X-API-Key':API_KEY}
-	req = UrlRequest('https://menstralhealthgameserver.herokuapp.com/api/' + endpoint, on_success=on_success, req_headers=headers, req_body=data)
+	req = UrlRequest('https://healthfriendgameserver.herokuapp.com/api/' + endpoint, on_success=on_success, req_headers=headers, req_body=data)
 	req.wait(delay=0.5)
 	return req.result
 
+# GET API CALL for api/state/user/:user_id
+def get_state_from_user_id(id):
+	return  _api_call('state/user/' + id)
+
+# POST API CALL for api/state
+def post_state(new_state):
+	return  _api_call('state', data=new_state)
+
+# PUT API CALL for api/state/user/:user_id
+def update_state(id, new_state):
+	new_state['user_id'] = id
+	json_obj = json.dumps(new_state, indent = 4)
+	user_state = get_state_from_user_id(id)
+	if(not user_state):
+		res = post_state(json_obj)
+	else:
+		res = _api_call('state/user/' + id, json_obj)
+	return res
+
+# GET API CALL for api/admin/:admin_id
 def get_students_from_admin_id(id):
 	return _api_call('users/admin/' + id)
 
