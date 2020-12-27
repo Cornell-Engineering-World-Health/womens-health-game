@@ -27,9 +27,9 @@
     "id": 4,
     "name": "Anna",
     "image": "anna.png",
-    "mouth_offset_top": 0.101,
+    "mouth_offset_top": 0.18,
     "mouth_offset_x": 0.004,
-    "mouth_size": 0.03
+    "mouth_size": 0.02
   },
   {
     "id": 5,
@@ -51,41 +51,41 @@
     "id": 7,
     "name": "Seema",
     "image": "seema.png",
-    "mouth_offset_top": 0.101,
-    "mouth_offset_x": 0.004,
-    "mouth_size": 0.03
+    "mouth_offset_top": 0.195,
+    "mouth_offset_x": 0.005,
+    "mouth_size": 0.02
   },
   {
     "id": 8,
     "name": "Fiza",
     "image": "fiza.png",
-    "mouth_offset_top": 0.101,
+    "mouth_offset_top": 0.17,
     "mouth_offset_x": 0.004,
-    "mouth_size": 0.03
+    "mouth_size": 0.02
   },
   {
     "id": 9,
     "name": "Kirann",
     "image": "kirann.png",
-    "mouth_offset_top": 0.101,
-    "mouth_offset_x": 0.004,
-    "mouth_size": 0.03
+    "mouth_offset_top": 0.09,
+    "mouth_offset_x": -0.003,
+    "mouth_size": 0.02
   },
   {
     "id": 10,
     "name": "Ramesh",
     "image": "ramesh.png",
-    "mouth_offset_top": 0.101,
-    "mouth_offset_x": 0.004,
+    "mouth_offset_top": 0.104,
+    "mouth_offset_x": 0.002,
     "mouth_size": 0.03
   },
   {
     "id": 11,
     "name": "Vishal",
     "image": "vishal.png",
-    "mouth_offset_top": 0.101,
-    "mouth_offset_x": 0.004,
-    "mouth_size": 0.03
+    "mouth_offset_top": 0.155,
+    "mouth_offset_x": 0.0025,
+    "mouth_size": 0.025
   },
   {
     "id": 12,
@@ -94,5 +94,21 @@
     "mouth_offset_top": 0.101,
     "mouth_offset_x": 0.004,
     "mouth_size": 0.03
+  },
+  {
+    "id": 13,
+    "name": "Marina",
+    "image": "marina.png",
+    "mouth_offset_top": 0.1,
+    "mouth_offset_x": -0.001,
+    "mouth_size": 0.01
+  },
+  {
+    "id":  14,
+    "name": "Hansa",
+    "image": "hansa.png",
+    "mouth_offset_top": 0.085,
+    "mouth_offset_x": 0.001,
+    "mouth_size": 0.02
   }
 ]

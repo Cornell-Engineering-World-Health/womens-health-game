@@ -6,8 +6,6 @@
 <DragAndDrop>:
 
     canvas:
-        Color:
-            rgba: app_style['assessment_background']
         Rectangle:
             size: self.size
             pos: self.pos
@@ -15,60 +13,49 @@
     BoxLayout:
         orientation: 'vertical'
         id: from_box
-        pos_hint: {'center_x': .3, 'center_y': .5}
-        size_hint_x: dnd_from_style['layout_size_x']
-        size_hint_y: dnd_from_style['layout_size_y']
-
         spacing: dnd_from_style['spacing']
 
         DraggableButton:
             text: '1'
-            pos: 150, 900
-            color: 0, 0, 0, 0
             droppable_zone_objects: [box_1]
             drop_func: root.correct
             failed_drop_func: root.wrong
-            size_hint: dnd_from_style['size_hint']
+            size_hint: None, None
+            size: 250, 350
 
             Image:
                 source: root.ordered_image_ids[0]
                 y: self.parent.y
                 x: self.parent.x
                 size: self.parent.size
-                allow_stretch: False
 
         DraggableButton:
             text: '2'
-            pos: 150, 600
-            color: app_style['assessment_background']
             droppable_zone_objects: [box_2]
             drop_func: root.correct
             failed_drop_func: root.wrong
-            size_hint: dnd_from_style['size_hint']
-
+            size_hint: None, None
+            size: 250, 350
 
             Image:
                 source: root.ordered_image_ids[1]
                 y: self.parent.y
                 x: self.parent.x
                 size: self.parent.size
-                allow_stretch: False
 
         DraggableButton:
             text: '3'
-            pos: 150, 300
-            color: app_style['assessment_background']
             droppable_zone_objects: [box_3]
             drop_func: root.correct
             failed_drop_func: root.wrong
-            size_hint: dnd_from_style['size_hint']
+            size_hint: None, None
+            size: 250, 350
 
             Image:
                 source: root.ordered_image_ids[2]
                 y: self.parent.y
                 x: self.parent.x
                 size: self.parent.size
-                allow_stretch: False
 
     BoxLayout:
 
@@ -83,9 +70,8 @@
         Label:
             id: box_1
             canvas.before:
-                Color:
-                    rgb: app_style['assessment_background']
                 Rectangle:
+                    id: rect
                     pos: self.pos
                     size: (250, 350)
                     source: root.ordered_image_ids[3]
@@ -94,8 +80,6 @@
         Label:
             id: box_2
             canvas.before:
-                Color:
-                    rgb: app_style['assessment_background']
                 Rectangle:
                     pos: self.pos
                     size: (250, 350)
@@ -105,8 +89,6 @@
         Label:
             id: box_3
             canvas.before:
-                Color:
-                    rgb: app_style['assessment_background']
                 Rectangle:
                     pos: self.pos
                     size: (250, 350)

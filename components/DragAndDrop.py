@@ -1,4 +1,3 @@
-#import kivy
 import json
 import random
 from kivy.core.audio import SoundLoader
@@ -44,16 +43,14 @@ class DragAndDrop(BoxLayout):
         return id_dict.get(id, "ERROR")
 
     def _replace_image(self, id):
-        old_widget = self._get_id(id)
-        self.ids.to_box.remove_widget(old_widget)
-        self.ids.to_box.add_widget(Image(source='assets/drag-and-drop/shape' + id + '.png',opacity = 0), index=(3 - int(id)))
+        self.ordered_image_ids[int(id) + 2] = self.ordered_image_ids[int(id) - 1]
 
     def call_back(self, id, *largs):
         self._replace_image(id)
 
     def correct(self, calling_widget):
         self.current_answer.append(calling_widget)
-        #Clock.schedule_once(partial(self.call_back, calling_widget.text), 1)
+        Clock.schedule_once(partial(self.call_back, calling_widget.text), 0.1)
         if len(self.current_answer) == len(self.ordered_image_ids)//2:
             self.on_attempt()
             self.explanation_audio.stop()

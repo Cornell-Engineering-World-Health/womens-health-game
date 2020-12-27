@@ -32,12 +32,13 @@ class AssessmentManager(Screen):
         if len(self.ids) > 1:
             self.user = self.ids.user
             self.module_number = self.ids.module_number
-            self.app.title = "Health Friend [Game]  ::  " + \
+            self.app.title = "Health Friend: " + \
                 self.user['first_name'] + " " + self.user['last_name']
         else:
             self.app.title = "Health Friend [Game]  ::  EWH"
 
         self.load_local_storage()
+        self.advance_question()
 
     # TODO: load in current state and override other values
     def load_local_storage(self):
@@ -62,7 +63,7 @@ class AssessmentManager(Screen):
                                            explanation_audio = question["explanation_audio"], ordered_image_ids = question["ordered_image_ids"],
                                            current_answer = question["current_answer"], on_complete = self.advance_question, on_attempt = self.attempt)
             self.assessment.append(new_question)
-        print(self.assessment)
+        print("assessment + " +  str(self.assessment))
 
 
     def advance_question(self):
@@ -87,6 +88,7 @@ class AssessmentManager(Screen):
         update_assessment_progress(self.user['id'], self.module_number, self.index, self.current_question_attempts)
 
     def render_question(self):
+        print("rendering question")
         curr = self.assessment[self.index]
         self.grid.add_widget(curr)
         question_audio = SoundLoader.load(curr.question_audio)
