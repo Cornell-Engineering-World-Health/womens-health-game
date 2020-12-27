@@ -64,7 +64,6 @@ class AssessmentManager(Screen):
                                            explanation_audio = question["explanation_audio"], ordered_image_ids = question["ordered_image_ids"],
                                            current_answer = question["current_answer"], on_complete = self.advance_question, on_attempt = self.attempt)
             self.assessment.append(new_question)
-        print("assessment + " +  str(self.assessment))
 
     def advance_question(self):
         self.grid.clear_widgets()
@@ -79,7 +78,7 @@ class AssessmentManager(Screen):
             self.on_assessment_complete()
 
     def on_assessment_complete(self):
-        print("DONE")
+        print("completed game.")
         self.manager.current = "menu_screen"
 
     def attempt(self):

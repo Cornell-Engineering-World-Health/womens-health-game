@@ -13,7 +13,6 @@ class LoginScreen(Screen):
         self.app.title = "Login"
         self.add_local_state_to_backend()
 
-
     def add_local_state_to_backend(self):
         state = current_state()
         for user in state:
@@ -32,7 +31,6 @@ class LoginScreen(Screen):
                 self.ids.users = res
                 self.ids.email.text = ""
                 self.ids.password.text = ""
-                print("self.ids" + str(self.ids))
                 self.manager.current = 'dashboard'
             except NameError as err:
                 print("ERROR", err)
