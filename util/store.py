@@ -86,11 +86,16 @@ def update_module_state(user_id, module_id, scene, line):
 
 # sets the module of specific user to complete
 def complete_module_state(user_id, module_id):
+
+    current_state = current_module_state(user_id, module_id)
+
     if(_module_state_exists(user_id, module_id)):
         store[user_id]['game_state'][module_id] = {
             'module_id': module_id,
+            'scene_id':current_state['scene_id'],
+            'line_id':current_state['line_id'],
             'module_complete': True,
-            'assessment_progress': [_new_question(0)]
+            'assessment_progress': [_new_question(0)],
         }
         store[user_id] = store[user_id]
         print("complete module state: " + str(store[user_id]))
