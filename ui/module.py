@@ -60,7 +60,7 @@ class Module(Screen):
         self.script_iterator = -1
 
         # Index of current scene
-        self.scene_iterator = 0
+        self.scene_iterator = 4
 
         # List of lines (not actions) that have been executed
         self.lines = []
@@ -159,9 +159,10 @@ class Module(Screen):
             on_press=self.load_module_screen
         )
         
-        self.ids.float.add_widget(self.next_icon, -1)
-        self.ids.float.add_widget(self.replay_icon, -1)
-        self.ids.float.add_widget(self.module_icon, -1)
+        self.ids.float.add_widget(self.next_icon, 1)
+        self.ids.float.add_widget(self.replay_icon, 1)
+        self.ids.float.add_widget(self.module_icon, 1)
+        self.ids.float.add_widget(self.prev_icon, 1)
 
     def load_module(self, module_number):
         self._load_module_json(module_number)
@@ -248,7 +249,7 @@ class Module(Screen):
 
         if(self.script_iterator == 1 and self.scene_iterator == 0):
             #you are for the first time advancing the line, so add the prev widget
-            self.ids.float.add_widget(self.prev_icon, -1)
+            self.ids.float.add_widget(self.prev_icon, 1)
         elif(self.script_iterator == 0 and self.scene_iterator == 0 and not self.prev_icon is None):
             self.ids.float.remove_widget(self.prev_icon)
 
@@ -286,6 +287,10 @@ class Module(Screen):
             complete_module_state(self.user['id'], self.module_number)
             # Advance to assessment
             self.load_assessment()
+
+        #do this step to keep the buttons above everything else
+        self.ids.float.remove_widget(self.replay_icon)
+        self.ids.float.add_widget(self.replay_icon)
                 
     # Rewinds the line that was just played and plays the prev line
     # Callback parameter added for Kivy on_press callback
@@ -406,7 +411,7 @@ class Module(Screen):
         self.sound = None
         # Stop character animation
         self._stop_talking()
-        self.ids.float.add_widget(self.next_icon)
+        self.ids.float.add_widget(self.next_icon, 1)
 
     def _render_character(self, character):
         print("rendering character " + str(character.name))
@@ -421,7 +426,7 @@ class Module(Screen):
             height= 500,
             id=str(character.id)
         )
-        self.ids.float.add_widget(new_character)
+        self.ids.float.add_widget(new_character, 3)
         self._render_mouth(character) # render mouth separately
         self.screen_characters += 1
 
@@ -437,7 +442,7 @@ class Module(Screen):
             height= 500,
             id='mouth_'+str(character.id)
         )
-        self.ids.float.add_widget(current_mouth)
+        self.ids.float.add_widget(current_mouth, 3)
         print("adding mouth to id map")
         self.id_to_mouth[character.id] = current_mouth # add mouth to id-mouth map
 
@@ -482,7 +487,7 @@ class Module(Screen):
             height= 500,
             id=name
         )
-        self.ids.float.add_widget(image)
+        self.ids.float.add_widget(image, 3)
         self.images[name] = image
     
     # Remove picture
