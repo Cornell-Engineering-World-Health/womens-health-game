@@ -46,7 +46,7 @@ def get_students_from_admin_id(id):
 
 # print request results from successful api call
 def on_success(req, result):
-	print('REQUEST SUCCESFUL', result)
+	print('request successful', result)
 
 # login
 def login(email, password):

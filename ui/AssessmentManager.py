@@ -58,13 +58,12 @@ class AssessmentManager(Screen):
                             explanation_audio = question["explanation_audio"], image_options = question["image_options"],
                             correct_answer = question["correct_answer"], choices = question['choices'], on_complete = self.advance_question, on_attempt = self.attempt)
             if question["type"] == "drag_and_drop":
+
                 new_question = DragAndDrop(question_text = question['question_text'], question_id = question['question_id'],
-                                           question_audio = question['question_audio'], explanation_text = question["explanation_text"],
+                                           question_audio = question.get('question_audio'), explanation_text = question["explanation_text"],
                                            explanation_audio = question["explanation_audio"], ordered_image_ids = question["ordered_image_ids"],
                                            current_answer = question["current_answer"], on_complete = self.advance_question, on_attempt = self.attempt)
             self.assessment.append(new_question)
-        print("assessment + " +  str(self.assessment))
-
 
     def advance_question(self):
         self.grid.clear_widgets()
@@ -79,7 +78,7 @@ class AssessmentManager(Screen):
             self.on_assessment_complete()
 
     def on_assessment_complete(self):
-        print("DONE")
+        print("completed game.")
         self.manager.current = "menu_screen"
 
     def attempt(self):
@@ -88,11 +87,9 @@ class AssessmentManager(Screen):
         update_assessment_progress(self.user['id'], self.module_number, self.index, self.current_question_attempts)
 
     def render_question(self):
-        print("rendering question")
-        curr = self.assessment[self.index]
-        self.grid.add_widget(curr)
-        question_audio = SoundLoader.load(curr.question_audio)
-        question_audio.play()
+        current_question = self.assessment[self.index]
+        self.grid.add_widget(current_question)
+        current_question.play_question_audio()
 
     def __str__(self):
         ret = ''
