@@ -60,7 +60,7 @@ class Module(Screen):
         self.script_iterator = -1
 
         # Index of current scene
-        self.scene_iterator = 4
+        self.scene_iterator = 0
 
         # List of lines (not actions) that have been executed
         self.lines = []
