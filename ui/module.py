@@ -110,6 +110,8 @@ class Module(Screen):
             #auto advance prevents the audio from playing, so we can script right through it
             self.advance_line(None, auto_advance= True)
     
+        print("current scene: " + str(self.scene_iterator))
+
         self.advance_line(None)
 
     def load_local_storage(self):
@@ -119,11 +121,14 @@ class Module(Screen):
             if(state is not None):
                 print("STATE", state)
                 self.module_number = state['module_id']
-                self.scene_iterator = state['scene_id']
+
+                if(state['scene_id'] < len(self.scenes)):
+                    self.scene_iterator = state['scene_id']
+                    
                 self.script_iterator = state['line_id']
         except:
             print("failed to load state")
-
+            
     # Screen positioning: assuming maximum of 7 characters on screen at one time
     def init_module_ui(self): 
         self.screen_positions = [
@@ -261,6 +266,8 @@ class Module(Screen):
     # Plays the current line and advances the script_iterator
     # Callback parameter added for Kivy on_press callback
     def advance_line(self, callback, auto_advance=False):
+        print("current scene: " + str(self.scene_iterator))
+        print("currnet line: " + str(self.script_iterator))
         if(self.script_iterator == 1 and self.scene_iterator == 0):
             #you are for the first time advancing the line, so add the prev widget
             self.ids.float.add_widget(self.prev_icon, 1)
@@ -275,13 +282,13 @@ class Module(Screen):
         self.script_iterator += 1
 
         if (self.script_iterator < len(self.current_scene.script)):
+            update_module_state(self.user['id'], self.module_number, self.scene_iterator, self.script_iterator)
             # Check if a line has been executed already
             event = self.current_scene.script[self.script_iterator]
 
             if (type(event) == Line):
                 if not auto_advance:
                     self.play_line(event)
-                    update_module_state(self.user['id'], self.module_number, self.scene_iterator, self.script_iterator)
 
                 # update module state (user_id, module_id, scene, line)
             elif (type(event) == Action):
