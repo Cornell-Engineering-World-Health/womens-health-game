@@ -16,43 +16,43 @@
         spacing: dnd_from_style['spacing']
 
         DraggableButton:
-            text: '1'
-            droppable_zone_objects: [box_1]
+            text: str(root.mixed_ids[0])
+            droppable_zone_objects: [root.mixed_image_ids[0]]
             drop_func: root.correct
             failed_drop_func: root.wrong
             size_hint: None, None
             size: 250, 350
 
             Image:
-                source: root.ordered_image_ids[0]
+                source: root.ordered_image_ids[root.mixed_ids[0] - 1]
                 y: self.parent.y
                 x: self.parent.x
                 size: self.parent.size
 
         DraggableButton:
-            text: '2'
-            droppable_zone_objects: [box_2]
+            text: str(root.mixed_ids[1])
+            droppable_zone_objects: [root.mixed_image_ids[1]]
             drop_func: root.correct
             failed_drop_func: root.wrong
             size_hint: None, None
             size: 250, 350
 
             Image:
-                source: root.ordered_image_ids[1]
+                source: root.ordered_image_ids[root.mixed_ids[1] - 1]
                 y: self.parent.y
                 x: self.parent.x
                 size: self.parent.size
 
         DraggableButton:
-            text: '3'
-            droppable_zone_objects: [box_3]
+            text: str(root.mixed_ids[2])
+            droppable_zone_objects: [root.mixed_image_ids[2]]
             drop_func: root.correct
             failed_drop_func: root.wrong
             size_hint: None, None
             size: 250, 350
 
             Image:
-                source: root.ordered_image_ids[2]
+                source: root.ordered_image_ids[root.mixed_ids[2] - 1]
                 y: self.parent.y
                 x: self.parent.x
                 size: self.parent.size
