@@ -6,7 +6,7 @@ from components.DragAndDrop import DragAndDrop
 from kivy.clock import Clock
 from kivy.core.audio import SoundLoader
 
-from util.store import update_assessment_progress, complete_question_state, current_assessment_progress
+from util.store import update_assessment_progress, complete_question_state, current_assessment_progress, complete_assessment_state
 
 class AssessmentManager(Screen):
     def __init__(self, **kw):
@@ -79,6 +79,7 @@ class AssessmentManager(Screen):
 
     def on_assessment_complete(self):
         print("completed game.")
+        complete_assessment_state(self.user['id'], self.module_number)
         self.manager.current = "menu_screen"
 
     def attempt(self):

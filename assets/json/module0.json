@@ -563,24 +563,6 @@
           "action_type": "exit"
         }
       ]
-    },
-    {
-      "background": "meeting.jpg",
-      "characters": [
-        9
-      ],
-      "script": [
-        {
-          "type": "action",
-          "character_id": 9,
-          "action_type": "enter"
-        },
-        {
-          "type": "action",
-          "character_id": 9,
-          "action_type": "exit"
-        }
-      ]
     }
   ]
 }
