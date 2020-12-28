@@ -22,6 +22,8 @@ class  DraggableButton(Button, DragNDropWidget):
 
 class DragAndDrop(BoxLayout):
     ordered_image_ids = ListProperty(["", "", "", "", "", ""])
+    mixed_image_ids = ListProperty([None, None, None])
+    mixed_ids = ListProperty([0, 0, 0])
     current_answer = []
     def __init__(self, **kwargs):
         super().__init__()
@@ -41,6 +43,8 @@ class DragAndDrop(BoxLayout):
         else:
             self.question_audio =  None
 
+        self.shuffle_images()
+
     def _get_id(self, id):
         id_dict = {
         '1': self.ids.box_1,
@@ -48,6 +52,12 @@ class DragAndDrop(BoxLayout):
         '3': self.ids.box_3
         }
         return id_dict.get(id, "ERROR")
+
+    def shuffle_images(self):
+        ids = [1, 2, 3]
+        random.shuffle(ids)
+        self.mixed_image_ids = [self._get_id(str(ids[0])), self._get_id(str(ids[1])), self._get_id(str(ids[2]))]
+        self.mixed_ids = ids
 
     def _replace_image(self, id):
         self.ordered_image_ids[int(id) + 2] = self.ordered_image_ids[int(id) - 1]
