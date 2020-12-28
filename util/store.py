@@ -36,11 +36,9 @@ def current_assessment_progress(user_id, module_id):
 # updates the game state to reflect any assessment changes: module number, question number, attempts
 def update_assessment_progress(user_id, module_id, question_id, attempts):
     if(_question_state_exists(user_id, module_id, question_id)):
-        store[user_id]['game_state'][module_id]['assessment_progress'][question_id] = {
-            'question_id': question_id,
-            'attempts': attempts,
-            'question_complete': False,
-        }
+        question_copy = dict(store[user_id]['game_state'][module_id]['assessment_progress'][question_id])
+        question_copy['attempts'] = attempts
+        store[user_id]['game_state'][module_id]['assessment_progress'][question_id] = question_copy
         store[user_id] = store[user_id]
     elif(user_id in store and question_id == len(store[user_id]['game_state'][module_id]['assessment_progress'])):
         store[user_id]['game_state'][module_id]['assessment_progress'].append(_new_question(question_id))
@@ -51,24 +49,19 @@ def update_assessment_progress(user_id, module_id, question_id, attempts):
 # sets the assessment of specific module to completed
 def complete_assessment_state(user_id, module_id):
     if(_module_state_exists(user_id, module_id)):
-        store[user_id]['game_state'][module_id] = {
-            'module_id': module_id,
-            'scene_id':0,
-            'line_id':0,
-            'module_complete': True,
-            'assessment_progress': current_state['assessment_progress'],
-        }
+        module_copy = dict(store[user_id]['game_state'][module_id])
+        module_copy['scene_id'] = 0
+        module_copy['line_id'] = 0
+        store[user_id]['game_state'][module_id] = module_copy
         store[user_id] = store[user_id]
-        print("complete module state: " + str(store[user_id]))
+        print("complete assessment state: " + str(store[user_id]))
 
 # sets the question of specific module to complete
 def complete_question_state(user_id, module_id, question_id):
     if(_question_state_exists(user_id, module_id, question_id)):
-        store[user_id]['game_state'][module_id]['assessment_progress'][question_id] = {
-            'question_id': question_id,
-            'attempts': store[user_id]['game_state'][module_id]['assessment_progress'][question_id]['attempts'],
-            'question_complete': True
-        }
+        question_copy = dict(store[user_id]['game_state'][module_id]['assessment_progress'][question_id])
+        question_copy['question_complete'] = True
+        store[user_id]['game_state'][module_id]['assessment_progress'][question_id] = question_copy
         store[user_id] = store[user_id]
         print("complete question state: " + str(store[user_id]))
 
@@ -88,16 +81,10 @@ def current_state():
 # updates the game state to reflect any module changes: module number, scene number, line number
 def update_module_state(user_id, module_id, scene, line):
     if(_module_state_exists(user_id, module_id)):
-
-        current_assessment = current_assessment_progress(user_id, module_id)
-
-        store[user_id]['game_state'][module_id] = {
-            'module_id': module_id,
-            'scene_id': scene,
-            'line_id': line,
-            'module_complete': False,
-            'assessment_progress': current_assessment
-        }
+        module_copy = dict(store[user_id]['game_state'][module_id])
+        module_copy['scene_id'] = scene
+        module_copy['line_id'] = line
+        store[user_id]['game_state'][module_id] = module_copy
         store[user_id] = store[user_id]
         print("store: " + str(store[user_id]))
     elif(user_id in store and module_id == len(store[user_id]['game_state'])):
@@ -107,17 +94,10 @@ def update_module_state(user_id, module_id, scene, line):
 
 # sets the module of specific user to complete
 def complete_module_state(user_id, module_id):
-
-    current_state = current_module_state(user_id, module_id)
-
     if(_module_state_exists(user_id, module_id)):
-        store[user_id]['game_state'][module_id] = {
-            'module_id': module_id,
-            'scene_id':current_state['scene_id'],
-            'line_id':current_state['line_id'],
-            'module_complete': True,
-            'assessment_progress': current_state['assessment_progress'],
-        }
+        module_copy = dict(store[user_id]['game_state'][module_id])
+        module_copy['module_complete'] = True
+        store[user_id]['game_state'][module_id] = module_copy
         store[user_id] = store[user_id]
         print("complete module state: " + str(store[user_id]))
 
