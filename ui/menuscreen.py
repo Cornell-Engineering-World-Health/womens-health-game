@@ -11,7 +11,6 @@ class MenuScreen(Screen):
         self.app = MDApp.get_running_app()
 
     def on_pre_enter(self, *args):
-        self.admin = self.manager.screens[1].ids.admin
         self.user = self.ids.user
         self.app.title = self.user['first_name']+' '+self.user['last_name']
         with open("assets/json/module_list.json") as file:
