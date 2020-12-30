@@ -43,6 +43,7 @@ class Card(FloatLayout):
     # menu screen
     def menu(self, instance):
         self.sm.screens[6].ids.user = self.selected_user
+        self.sm.transition.direction = 'left'
         #self.sm.screens[2].ids.module_number = 1 # get module number from user
         self.sm.current = 'menu_screen'
 

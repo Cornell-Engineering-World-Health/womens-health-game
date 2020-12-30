@@ -30,6 +30,7 @@ class MenuScreen(Screen):
 
     # navigate back to dashboard
     def back(self):
+        self.manager.transition.direction = 'right'
         self.manager.current = 'dashboard'
 
     def on_leave(self):
