@@ -1,9 +1,48 @@
 <SettingsScreen>:
-    FloatLayout:
+    canvas:
+        Color:
+            rgba: 0.708, 0.281, 0.097, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+	FloatLayout:
 
-        MDLabel:
-            pos_hint: {"x": .3, "top": .9}
-            size_hint: (.2, .1)
-            text: "Settings "
-            halign: "center"
-            theme_text_color: "Primary"
+        Label:
+            text: 'SETTINGS'
+            text_color: 1, 1, 1, 1
+            halign: 'center'
+            font_size: '50sp'
+            bold: True
+            pos_hint: {'x':.3, 'y':.75}
+            size_hint: (.4, .05)
+
+        Label:
+            id: email
+            text: root.email
+            text_color: 1, 1, 1, 1
+            halign: 'center'
+            font_size: '30sp'
+            pos_hint: {'x': .3, 'y': .5}
+            size_hint: (.4, .08)
+
+        RoundButton:
+            text: 'Logout'
+            color: 0,0,0,1
+            font_size: '20sp'
+            bold: True
+            on_press: root.logout()
+            size_hint: (.2, .075)
+            pos_hint: {"x": .4, "y": .3}
+
+<RoundButton@Button>:
+    background_color: (0,0,0,0)
+    background_normal: ''
+    back_color: (0.925,0.786,0.27,1)
+    border_radius: [50]
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: self.border_radius

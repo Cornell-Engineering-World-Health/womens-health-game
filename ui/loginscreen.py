@@ -1,13 +1,15 @@
 from kivy.uix.screenmanager import Screen
 from kivymd.app import MDApp
 
-from util.client import get_students_from_admin_id, login, update_state
+from util.client import login, update_state
 from util.store import current_state
+
 
 class LoginScreen(Screen):
     def __init__(self, **kw):
         super().__init__(**kw)
         self.app = MDApp.get_running_app()
+        self.ids.admin = None
 
     def on_pre_enter(self, *args):
         self.app.title = "Login"
@@ -27,15 +29,11 @@ class LoginScreen(Screen):
                 return
             try:
                 self.ids.admin = login(self.login_email, self.login_password)
-                res = get_students_from_admin_id(self.ids.admin['localId'])
-                self.ids.users = res
                 self.ids.email.text = ""
                 self.ids.password.text = ""
                 self.manager.current = 'dashboard'
-            except NameError as err:
-                print("ERROR", err)
             except Exception as err:
-                print("INVALID USERNAME OR PASSWORD, PLEASE TRY AGAIN --> " + str(err))
+                print("ERROR", err)
 
     def process_email(self):
         self.login_email = self.ids.email.text

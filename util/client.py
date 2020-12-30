@@ -6,6 +6,7 @@ import threading
 from kivy.network.urlrequest import UrlRequest
 from util.firebase import firebase
 from dotenv import load_dotenv
+from util.store import update_admin_state
 
 
 load_dotenv()
@@ -33,6 +34,7 @@ def post_state(new_state):
 def update_state(id, new_state):
 	new_state['user_id'] = id
 	json_obj = json.dumps(new_state, indent = 4)
+	print("**(STATE)**", json_obj)
 	user_state = get_state_from_user_id(id)
 	if(not user_state):
 		res = post_state(json_obj)
@@ -52,16 +54,18 @@ def on_success(req, result):
 def login(email, password):
 	try:
 		auth = firebase.auth()
-		user = auth.sign_in_with_email_and_password(email, password)
-		return user
+		admin = auth.sign_in_with_email_and_password(email, password)
+		users = get_students_from_admin_id(admin['localId'])
+		update_admin_state(admin, users)
+		return admin
 	except Exception as err:
 		print("ERROR", err)
 
 # logout
 def logout(sm):
 	try:
-		sm.screens[0].ids.users = None
-		sm.screens[0].ids.admin = None
+		sm.screens[1].ids.admin = None
+		update_admin_state(None, None)
 		sm.current = 'login_screen'
 	except Exception as err:
 		print("ERROR", err)
