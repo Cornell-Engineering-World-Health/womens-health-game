@@ -7,6 +7,14 @@
             pos: self.pos
 	FloatLayout:
 
+        MDToolbar:
+            title: root.email
+            md_bg_color: 1, 1, 1, 1
+            specific_text_color: 0, 0, 0, 1
+            left_action_items: [["arrow-left", lambda x: root.back()]]
+            round: '50dp'
+            pos_hint: {'y':.9}
+
         Label:
             text: 'SETTINGS'
             text_color: 1, 1, 1, 1
@@ -16,14 +24,14 @@
             pos_hint: {'x':.3, 'y':.75}
             size_hint: (.4, .05)
 
-        Label:
-            id: email
-            text: root.email
-            text_color: 1, 1, 1, 1
-            halign: 'center'
-            font_size: '30sp'
-            pos_hint: {'x': .3, 'y': .5}
-            size_hint: (.4, .08)
+        RoundButton:
+            text: 'Admin Website'
+            color: 0,0,0,1
+            font_size: '20sp'
+            bold: True
+            on_press: root.open_url()
+            size_hint: (.2, .075)
+            pos_hint: {"x": .4, "y": .5}
 
         RoundButton:
             text: 'Logout'

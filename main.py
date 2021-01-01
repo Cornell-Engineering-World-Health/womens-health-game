@@ -25,7 +25,8 @@ class MyApp(MDApp):
         return Builder.load_file("main.kv")
 
     def settings(self):
-    	MDApp.get_running_app().root.ids.screen_manager.current = 'settings_screen'
+        MDApp.get_running_app().root.ids.screen_manager.transition.direction = 'left'
+        MDApp.get_running_app().root.ids.screen_manager.current = 'settings_screen'
 
 
 

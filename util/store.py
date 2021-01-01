@@ -78,6 +78,11 @@ def current_module_state(user_id, module_id):
 def current_state():
     return store
 
+# clears the game state store
+def clear_game_state():
+    store.clear()
+    print("CLEARING GAME STATE")
+
 # checks if admin exists in admin_store
 def admin_state_exists():
     current_state = get_admin_state()
@@ -99,6 +104,7 @@ def update_admin_state(admin, users):
 def update_module_state(user_id, module_id, scene, line):
     if(_module_state_exists(user_id, module_id)):
         module_copy = dict(store[user_id]['game_state'][module_id])
+        module_copy['module_id'] = module_id
         module_copy['scene_id'] = scene
         module_copy['line_id'] = line
         store[user_id]['game_state'][module_id] = module_copy
@@ -118,6 +124,17 @@ def complete_module_state(user_id, module_id):
         store[user_id] = store[user_id]
         print("complete module state: " + str(store[user_id]))
 
+def new_user(id, state):
+    if state:
+        print("Populating returning user: [id] = ",id, "\n")
+        store[id] = {
+            'id': len(store),
+            'game_state': [dict(state)],
+        }
+    else:
+        print("Initializing new user: [id] = ",id, "\n")
+        _init_user(id)
+
 # creates an empty new question at id
 def _new_question(id):
     question = {'question_id' : id, 'attempts' : 0, 'question_complete': False}
@@ -135,8 +152,7 @@ def _new_module(id):
     return module
 
 # creates user in store if does not exist, returns current state of user
-def init_user(user):
-    id = user['id']
+def _init_user(id):
     if id not in store:
         store[id] = {
             'id': len(store),

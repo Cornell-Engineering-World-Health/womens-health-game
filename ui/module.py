@@ -119,19 +119,14 @@ class Module(Screen):
             state = current_module_state(self.user['id'], self.module_number)
 
             if(state is not None):
-                print("STATE", state)
                 self.module_number = state['module_id']
 
                 if(state['scene_id'] < len(self.scenes)):
                     self.scene_iterator = state['scene_id']
 
                 self.script_iterator = state['line_id']
-        except:
-            print("failed to load state")
-
-        #self.scene_iterator = 3
-        #self.script_iterator = 20
-
+        except Exception as err:
+            print("\n***failed to load state***", err, "\n")
 
     # Screen positioning: assuming maximum of 7 characters on screen at one time
     def init_module_ui(self):
@@ -550,6 +545,7 @@ class Module(Screen):
     def load_module_screen(self, callback):
         self.unload_screen()
 
+        self.manager.transition.direction = 'right'
         self.manager.current = 'menu_screen'
 
     def load_assessment(self):
