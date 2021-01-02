@@ -88,8 +88,9 @@ def login(email, password):
 
 		#try to login, and cut function short if unsuccessful
 		try:
-			auth.sign_in_with_email_and_password(email, password)
+			admin = auth.sign_in_with_email_and_password(email, password)
 		except:
+			print("login failure")
 			return False, "login_failure"
 
 		#try to make our backend requests to get the users based on the person who logged in
@@ -98,6 +99,7 @@ def login(email, password):
 			update_local_state(users)
 			update_admin_state(admin, users)
 		except:
+			print("network failure")
 			return False, "network_failure"
 
 		return True, ""

@@ -21,10 +21,14 @@ class LoginScreen(Screen):
         #always clear password inbetween logins
         self.ids.password.text = ""
 
+        #login successful
         if(status[0]):
             self.ids.email.text = ""
             self.manager.current = 'dashboard'
-        elif status[0] == "login_failure":
+
+        #login unsuccesful
+        elif status[1] == "login_failure": 
+            print("invalid username | password")
             #TODO: add "Invalid username or password" to the screen
             pass
         elif status[1] == "network_failure":
