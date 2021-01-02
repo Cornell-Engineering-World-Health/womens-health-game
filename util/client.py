@@ -76,7 +76,13 @@ def add_local_state_to_backend():
 		print("ERROR UPDATING BACKEND WITH LOCAL STATE", err)
 		return False
 
-# login
+"""
+login returns a tuple in the form (boolean b, message m), where b is True when the login
+was successful, and false otherwise. 
+
+m is the unique error message for the different kinds of errors that can happen in 
+during logging in.
+"""
 def login(email, password):
 		auth = firebase.auth()
 
