@@ -78,15 +78,23 @@ def add_local_state_to_backend():
 
 # login
 def login(email, password):
-	try:
 		auth = firebase.auth()
-		admin = auth.sign_in_with_email_and_password(email, password)
-		users = get_students_from_admin_id(admin['localId'])
-		update_admin_state(admin, users)
-		update_local_state(users)
-		return admin
-	except Exception as err:
-		print("ERROR", err)
+
+		#try to login, and cut function short if unsuccessful
+		try:
+			auth.sign_in_with_email_and_password(email, password)
+		except:
+			return False, "login_failure"
+
+		#try to make our backend requests to get the users based on the person who logged in
+		try:
+			users = get_students_from_admin_id(admin['localId'])
+			update_local_state(users)
+			update_admin_state(admin, users)
+		except:
+			return False, "network_failure"
+
+		return True, ""
 
 def clear_state(sm):
 	did_upload = add_local_state_to_backend()

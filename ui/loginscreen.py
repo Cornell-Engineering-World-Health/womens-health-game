@@ -12,14 +12,24 @@ class LoginScreen(Screen):
     def on_pre_enter(self, *args):
         self.app.title = "Login"
 
+    """
+    Called when the user presses the login button. 
+    """
     def login(self):
-            try:
-                login(self.login_email, self.login_password)
-                self.ids.email.text = ""
-                self.ids.password.text = ""
-                self.manager.current = 'dashboard'
-            except Exception as err:
-                print("ERROR", err)
+        status = login(self.login_email, self.login_password)
+
+        #always clear password inbetween logins
+        self.ids.password.text = ""
+
+        if(status[0]):
+            self.ids.email.text = ""
+            self.manager.current = 'dashboard'
+        elif status[0] == "login_failure":
+            #TODO: add "Invalid username or password" to the screen
+            pass
+        elif status[1] == "network_failure":
+            #TODO: add message "Something went wrong on our end, please try again in a couple minutes. If this message persists, please contact Cornell Engineering World Health for support."
+            pass
 
     def process_email(self):
         self.login_email = self.ids.email.text

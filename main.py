@@ -19,6 +19,10 @@ from ui.menuscreen import MenuScreen
 from util.constants import _title_
 from util.style import app_style
 
+"""
+This is the main entrypoint into the application. The first screen we load is the
+Splash Screen.
+"""
 class MyApp(MDApp):
 
     # Constructor
