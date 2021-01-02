@@ -2,6 +2,7 @@ from kivy.uix.screenmanager import Screen
 from kivymd.app import MDApp
 from  components.card import Card
 from util.store import get_admin_state
+from util.store import set_current_user
 
 
 class Dashboard(Screen):
@@ -11,10 +12,15 @@ class Dashboard(Screen):
 
     def on_pre_enter(self, *args):
         if(self.manager.screens):
+            #reset current user, because we are selecting one now
+            set_current_user(None)
+
             admin_state = get_admin_state()
             self.users = admin_state['users']
             self.admin = admin_state['admin']
+
             self.app.title = self.admin['email']
+
             self.render_cards()
 
     def render_cards(self):

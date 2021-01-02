@@ -86,19 +86,22 @@ def clear_game_state():
 # checks if admin exists in admin_store
 def admin_state_exists():
     current_state = get_admin_state()
-    return current_state['admin'] is not None
+    return current_state.get('admin') is not None
 
 # get *ADMIN* state
 def get_admin_state():
-    try:
-        return admin_store['auth']
-    except:
-        admin_store['auth'] = {"admin": None, "users": None}
-        print("Initializing admin store")
-        return admin_store['admin']
+    if not 'auth' in admin_store:
+        admin_store['auth'] = {"admin": None, "users": None, "current_user": None}
+
+    return admin_store['auth']
 
 def update_admin_state(admin, users):
     admin_store['auth'] = {'admin': admin, 'users': users}
+
+def set_current_user(user_id):
+    current_state = get_admin_state()
+    current_state['current_user'] = user_id
+    admin_store['auth'] = current_state
 
 # updates the game state to reflect any module changes: module number, scene number, line number
 def update_module_state(user_id, module_id, scene, line):

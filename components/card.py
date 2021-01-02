@@ -9,6 +9,7 @@ import kivy.utils
 
 from util.style import card_style
 from util.ui_support import RoundButton
+from util.store import set_current_user
 
 class Card(FloatLayout):
 
@@ -43,6 +44,10 @@ class Card(FloatLayout):
     # menu screen
     def menu(self, instance):
         self.sm.screens[6].ids.user = self.selected_user
+        print("selected user: " + str(self.selected_user))
+        #update admin state to showcase selected student
+        set_current_user(self.selected_user['id'])
+
         self.sm.transition.direction = 'left'
         #self.sm.screens[2].ids.module_number = 1 # get module number from user
         self.sm.current = 'menu_screen'
