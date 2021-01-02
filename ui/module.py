@@ -281,7 +281,8 @@ class Module(Screen):
         self.script_iterator += 1
 
         if (self.script_iterator < len(self.current_scene.script)):
-            update_module_state(self.user['id'], self.module_number, self.scene_iterator, self.script_iterator)
+            if not auto_advance:
+                update_module_state(self.user['id'], self.module_number, self.scene_iterator, self.script_iterator)
             # Check if a line has been executed already
             event = self.current_scene.script[self.script_iterator]
 

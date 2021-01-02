@@ -1,4 +1,8 @@
 # Import Libraries
+
+from kivy.config import Config
+Config.set('graphics', 'resizable', 0)
+
 from kivymd.app import MDApp
 from kivy.lang import Builder
 
@@ -15,7 +19,6 @@ from ui.menuscreen import MenuScreen
 from util.constants import _title_
 from util.style import app_style
 
-# Initialize APP
 class MyApp(MDApp):
 
     # Constructor
