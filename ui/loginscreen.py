@@ -32,6 +32,7 @@ class LoginScreen(Screen):
             #TODO: add "Invalid username or password" to the screen
             pass
         elif status[1] == "network_failure":
+            print("network failure")
             #TODO: add message "Something went wrong on our end, please try again in a couple minutes. If this message persists, please contact Cornell Engineering World Health for support."
             pass
 

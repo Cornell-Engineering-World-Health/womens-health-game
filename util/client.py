@@ -38,7 +38,7 @@ def post_state(new_state):
 def update_state(id, new_state):
 	new_state['user_id'] = id
 	json_obj = json.dumps(new_state)
-	print("UPDATE_STATE\n")
+	print("updating state remotely: \n")
 	print("**(STATE)**", json_obj)
 	user_state = get_state_from_user_id(id)
 	if user_state is None:

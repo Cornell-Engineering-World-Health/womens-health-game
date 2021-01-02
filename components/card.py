@@ -44,7 +44,6 @@ class Card(FloatLayout):
     # menu screen
     def menu(self, instance):
         self.sm.screens[6].ids.user = self.selected_user
-        print("selected user: " + str(self.selected_user))
         #update admin state to showcase selected student
         set_current_user(self.selected_user['id'])
 
