@@ -108,7 +108,6 @@ def login(email, password):
 
 def clear_state(sm):
 	did_upload = add_local_state_to_backend()
-	print("adding local state: " + str(did_upload))
 	if did_upload:
 		clear_game_state()
 		update_admin_state(None, None)
