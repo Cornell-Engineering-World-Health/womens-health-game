@@ -27,5 +27,4 @@ class SettingsScreen(Screen):
 
     def logout(self):
         sm = MDApp.get_running_app().root.ids.screen_manager
-        sm.current = 'login_screen'
         logout(sm)
