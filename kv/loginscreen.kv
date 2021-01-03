@@ -6,13 +6,6 @@
             size: self.size
             pos: self.pos
 	FloatLayout:
-        # MDIconButton:
-        #     icon: "settings"
-        #     user_font_size: "40sp"
-        #     theme_text_color: "Custom"
-        #     text_color: 1, 1, 1, 1
-        #     pos_hint: {'x':.8, 'y':.8}
-        #     on_press: app.settings()
 
         Label:
             text: 'EDUCATOR \nLOGIN'
@@ -31,7 +24,6 @@
             color_active: 1, 1, 1, 1
             normal_color: 1, 1, 1, 1
             on_text: root.process_email()
-
 
         MDTextFieldRound:
             id: password
@@ -52,6 +44,14 @@
             on_press: root.login()
             size_hint: (.2, .075)
             pos_hint: {"x": .4, "y": .2}
+
+        Label:
+            text: root.error_message
+            text_color: 1, 1, 1, 1
+            halign: 'center'
+            font_size: '25sp'
+            pos_hint: {'x':.3, 'y':.1}
+            size_hint: (.4, .05)
 
 <RoundButton@Button>:
     background_color: (0,0,0,0)

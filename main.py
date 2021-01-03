@@ -19,6 +19,10 @@ from ui.menuscreen import MenuScreen
 from util.constants import _title_
 from util.style import app_style
 
+"""
+This is the main entrypoint into the application. The first screen we load is the
+Splash Screen.
+"""
 class MyApp(MDApp):
 
     # Constructor
@@ -27,10 +31,11 @@ class MyApp(MDApp):
         self.theme_cls.primary_palette = app_style["primary_theme"]
         return Builder.load_file("main.kv")
 
-    def settings(self):
-        MDApp.get_running_app().root.ids.screen_manager.transition.direction = 'left'
-        MDApp.get_running_app().root.ids.screen_manager.current = 'settings_screen'
-
+    def settings(self, prev_page):
+        sm = MDApp.get_running_app().root.ids.screen_manager
+        sm.transition.direction = 'left'
+        sm.current = 'settings_screen'
+        sm.screens[5].ids.prev_page = prev_page
 
 
 # Start App

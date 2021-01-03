@@ -83,14 +83,9 @@ class Module(Screen):
 
         # loads the current user data into user if they exist
         # Pre-existing id: float (FloatLayout id)l
-        if len(self.ids) > 1:
-            self.user = self.ids.user
-            self.module_number = self.ids.module_number
-            self.app.title = "Health Friend: " + \
-                self.user['first_name'] + " " + self.user['last_name']
-        else:
-            print("failed to retrieve user")
-            self.app.title = "Health Friend [Game]  ::  EWH"
+        self.user = self.ids.user
+        self.module_number = self.ids.module_number
+        self.app.title = "Health Friend: " + self.user['first_name'] + " " + self.user['last_name']
 
         # Init and loading functions for module
         self.load_local_storage()
@@ -109,9 +104,6 @@ class Module(Screen):
         for i in range(-1, target_script_iterator):
             #auto advance prevents the audio from playing, so we can script right through it
             self.advance_line(None, auto_advance= True)
-
-        print("current scene: " + str(self.scene_iterator))
-
         self.advance_line(None)
 
     def load_local_storage(self):
@@ -265,8 +257,6 @@ class Module(Screen):
     # Plays the current line and advances the script_iterator
     # Callback parameter added for Kivy on_press callback
     def advance_line(self, callback, auto_advance=False):
-        print("current scene: " + str(self.scene_iterator))
-        print("currnet line: " + str(self.script_iterator))
         if(self.script_iterator == 1 and self.scene_iterator == 0):
             #you are for the first time advancing the line, so add the prev widget
             self.ids.float.add_widget(self.prev_icon, 1)

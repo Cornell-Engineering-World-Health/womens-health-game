@@ -43,7 +43,7 @@ class AssessmentManager(Screen):
     # TODO: load in current state and override other values
     def load_local_storage(self):
         state = current_assessment_progress(self.user['id'], self.module_number)
-        print("STATE", state)
+        print("loaded local assessment progress, but ignoring it.", state)
         pass
 
     def _load(self, module_number: int):

@@ -20,7 +20,7 @@ class SettingsScreen(Screen):
     # navigate back to previous screen
     def back(self):
         self.manager.transition.direction = 'right'
-        self.manager.current = 'dashboard'
+        self.manager.current = self.ids.prev_page
 
     def open_url(self):
         webbrowser.open("https://health-friend-admin-website.herokuapp.com")

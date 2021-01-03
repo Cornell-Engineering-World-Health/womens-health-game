@@ -38,7 +38,7 @@ def post_state(new_state):
 def update_state(id, new_state):
 	new_state['user_id'] = id
 	json_obj = json.dumps(new_state)
-	print("UPDATE_STATE\n")
+	print("updating state remotely: \n")
 	print("**(STATE)**", json_obj)
 	user_state = get_state_from_user_id(id)
 	if user_state is None:
@@ -76,17 +76,33 @@ def add_local_state_to_backend():
 		print("ERROR UPDATING BACKEND WITH LOCAL STATE", err)
 		return False
 
-# login
+"""
+login returns a tuple in the form (boolean b, message m), where b is True when the login
+was successful, and false otherwise. 
+
+m is the unique error message for the different kinds of errors that can happen in 
+during logging in.
+"""
 def login(email, password):
-	try:
 		auth = firebase.auth()
-		admin = auth.sign_in_with_email_and_password(email, password)
-		users = get_students_from_admin_id(admin['localId'])
-		update_admin_state(admin, users)
-		update_local_state(users)
-		return admin
-	except Exception as err:
-		print("ERROR", err)
+
+		#try to login, and cut function short if unsuccessful
+		try:
+			admin = auth.sign_in_with_email_and_password(email, password)
+		except:
+			print("login failure")
+			return False, "login_failure"
+
+		#try to make our backend requests to get the users based on the person who logged in
+		try:
+			users = get_students_from_admin_id(admin['localId'])
+			update_local_state(users)
+			update_admin_state(admin, users)
+		except:
+			print("network failure")
+			return False, "network_failure"
+
+		return True, ""
 
 def clear_state(sm):
 	did_upload = add_local_state_to_backend()
