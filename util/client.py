@@ -17,13 +17,13 @@ API_KEY = os.getenv('API_KEY')
 # takes in endpoint and optional data
 def _api_call(endpoint, data=None):
 	headers = {'Content-Type':'application/json', 'accept':'application/json', 'X-API-Key':API_KEY}
-	req = UrlRequest('https://healthfriendgameserver.herokuapp.com/api/' + endpoint, on_success=on_success, on_failure=on_failure, req_headers=headers, req_body=data)
+	req = UrlRequest('https://healthfriendgameserver.herokuapp.com/api/' + endpoint, on_success=on_success, on_failure=on_failure, on_error=on_failure, req_headers=headers, req_body=data)
 	req.wait(delay=0.5)
 	return req.result
 
 def _put_api_call(endpoint, data):
 	headers = {'Content-Type':'application/json', 'accept':'application/json', 'X-API-Key':API_KEY}
-	req = UrlRequest('https://healthfriendgameserver.herokuapp.com/api/' + endpoint, on_success=on_success, on_failure=on_failure, req_headers=headers, req_body=data, method='PUT')
+	req = UrlRequest('https://healthfriendgameserver.herokuapp.com/api/' + endpoint, on_success=on_success, on_failure=on_failure, on_error=on_failure, req_headers=headers, req_body=data, method='PUT')
 	req.wait(delay=0.5)
 	return req.result
 # GET API CALL for api/state/user/:user_id
@@ -58,6 +58,8 @@ def on_success(req, result):
 # print request results from failed api call
 def on_failure(req, result):
 	print('request failed', result)
+	#directly throw error to stop the indefinite waiting from .wait
+	raise Exception("request failed")
 
 def update_local_state(users):
 	for user in users:
@@ -78,31 +80,31 @@ def add_local_state_to_backend():
 
 """
 login returns a tuple in the form (boolean b, message m), where b is True when the login
-was successful, and false otherwise. 
+was successful, and false otherwise.
 
-m is the unique error message for the different kinds of errors that can happen in 
+m is the unique error message for the different kinds of errors that can happen in
 during logging in.
 """
 def login(email, password):
-		auth = firebase.auth()
+	auth = firebase.auth()
 
-		#try to login, and cut function short if unsuccessful
-		try:
-			admin = auth.sign_in_with_email_and_password(email, password)
-		except:
-			print("login failure")
-			return False, "login_failure"
+	#try to login, and cut function short if unsuccessful
+	try:
+		admin = auth.sign_in_with_email_and_password(email, password)
+	except:
+		print("login failure")
+		return False, "login_failure"
 
-		#try to make our backend requests to get the users based on the person who logged in
-		try:
-			users = get_students_from_admin_id(admin['localId'])
-			update_local_state(users)
-			update_admin_state(admin, users)
-		except:
-			print("network failure")
-			return False, "network_failure"
+	#try to make our backend requests to get the users based on the person who logged in
+	try:
+		users = get_students_from_admin_id(admin['localId'])
+		update_local_state(users)
+		update_admin_state(admin, users)
+	except:
+		print("network failure")
+		return False, "network_failure"
 
-		return True, ""
+	return True, ""
 
 def clear_state(sm):
 	did_upload = add_local_state_to_backend()
@@ -110,10 +112,12 @@ def clear_state(sm):
 		clear_game_state()
 		update_admin_state(None, None)
 
+	return did_upload
+
 # logout
 def logout(sm):
-	try:
-		clear_state(sm)
+	status = clear_state(sm)
+	if status:
 		sm.current = 'login_screen'
-	except Exception as err:
-		print("ERROR", err)
+	else:
+		return False

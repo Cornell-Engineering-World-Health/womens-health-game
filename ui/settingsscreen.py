@@ -7,6 +7,7 @@ import webbrowser
 
 class SettingsScreen(Screen):
     email = StringProperty("")
+    error_message = StringProperty("")
     def __init__(self, **kw):
         super().__init__(**kw)
         self.app = MDApp.get_running_app()
@@ -16,6 +17,7 @@ class SettingsScreen(Screen):
         self.users = admin_state['users']
         self.email = admin_state['admin']['email']
         self.app.title = "Settings"
+        self.clear_error()
 
     # navigate back to previous screen
     def back(self):
@@ -27,5 +29,12 @@ class SettingsScreen(Screen):
 
     def logout(self):
         sm = MDApp.get_running_app().root.ids.screen_manager
-        sm.current = 'login_screen'
-        logout(sm)
+        status = logout(sm)
+        if not status:
+            self.process_error("Failed to log out, this is likely a network issue. Please check you are connected to the internet and try again.")
+
+    def clear_error(self):
+        self.error_message = ""
+
+    def process_error(self, message):
+        self.error_message = message
