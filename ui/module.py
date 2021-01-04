@@ -112,10 +112,7 @@ class Module(Screen):
 
             if(state is not None):
                 self.module_number = state['module_id']
-
-                if(state['scene_id'] < len(self.scenes)):
-                    self.scene_iterator = state['scene_id']
-
+                self.scene_iterator = state['scene_id']
                 self.script_iterator = state['line_id']
         except Exception as err:
             print("\n***failed to load state***", err, "\n")
