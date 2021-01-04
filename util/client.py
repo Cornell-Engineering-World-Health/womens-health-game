@@ -80,9 +80,9 @@ def add_local_state_to_backend():
 
 """
 login returns a tuple in the form (boolean b, message m), where b is True when the login
-was successful, and false otherwise. 
+was successful, and false otherwise.
 
-m is the unique error message for the different kinds of errors that can happen in 
+m is the unique error message for the different kinds of errors that can happen in
 during logging in.
 """
 def login(email, password):
@@ -111,7 +111,7 @@ def clear_state(sm):
 	if did_upload:
 		clear_game_state()
 		update_admin_state(None, None)
-	
+
 	return did_upload
 
 # logout
@@ -120,5 +120,4 @@ def logout(sm):
 	if status:
 		sm.current = 'login_screen'
 	else:
-		pass
-		#TODO: add label saying "Failed to log out, this is likely a network issue. Please check you are connected to the internet and try again."
+		return False
