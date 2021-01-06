@@ -1,7 +1,7 @@
 # Import Libraries
 
-from kivy.config import Config
-Config.set('graphics', 'resizable', 0)
+# from kivy.config import Config
+# Config.set('graphics', 'resizable', 0)
 
 from kivymd.app import MDApp
 from kivy.lang import Builder

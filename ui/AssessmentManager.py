@@ -8,6 +8,10 @@ from kivy.core.audio import SoundLoader
 
 from util.store import update_assessment_progress, complete_question_state, current_assessment_progress, complete_assessment_state
 
+# Audio path (define switch language - English or Hindi)
+language = "english"
+audio_path = 'assets/audio/' + language + '/'
+
 class AssessmentManager(Screen):
     def __init__(self, **kw):
         super().__init__(**kw)
@@ -51,17 +55,23 @@ class AssessmentManager(Screen):
         with open(filepath) as file:
             data = json.load(file)
         question_dicts = data['questions']
+
         for question in question_dicts:
             if question["type"] == 'multiple_choice':
                 new_question = MultipleChoice(question_text = question['question_text'], question_id =question['question_id'],
-                            question_audio = question['question_audio'], explanation_text = question["explanation_text"],
-                            explanation_audio = question["explanation_audio"], image_options = question["image_options"],
+                            question_audio = audio_path + question['question_audio'], explanation_text = question["explanation_text"],
+                            explanation_audio = audio_path + question["explanation_audio"], image_options = question["image_options"],
                             correct_answer = question["correct_answer"], choices = question['choices'], on_complete = self.advance_question, on_attempt = self.attempt)
             if question["type"] == "drag_and_drop":
 
+                #check if there is an associated question audio
+                question_audio = question.get('question_audio')
+                if question_audio is not None:
+                    question_audio = audio_path + question_audio
+
                 new_question = DragAndDrop(question_text = question['question_text'], question_id = question['question_id'],
-                                           question_audio = question.get('question_audio'), explanation_text = question["explanation_text"],
-                                           explanation_audio = question["explanation_audio"], ordered_image_ids = question["ordered_image_ids"],
+                                           question_audio = question_audio, explanation_text = question["explanation_text"],
+                                           explanation_audio = audio_path + question["explanation_audio"], ordered_image_ids = question["ordered_image_ids"],
                                            current_answer = question["current_answer"], on_complete = self.advance_question, on_attempt = self.attempt)
             self.assessment.append(new_question)
 

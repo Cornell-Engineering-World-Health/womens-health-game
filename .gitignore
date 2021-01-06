@@ -11,3 +11,5 @@ kivydnd/__pycache__
 components/__pycache__
 storage/game_state.json
 storage/admin_state.json
+.buildozer
+bin

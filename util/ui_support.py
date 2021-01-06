@@ -12,6 +12,7 @@ from kivy.graphics import RoundedRectangle
 
 kv="""
 <RoundButton@Button>:
+    do_scale: False
     background_color: (0,0,0,0)
     background_normal: ''
     back_color: (0.925,0.786,0.27,1)
@@ -22,7 +23,7 @@ kv="""
         RoundedRectangle:
             size: self.size
             pos: self.pos
-            radius: self.border_radius
+            radius: [50]
 """
 
 class RoundButton(Button):

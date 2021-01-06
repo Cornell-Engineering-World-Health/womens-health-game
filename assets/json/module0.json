@@ -24,19 +24,19 @@
           "type": "line",
           "character_id": 9,
           "dialogue": "Namaste everyone. I am Kiran, your health friend. I am very happy that you have chosen to learn  about your own health. Having the right information about your own health is the first step to lead a healthy life. (Kiran is someone with a good awareness of health, and went through trainings. Progressive person. leadership). To go to the next slide press the button on the right side. To listen again press this button in the center.",
-          "dialogue_file": "kiran1.mp3"
+          "dialogue_file": "kiran1.wav"
         },
         {
           "type": "line",
           "character_id": 9,
           "dialogue": "Let me share more about myself. I along with my husband Ramesh, daughter seema live in our village sambalpur. (name of the village) My in- laws Sukhi Ram and Vimla Devi also stay with us. I have studied till class 8 but could not continue my education due to lack of family support.. But this has not stopped me from learning. Two years back I got trained in a program called Enriche organized by Barefoot College, Tilonia. There I learnt about women’s health. We women feel embarrassed/shy to discuss our bodies.\n        We seldom prioritize our health.\n        We don’t know where to seek information on how to take care of our health.\nThis needs to change. I share the knowledge I have gained with all the girls and women in our village and encourage them to take care of their health/bodies.",
-          "dialogue_file": "kiran2.mp3"
+          "dialogue_file": "kiran2.wav"
         },
         {
           "type": "line",
           "character_id": 9,
           "dialogue": "Let me introduce you to my friends. Click on each of the characters to know them.",
-          "dialogue_file": "kiran3.mp3"
+          "dialogue_file": "kiran3.wav"
         },
         {
           "type": "action",
@@ -77,37 +77,37 @@
           "type": "line",
           "character_id": 8,
           "dialogue": "I am Fiza",
-          "dialogue_file": "fiza1.mp3"
+          "dialogue_file": "fiza1.wav"
         },
         {
           "type": "line",
           "character_id": 1,
           "dialogue": "I am Salma. I am Fiza's mom",
-          "dialogue_file": "salma1.mp3"
+          "dialogue_file": "salma1.wav"
         },
         {
           "type": "line",
           "character_id": 4,
           "dialogue": "I am Anna",
-          "dialogue_file": "anna1.mp3"
+          "dialogue_file": "anna1.wav"
         },
         {
           "type": "line",
           "character_id": 13,
           "dialogue": "I am Marina. I am Anna's mom",
-          "dialogue_file": "marina1.mp3"
+          "dialogue_file": "marina1.wav"
         },
         {
           "type": "line",
           "character_id": 11,
           "dialogue": "I am Vishal",
-          "dialogue_file": "vishal1.mp3"
+          "dialogue_file": "vishal1.wav"
         },
         {
           "type": "line",
           "character_id": 14,
           "dialogue": "I am Hansa. I am Vishal's mom.",
-          "dialogue_file": "hansa1.mp3"
+          "dialogue_file": "hansa1.wav"
         },
         {
           "type": "action",
@@ -166,55 +166,55 @@
           "type": "line",
           "character_id": 9,
           "dialogue": "I am so happy that you all took out time despite your busy schedule. The women in my community gather once every month to share information on Health and Nutrition, and also discuss other family and community issues.",
-          "dialogue_file": "kiran4.mp3"
+          "dialogue_file": "kiran4.wav"
         },
         {
           "type": "line",
           "character_id": 1,
           "dialogue": "Sisters I am very worried about something. A few days back while I was talking to  Fiza, she asked me why she is taller than her friends, Anna and Seema.",
-          "dialogue_file": "salma2.mp3"
+          "dialogue_file": "salma2.wav"
         },
         {
           "type": "line",
           "character_id": 1,
           "dialogue": "Also after sometime she very hesitantly shared, that they were also discussing why Anna’s chest were growing but none of them could feel anything around theirs. ",
-          "dialogue_file": "salma3.mp3"
+          "dialogue_file": "salma3.wav"
         },
         {
           "type": "line",
           "character_id": 13,
           "dialogue": "That’s bad sister! These girls have started discussing bad things, we must immediately stop them.",
-          "dialogue_file": "marina2.mp3"
+          "dialogue_file": "marina2.wav"
         },
         {
           "type": "line",
           "character_id": 9,
           "dialogue": "What are you saying Marina, Why should we stop them?  There is nothing wrong in discussing the changes in your body. In fact we should explain them these and encourage them to have discussions with us.",
-          "dialogue_file": "kiran5.mp3"
+          "dialogue_file": "kiran5.wav"
         },
         {
           "type": "line",
           "character_id": 9,
           "dialogue": "Do you all know that most of the girls get very wrong information and this leads to them feeling ashamed of their bodies and making wrong decisions about their health?",
-          "dialogue_file": "kiran6.mp3"
+          "dialogue_file": "kiran6.wav"
         },
         {
           "type": "line",
           "character_id": 9,
           "dialogue": "Because we are shy, we don’t understand our bodies and then we don’t discuss or identify health issues. Do you all want your daughters /sisters to face the poor health outcomes that you are suffering from?",
-          "dialogue_file": "kiran7.mp3"
+          "dialogue_file": "kiran7.wav"
         },
         {
           "type": "line",
           "character_id": 1,
           "dialogue": "No No. I think you are right, We should speak to them. Sisters, we don’t want our daughters to be ignorant as we were about our bodies. I got all wrong information from my  family and because of that I remained ignorant and later faced  major health issues.",
-          "dialogue_file": "salma4.mp3"
+          "dialogue_file": "salma4.wav"
         },
         {
           "type": "line",
           "character_id": 9,
           "dialogue": "I am happy and willing to share all the information on Women’s Health with you all and our daughters. It is our duty to provide our daughters with the  right information. Let us meet tomorrow and start this conversation with our daughters and also learn together.",
-          "dialogue_file": "kiran8.mp3"
+          "dialogue_file": "kiran8.wav"
         },
         {
           "type": "action",
@@ -253,13 +253,13 @@
           "type": "line",
           "character_id": 9,
           "dialogue": "We are all here today to discuss the important changes in our bodies while growing up.We are all friends and sisters, so there is nothing to be Shy. I hope that everyone will participate,learn ,ask questions and discuss. So first tell me what are the changes you mainly see in your body.",
-          "dialogue_file": "kiran9.mp3"
+          "dialogue_file": "kiran9.wav"
         },
         {
           "type": "line",
           "character_id": 9,
           "dialogue": "Click on the icons one by one to know the different physical changes in our body between 12-19 years.",
-          "dialogue_file": "kiran10.mp3"
+          "dialogue_file": "kiran10.wav"
         },
         {
           "type": "action",
@@ -281,7 +281,7 @@
           "type": "line",
           "character_id": 1,
           "dialogue": "My height had increased.",
-          "dialogue_file": "salma5.mp3"
+          "dialogue_file": "salma5.wav"
         },
         {
           "type": "picture",
@@ -308,7 +308,7 @@
           "type": "line",
           "character_id": 14,
           "dialogue": "Hair started growing on my armpit.",
-          "dialogue_file": "hansa2.mp3"
+          "dialogue_file": "hansa2.wav"
         },
         {
           "type": "picture",
@@ -335,7 +335,7 @@
           "type": "line",
           "character_id": 13,
           "dialogue": "I also noticed that my hips had widened",
-          "dialogue_file": "marina3.mp3"
+          "dialogue_file": "marina3.wav"
         },
         {
           "type": "picture",
@@ -362,7 +362,7 @@
           "type": "line",
           "character_id": 7,
           "dialogue": "Also growth in the breasts.",
-          "dialogue_file": "seema1.mp3"
+          "dialogue_file": "seema1.wav"
         },
         {
           "type": "picture",
@@ -389,7 +389,7 @@
           "type": "line",
           "character_id": 9,
           "dialogue": "Also growth of hair in the pubic region.",
-          "dialogue_file": "kiran11.mp3"
+          "dialogue_file": "kiran11.wav"
         },
         {
           "type": "picture",
@@ -416,7 +416,7 @@
           "type": "line",
           "character_id": 1,
           "dialogue": "And the onset of menstruation. ",
-          "dialogue_file": "salma6.mp3"
+          "dialogue_file": "salma6.wav"
         },
         {
           "type": "picture",
@@ -469,73 +469,73 @@
           "type": "line",
           "character_id": 9,
           "dialogue": "We have covered almost all the changes. These are the important physical changes that our body goes through between 12-20 years. Like how a seed turns into a plant and then to a tree, similarly a girl child grows from a baby, to adolescent girl, then to a young girl, and then finally to a woman. But do you know why our body goes through these changes?",
-          "dialogue_file": "kiran12.mp3"
+          "dialogue_file": "kiran12.wav"
         },
         {
           "type": "line",
           "character_id": 13,
           "dialogue": "Something to do with babies.",
-          "dialogue_file": "marina4.mp3"
+          "dialogue_file": "marina4.wav"
         },
         {
           "type": "line",
           "character_id": 9,
           "dialogue": "But these changes are not only for pregnancy. The changes prepare the body for processes such as reproduction, nourishment of the baby and regulation of many other processes required for proper functioning of the body. ",
-          "dialogue_file": "kiran13.mp3"
+          "dialogue_file": "kiran13.wav"
         },
         {
           "type": "line",
           "character_id": 4,
           "dialogue": "Like what functions?",
-          "dialogue_file": "anna2.mp3"
+          "dialogue_file": "anna2.wav"
         },
         {
           "type": "line",
           "character_id": 9,
           "dialogue": "Few examples are widening of hip, development of breasts are changes to prepare body for pregnancy.  Wider hips help carry weight of the baby during pregnancy and ensure a wider passage for delivery of the child. Breasts produce milk to provide nutrition to the baby.",
-          "dialogue_file": "kiran14.mp3"
+          "dialogue_file": "kiran14.wav"
         },
         {
           "type": "line",
           "character_id": 1,
           "dialogue": "I am too shy to ask this, but what is the function of the hair that developed",
-          "dialogue_file": "salma7.mp3"
+          "dialogue_file": "salma7.wav"
         },
         {
           "type": "line",
           "character_id": 9,
           "dialogue": "Why are you feeling shy Salma, we need to ask these questions. The pubic hair prevents foreign particles like any germs and dirt from entering our vagina, helps to keep the vagina warm and prevents friction (rubbing from underwear and during sexual activity etc).",
-          "dialogue_file": "kiran15.mp3"
+          "dialogue_file": "kiran15.wav"
         },
         {
           "type": "line",
           "character_id": 14,
           "dialogue": "Also I was told that once we have our periods/menses, our reproductive organs are matured and we are ready for reproduction. That is why many of us got married after we got our menses.",
-          "dialogue_file": "hansa3.mp3"
+          "dialogue_file": "hansa3.wav"
         },
         {
           "type": "line",
           "character_id": 9,
           "dialogue": "This is not entirely true. The mature reproductive organ is only one step to be able to safely bear a child, Our body needs to go through other changes to be completely ready for safe childbirth. All these changes are completed when we turn 20. ",
-          "dialogue_file": "kiran16.mp3"
+          "dialogue_file": "kiran16.wav"
         },
         {
           "type": "line",
           "character_id": 13,
           "dialogue": "Yes because many girls get married early, they go through difficult pregnancies and it affects their health and their babies health. ",
-          "dialogue_file": "marina5.mp3"
+          "dialogue_file": "marina5.wav"
         },
         {
           "type": "line",
           "character_id": 9,
           "dialogue": "I hope you  all got some valuable information on growing up . It is fun to grow up. We can do so many things, isn’t it. There are so many changes. What is important is that we understand these changes, ask questions about them to our teachers, Health workers like Asha and ANM and other family members. We need to shed all the inhibitions and embrace the changes in the body.I hope you  all got some valuable information on growing up . It is fun to grow up. We can do so many things, isn’t it. There are so many changes. What is important is that we understand these changes, ask questions about them to our teachers, Health workers like Asha and ANM and other family members. We need to shed all the inhibitions and embrace the changes in the body. ",
-          "dialogue_file": "kiran17.mp3"
+          "dialogue_file": "kiran17.wav"
         },
         {
           "type": "line",
           "character_id": 9,
           "dialogue": "Ok Now let’s have a fun activity . Let me see if you can arrange the changes in the body according to these three stages ",
-          "dialogue_file": "kiran18.mp3"
+          "dialogue_file": "kiran18.wav"
         },
         {
           "type": "action",
