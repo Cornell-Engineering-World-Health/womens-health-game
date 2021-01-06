@@ -421,7 +421,7 @@ class Module(Screen):
             source=character.current_mouth,
             pos_hint=pos,
             size_hint_y= None,
-            height= 500,
+            height= 600,
             id=str(character.id)
         )
         
