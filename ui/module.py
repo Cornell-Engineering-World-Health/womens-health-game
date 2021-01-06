@@ -36,9 +36,6 @@ class Module(Screen):
         # All the character objects
         self.characters = {}
 
-        #character widgets currently on the screen
-        self.character_widgets = []
-
         # Array of available positions on the screen
         self.screen_positions = []
 
@@ -228,9 +225,9 @@ class Module(Screen):
         for character in character_data_dict:
             char_id = character['id']
             char_name = character['name']
-            char_image = character['image']
-            char_mouth_image = "talking_" + char_image
-            character_obj = Character(char_id, char_name, char_image, char_mouth_image)
+            char_talk = character['talk']
+            char_idle = character['idle']
+            character_obj = Character(char_id, char_name, char_idle, char_talk)
             self.characters[char_id] = character_obj
 
     def set_current_background(self):
@@ -433,20 +430,6 @@ class Module(Screen):
         self.ids.float.add_widget(new_character, 3)
         self.screen_characters += 1
 
-    def _render_mouth(self, character):
-        character_pos = dict(self._position_character())
-        character_pos['top'] -= character.mouth_offset_top
-        character_pos['x'] -= character.mouth_offset_x
-        character.mouth_pos = character_pos # update character's mouth position
-        current_mouth = Image(
-            source=character.current_mouth,
-            pos_hint=character_pos.mouth_pos,
-            size_hint_y= character.mouth_size,
-            id='mouth_'+str(character.id)
-        )
-        self.ids.float.add_widget(current_mouth, 3)
-        self.id_to_mouth[character.id] = current_mouth # add mouth to id-mouth map
-
     def _animate_mouth(self, character):
         character.talk()
 
@@ -493,11 +476,12 @@ class Module(Screen):
             self.sound.stop()
 
         for character_id in self.characters:
-            self.ids.float.remove_widget(character[character_id].character_widget)
+            character_widget = self.characters[character_id].character_widget
+
+            if character_widget is not None:
+                self.ids.float.remove_widget(character_widget)
 
         self.screen_characters = 0
-        self.id_to_mouth = {}
-
     # Go to module selection screen
     # Callback parameter added for Kivy on_press callback
     def load_module_screen(self, callback):
