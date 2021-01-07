@@ -123,3 +123,7 @@ def logout(sm):
 		sm.current = 'login_screen'
 	else:
 		return False
+
+def sync_to_backend():
+	did_upload = add_local_state_to_backend()
+	return did_upload
