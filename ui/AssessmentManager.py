@@ -19,20 +19,21 @@ class AssessmentManager(Screen):
         self.user = None
         self.module_number = 0
         self.assessment = []  # list of Question types
-        self.index = -1
-        self.current_question_attempts = 0
-        self.current_question_text = ''
-        self.current_question = ""
         self.grid = None
         Clock.schedule_once(self.finished_init)
 
     def finished_init(self, *args):
         self.grid = self.ids.assessment_grid
-        self._load(self.module_number)
 
     def on_pre_enter(self, *args):
         # loads the current user data into user if they exist
         # Pre-existing id: float (FloatLayout id)
+
+        self.index = -1
+        self.current_question_attempts = 0
+        self.current_question_text = ''
+        self.current_question = ""
+
         if len(self.ids) > 1:
             self.user = self.ids.user
             self.module_number = self.ids.module_number
@@ -42,6 +43,7 @@ class AssessmentManager(Screen):
             self.app.title = "Health Friend [Game]  ::  EWH"
 
         self.load_local_storage()
+        self._load(self.module_number)
         self.advance_question()
 
     # TODO: load in current state and override other values
@@ -51,6 +53,7 @@ class AssessmentManager(Screen):
         pass
 
     def _load(self, module_number: int):
+        self.assessment = [] 
         filepath = "assets/json/questions" + str(module_number) + ".json"
         with open(filepath) as file:
             data = json.load(file)
