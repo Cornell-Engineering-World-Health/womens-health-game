@@ -36,8 +36,18 @@ class Module(Screen):
         # All the character objects
         self.characters = {}
 
-        # Array of available positions on the screen
-        self.screen_positions = []
+        self.next_icon = None
+        self.prev_icon = None
+        self.replay_icon = None
+        self.module_icon = None
+
+        #first line that is spoken
+        self.first_line = None
+
+        self.load_characters()
+
+    # built in kivy function that runs before scene is loaded
+    def on_pre_enter(self, *args):
 
         # Number of characters currently on the screen
         self.screen_characters = 0
@@ -64,16 +74,8 @@ class Module(Screen):
         # image name mapped to image widgets
         self.images = {}
 
-        self.next_icon = None
-        self.prev_icon = None
-        self.replay_icon = None
-        self.module_icon = None
-
-        #first line that is spoken
-        self.first_line = None
-
-    # built in kivy function that runs before scene is loaded
-    def on_pre_enter(self, *args):
+        # Array of available positions on the screen
+        self.screen_positions = []
 
         # loads the current user data into user if they exist
         # Pre-existing id: float (FloatLayout id)l
@@ -85,7 +87,6 @@ class Module(Screen):
         self.load_local_storage()
         self.init_module_ui()
         self.load_module(self.module_number)
-        self.load_characters()
         self.init_game_buttons()
 
          #set up initial scene information
@@ -182,9 +183,10 @@ class Module(Screen):
         self._parse_module_json(module_data_dict)
 
     def _parse_module_json(self, module_data_dict):
+        self.scenes = []
+        print("parsing module json")
         json_scenes = module_data_dict['scenes']
         for json_scene in json_scenes:
-            character_ids = json_scene['characters']
             background_image = json_scene['background']
             json_script = json_scene['script']
             script = []
@@ -206,7 +208,7 @@ class Module(Screen):
                     src = script_line.get('src')
                     action_type = script_line['action_type']
                     script.append(Picture(name, src, action_type))
-            scene = Scene(character_ids, background_image, script)
+            scene = Scene(background_image, script)
             self.scenes.append(scene)
 
 
@@ -288,6 +290,7 @@ class Module(Screen):
             else:
                 print("ERROR: unhandled type " + str(event))
         elif (self.scene_iterator + 1 < len(self.scenes)):
+            print("length of self.scenes" + str(len(self.scenes)))
             #advance the scene, reset the script
             self.scene_iterator += 1
             self.script_iterator = -1
@@ -296,6 +299,7 @@ class Module(Screen):
             self.set_current_background()
             self.advance_line(callback)
         else:
+            print("loading assessment")
             # Set script iterator to end of script
             self.script_iterator = len(self.current_scene.script) - 1
             # update module state to complete (user_id, module_id)
@@ -509,8 +513,7 @@ class Module(Screen):
 
 
 class Scene:
-    def __init__(self, character_ids, background_image, script):
-        self.character_ids = character_ids
+    def __init__(self, background_image, script):
         self.background_image = background_image
         self.script = script
 
