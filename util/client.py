@@ -13,7 +13,6 @@ from util.store import update_admin_state, clear_game_state, current_state, new_
 load_dotenv()
 API_KEY = os.getenv('API_KEY')
 
-
 # API REQUESTS
 
 # takes in endpoint and optional data
@@ -125,5 +124,4 @@ def logout(sm):
 		return False
 
 def sync_to_backend():
-	did_upload = add_local_state_to_backend()
-	return did_upload
+  return add_local_state_to_backend()
