@@ -21,7 +21,7 @@
             drop_func: root.correct
             failed_drop_func: root.wrong
             size_hint: None, None
-            size: 250, 350
+            size: 200, 300
 
             Image:
                 source: root.ordered_image_ids[root.mixed_ids[0] - 1]
@@ -35,7 +35,7 @@
             drop_func: root.correct
             failed_drop_func: root.wrong
             size_hint: None, None
-            size: 250, 350
+            size: 200, 300
 
             Image:
                 source: root.ordered_image_ids[root.mixed_ids[1] - 1]
@@ -49,7 +49,7 @@
             drop_func: root.correct
             failed_drop_func: root.wrong
             size_hint: None, None
-            size: 250, 350
+            size: 200, 300
 
             Image:
                 source: root.ordered_image_ids[root.mixed_ids[2] - 1]
@@ -73,7 +73,7 @@
                 Rectangle:
                     id: rect
                     pos: self.pos
-                    size: (250, 350)
+                    size: (200, 300)
                     source: root.ordered_image_ids[3]
             pos_hint: {'center_x': dnd_to_style['pos_hint_x']}
 
@@ -82,7 +82,7 @@
             canvas.before:
                 Rectangle:
                     pos: self.pos
-                    size: (250, 350)
+                    size: (200, 300)
                     source: root.ordered_image_ids[4]
             pos_hint: {'center_x': dnd_to_style['pos_hint_x']}
 
@@ -91,6 +91,6 @@
             canvas.before:
                 Rectangle:
                     pos: self.pos
-                    size: (250, 350)
+                    size: (200, 300)
                     source: root.ordered_image_ids[5]
             pos_hint: {'center_x': dnd_to_style['pos_hint_x']}

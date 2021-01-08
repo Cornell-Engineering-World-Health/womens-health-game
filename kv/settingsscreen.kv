@@ -34,13 +34,22 @@
             pos_hint: {"x": .4, "y": .5}
 
         RoundButton:
+            text: 'Sync'
+            color: 0,0,0,1
+            font_size: '20sp'
+            bold: True
+            on_press: root.sync()
+            size_hint: (.2, .075)
+            pos_hint: {"x": .2, "y": .3}
+
+        RoundButton:
             text: 'Logout'
             color: 0,0,0,1
             font_size: '20sp'
             bold: True
             on_press: root.logout()
             size_hint: (.2, .075)
-            pos_hint: {"x": .4, "y": .3}
+            pos_hint: {"x": .6, "y": .3}
 
         Label:
             text: root.error_message
@@ -51,6 +60,7 @@
             size_hint: (.4, .05)
 
 <RoundButton@Button>:
+    do_scale: False
     background_color: (0,0,0,0)
     background_normal: ''
     back_color: (0.925,0.786,0.27,1)
@@ -61,4 +71,4 @@
         RoundedRectangle:
             size: self.size
             pos: self.pos
-            radius: self.border_radius
+            radius: [50]

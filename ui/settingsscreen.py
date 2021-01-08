@@ -1,6 +1,6 @@
 from kivy.uix.screenmanager import Screen
 from kivymd.app import MDApp
-from util.client import logout
+from util.client import logout, sync_to_backend
 from kivy.properties import StringProperty
 from util.store import get_admin_state
 import webbrowser
@@ -32,6 +32,11 @@ class SettingsScreen(Screen):
         status = logout(sm)
         if not status:
             self.process_error("Failed to log out, this is likely a network issue. Please check you are connected to the internet and try again.")
+
+    def sync(self):
+        status = sync_to_backend()
+        if not status:
+            self.process_error("Failed to sync, this is likely a network issue. Please check you are connected to the internet and try again.")
 
     def clear_error(self):
         self.error_message = ""

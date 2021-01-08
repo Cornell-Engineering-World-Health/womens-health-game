@@ -1,4 +1,6 @@
 import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+
 import urllib
 import os
 import json
@@ -10,7 +12,6 @@ from util.store import update_admin_state, clear_game_state, current_state, new_
 
 load_dotenv()
 API_KEY = os.getenv('API_KEY')
-
 
 # API REQUESTS
 
@@ -121,3 +122,6 @@ def logout(sm):
 		sm.current = 'login_screen'
 	else:
 		return False
+
+def sync_to_backend():
+  return add_local_state_to_backend()

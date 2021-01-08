@@ -2,113 +2,72 @@
   {
     "id": 1,
     "name": "Salma",
-    "image": "salma.png",
-    "mouth_offset_top": 0.102,
-    "mouth_offset_x": 0.005,
-    "mouth_size": 0.02
+    "talk": "salma_talk.gif",
+    "idle": "salma_idle.png"
   },
   {
     "id": 2,
     "name": "Granny",
-    "image": "granny.png",
-    "mouth_offset_top": 0.108,
-    "mouth_offset_x": 0.004,
-    "mouth_size": 0.02
+    "talk": "granny_talk.gif",
+    "idle": "granny_idle.png"
   },
   {
     "id": 3,
     "name": "Sukhi",
-    "image": "sukhi.png",
-    "mouth_offset_top": 0.122,
-    "mouth_offset_x": 0.004,
-    "mouth_size": 0.02
+    "talk": "sukhi_talk.gif",
+    "idle": "sukhi_idle.png"
   },
   {
     "id": 4,
     "name": "Anna",
-    "image": "anna.png",
-    "mouth_offset_top": 0.18,
-    "mouth_offset_x": 0.004,
-    "mouth_size": 0.02
-  },
-  {
-    "id": 5,
-    "name": "Biju Bai",
-    "image": "biju_bai.png",
-    "mouth_offset_top": 0.101,
-    "mouth_offset_x": 0.004,
-    "mouth_size": 0.03
-  },
-  {
-    "id": 6,
-    "name": "Kamla",
-    "image": "kamla.png",
-    "mouth_offset_top": 0.101,
-    "mouth_offset_x": 0.004,
-    "mouth_size": 0.03
+    "talk": "anna_talk.gif",
+    "idle": "anna_idle.png"
   },
   {
     "id": 7,
     "name": "Seema",
-    "image": "seema.png",
-    "mouth_offset_top": 0.195,
-    "mouth_offset_x": 0.005,
-    "mouth_size": 0.02
+    "talk": "seema_talk.gif",
+    "idle": "seema_idle.png"
   },
   {
     "id": 8,
     "name": "Fiza",
     "image": "fiza.png",
-    "mouth_offset_top": 0.17,
-    "mouth_offset_x": 0.004,
-    "mouth_size": 0.02
+    "talk": "fiza_talk.gif",
+    "idle": "fiza_idle.png"
   },
   {
     "id": 9,
     "name": "Kirann",
-    "image": "kirann.png",
-    "mouth_offset_top": 0.09,
-    "mouth_offset_x": -0.003,
-    "mouth_size": 0.02
+    "talk": "kirann_talk.gif",
+    "idle": "kirann_idle.png"
   },
   {
     "id": 10,
     "name": "Ramesh",
     "image": "ramesh.png",
-    "mouth_offset_top": 0.104,
-    "mouth_offset_x": 0.002,
-    "mouth_size": 0.03
+    "talk": "ramesh_talk.gif",
+    "idle": "ramesh_idle.png"
   },
   {
     "id": 11,
     "name": "Vishal",
     "image": "vishal.png",
-    "mouth_offset_top": 0.155,
-    "mouth_offset_x": 0.0025,
-    "mouth_size": 0.025
-  },
-  {
-    "id": 12,
-    "name": "Teacher",
-    "image": "teacher.png",
-    "mouth_offset_top": 0.101,
-    "mouth_offset_x": 0.004,
-    "mouth_size": 0.03
+    "talk": "vishal_talk.gif",
+    "idle": "vishal_idle.png"
   },
   {
     "id": 13,
     "name": "Marina",
     "image": "marina.png",
-    "mouth_offset_top": 0.1,
-    "mouth_offset_x": -0.001,
-    "mouth_size": 0.01
+    "talk": "marina_talk.gif",
+    "idle": "marina_idle.png"
   },
   {
-    "id":  14,
+    "id": 14,
     "name": "Hansa",
     "image": "hansa.png",
-    "mouth_offset_top": 0.085,
-    "mouth_offset_x": 0.001,
-    "mouth_size": 0.02
+    "talk": "hansa_talk.gif",
+    "idle": "hansa_idle.png"
   }
 ]
