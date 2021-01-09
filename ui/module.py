@@ -119,9 +119,9 @@ class Module(Screen):
             {'x': 0, 'top': 0.7},
             {'x': -0.2, 'top': 0.6},
             {'x': 0.2, 'top': 0.6},
-            {'x': -0.4, 'top': 0.4},
-            {'x': 0.4, 'top': 0.4},
-            {'x': 0, 'top': 0.4},
+            {'x': -0.4, 'top': 0.5},
+            {'x': 0.4, 'top': 0.5},
+            {'x': 0, 'top': 0.5},
         ]
 
     def init_game_buttons(self):
