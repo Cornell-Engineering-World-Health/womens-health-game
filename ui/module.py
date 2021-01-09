@@ -44,6 +44,12 @@ class Module(Screen):
         #first line that is spoken
         self.first_line = None
 
+        """
+        The current background widget that's visible, used to know what to remove
+        between scenes
+        """
+        self.current_background_wiget = None
+
         self.load_characters()
 
     # built in kivy function that runs before scene is loaded
@@ -54,12 +60,6 @@ class Module(Screen):
 
         # Current scene object
         self.current_scene = None
-
-        """
-        The current background widget that's visible, used to know what to remove
-        between scenes
-        """
-        self.current_background_wiget = None
 
         """
         The current line in the script that is going to be played,
@@ -91,6 +91,7 @@ class Module(Screen):
 
          #set up initial scene information
         self.current_scene = self.scenes[self.scene_iterator]
+
         self.set_current_background()
 
         #repeat the line that we stopped at
@@ -110,7 +111,7 @@ class Module(Screen):
                 self.scene_iterator = state['scene_id']
                 self.script_iterator = state['line_id']
         except Exception as err:
-            print("\n***failed to load state***", err, "\n")
+            print("error: failed to load state", err, "\n")
 
     # Screen positioning: assuming maximum of 7 characters on screen at one time
     def init_module_ui(self):
@@ -184,7 +185,6 @@ class Module(Screen):
 
     def _parse_module_json(self, module_data_dict):
         self.scenes = []
-        print("parsing module json")
         json_scenes = module_data_dict['scenes']
         for json_scene in json_scenes:
             background_image = json_scene['background']
@@ -253,7 +253,6 @@ class Module(Screen):
     # Plays the current line and advances the script_iterator
     # Callback parameter added for Kivy on_press callback
     def advance_line(self, callback, auto_advance=False):
-        print("currently at scene {} and line {}".format(self.scene_iterator, self.script_iterator))
         if(self.script_iterator == 1 and self.scene_iterator == 0):
             #you are for the first time advancing the line, so add the prev widget
             self.ids.float.add_widget(self.prev_icon, 1)
@@ -288,9 +287,8 @@ class Module(Screen):
                 if not auto_advance:
                     self.advance_line(callback)
             else:
-                print("ERROR: unhandled type " + str(event))
+                print("error: unhandled type " + str(event))
         elif (self.scene_iterator + 1 < len(self.scenes)):
-            print("length of self.scenes" + str(len(self.scenes)))
             #advance the scene, reset the script
             self.scene_iterator += 1
             self.script_iterator = -1
@@ -299,7 +297,6 @@ class Module(Screen):
             self.set_current_background()
             self.advance_line(callback)
         else:
-            print("loading assessment")
             # Set script iterator to end of script
             self.script_iterator = len(self.current_scene.script) - 1
             # update module state to complete (user_id, module_id)
@@ -360,7 +357,7 @@ class Module(Screen):
             #continue rewinding until someone says something
             self.previous_line(callback)
         else:
-            print("invalid type when trying to rewind: " + type(line))
+            print("error: invalid type when trying to rewind: " + type(line))
 
         if(self.script_iterator == self.first_line and self.scene_iterator == 0):
             #you are at the beginning, so remove prev icon
@@ -442,7 +439,6 @@ class Module(Screen):
         for c_id in self.characters:
             character = self.characters[c_id]
             if character.is_talking:
-                print("character {} is talking".format(str(character)))
                 character.stop()
 
     # Returns a Kivy position as a dictionary (x and top)

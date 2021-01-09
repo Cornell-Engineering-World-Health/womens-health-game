@@ -29,11 +29,9 @@ class LoginScreen(Screen):
 
         #login unsuccesful
         elif status[1] == "login_failure":
-            print("invalid username | password")
             self.process_error("Invalid username or password")
 
         elif status[1] == "network_failure":
-            print("network failure")
             self.process_error("Something went wrong on our end, please try again in a couple minutes. If this message persists, please contact Cornell Engineering World Health for support.")
 
     def process_email(self):
