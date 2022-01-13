@@ -12,7 +12,7 @@ Kivy-Garden==0.1.4
 kivymd==0.104.1
 mccabe==0.6.1
 oauth2client==3.0.0
-Pillow==7.1.2
+Pillow==9.0.0
 protobuf==3.12.2
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
